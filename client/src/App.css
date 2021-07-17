@@ -125,12 +125,23 @@ justify-content: center;
   border-radius: 3px;
 }
 .alignSwitchedForm input{
-  margin-top: 8px;
+  margin-top: 10px;
   margin-bottom: 10px;
   margin-left: 10px;
   border: none;
-  height: 20px;
+  height: 22px;
   border-radius: 3px;
+}
+.mainDiv{
+  display: flex; 
+  width: 100%;
+  margin-top: 40px;
+}
+
+.controlDiv{
+  display: flex;
+  flex-wrap: wrap;
+  width:55%;
 }
 input[type=text]:focus {
    outline: none;
@@ -139,7 +150,7 @@ input[type=text]:focus {
   display: flex;
   flex-direction: column; 
   width: 40%;
-  font-size: 13px;
+  font-size: 15px;
 }
 .greenButton{
   height: 50px;
@@ -326,3 +337,101 @@ height: 20%;
   }
  /***********************end of User***************************/
  /*************************************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ @media only screen and (min-width: 1200px) {
+  .leftSwitchedLayout h1{
+    width:50%;
+    margin-left: 50px;
+    font-size: 55px;
+  }
+  .leftLayout h1{
+    width:50%;
+    margin-left: 50px;
+    font-size: 55px;
+  }
+  }
+ @media only screen and (min-width: 1400px) {
+  
+  .leftLayout h1{
+    width:50%;
+    margin-left: 50px;
+    font-size: 60px;
+  }
+  .leftSwitchedLayout h1{
+    width:50%;
+    margin-left: 50px;
+    font-size: 60px;
+  }
+ 
+  .alignForm{
+   margin-left: 50px;
+   color: white;
+   font-size: 30px;
+  
+  }
+ 
+  .mainDiv{
+    display: flex; 
+    width: 65%;
+  }
+  .alignForm input{
+    margin-top: 8px;
+    margin-bottom: 10px;
+    border: none;
+    height: 25px;
+    border-radius: 3px;
+  }
+  .alignSwitchedForm input{
+    margin-top: 7px;
+    margin-bottom: 10px;
+    border: none;
+    height: 25px;
+    border-radius: 3px;
+    
+  }
+  
+  .controlDiv{
+    display: flex;
+    flex-wrap: wrap;
+    
+  }
+
+  .alignForm form{
+    display: flex;
+    flex-direction: column; 
+    width: 40%;
+    font-size: 16px;
+  }
+
+  .greenSwitchedButton{
+    height: 60px;
+    width: 145px;
+    text-align: center;
+    background-color: #4CAF50; /* Green */
+    /*background-color: var(--textAndButtonYellow);*/
+    border-radius: 20px;
+    color: white;
+    font-size: 25px;
+    border: none;
+    margin-top: 100px; 
+  }
+}
+ 
+ 

@@ -18,6 +18,8 @@ function Login(){
             <div className= 'alignForm'>
 
            
+           
+               <form className = "alignSwitchedForm">
             <Route render={({ history}) => (
            <h1
                type='button'
@@ -27,18 +29,17 @@ function Login(){
            </h1>
        
            )} />
-           
-               <form className = "alignSwitchedForm">
-                   <label>Username
-
-                   <input type="text" name="name" />
-
-                  </label>
-                   <label>Password
-                   
-                   <input type="text" name="password" />
-
-                   </label>
+           <div className = "mainDiv">
+                   <div className ="controlDiv">
+                        <p>Username</p>
+                        {"\n"}
+                        <p>Password</p>
+                   </div>
+                   <div className ="controlDiv">
+                        <input type="text" name="name" />
+                        <input type="text" name="password" />
+                   </div>
+            </div>
                </form>
            </div>
            <div className = "buttonDiv"><button className = "greenSwitchedButton" type="submit">Login</button></div>
