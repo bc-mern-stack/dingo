@@ -51,7 +51,7 @@ import { Route } from 'react-router-dom';
                     
                 </form>
             </div>
-            <div className = "buttonDiv"><button className = "yellowButton" type="submit">Sign Up</button></div>
+            <div className = "buttonDiv"><button className = "greenButton" type="submit">Sign Up</button></div>
             
          </div>
          

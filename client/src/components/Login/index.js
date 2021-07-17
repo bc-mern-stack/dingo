@@ -41,7 +41,7 @@ function Login(){
                    </label>
                </form>
            </div>
-           <div className = "buttonDiv"><button className = "yellowSwitchedButton" type="submit">Login</button></div>
+           <div className = "buttonDiv"><button className = "greenSwitchedButton" type="submit">Login</button></div>
            
         </div>
         

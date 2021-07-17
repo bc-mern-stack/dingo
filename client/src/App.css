@@ -7,7 +7,19 @@
   --midLightGrey: #E6E7E8;
   --midToneGrey: #D1D3D4;
 }
+body::-webkit-scrollbar {
+  width: 10px;               /* width of the entire scrollbar */
+}
 
+body::-webkit-scrollbar-track {
+  background: rgb(207, 207, 206);        /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color:rgb(155, 155, 155);    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  /*border: 3px solid orange;  /* creates padding around scroll thumb */
+}
 
 body {
   margin: 0;
@@ -61,7 +73,7 @@ code {
   margin-left: 50px;
 }
 .blueOutline{
-border:solid 4px var(--brightBlue); 
+border:solid 3px var(--brightBlue); 
 width: 85%;
 margin-top: 40px;
 margin-bottom: 40px; 
@@ -110,7 +122,7 @@ justify-content: center;
   margin-bottom: 10px;
   border: none;
   height: 20px;
-  border-radius: 5px;
+  border-radius: 3px;
 }
 .alignSwitchedForm input{
   margin-top: 8px;
@@ -118,7 +130,7 @@ justify-content: center;
   margin-left: 10px;
   border: none;
   height: 20px;
-  border-radius: 5px;
+  border-radius: 3px;
 }
 input[type=text]:focus {
    outline: none;
@@ -129,7 +141,7 @@ input[type=text]:focus {
   width: 40%;
   font-size: 13px;
 }
-.yellowButton{
+.greenButton{
   height: 50px;
   width: 135px;
   text-align: center;
@@ -141,7 +153,7 @@ input[type=text]:focus {
   border: none;
   margin-top: 30px; 
 }
-.yellowSwitchedButton{
+.greenSwitchedButton{
   height: 50px;
   width: 135px;
   text-align: center;
@@ -178,3 +190,139 @@ height: 20%;
   }
 /*********************end of login/signup css*******************************/
 /****************************************************/
+
+/****************************************************/
+/*********************User Profile*******************/
+.allUserElements{
+  width: 80%;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  /*border: yellowgreen solid 2px;*/
+}
+.leftAndRight{
+  display: flex;
+  justify-content: space-between;
+}
+.leftSideUser{
+  background-color: var(--lightGrey);
+  width: 55%;
+}
+.contact h4{
+ margin-top: -10px;
+}
+.rightSideUser{
+  background-color: var(--lightGrey);
+  width: 42%;
+  display: flex;
+  
+  flex-wrap: wrap;
+  /*border: yellowgreen 2px solid;*/
+}
+.rightSideUser form{
+  display: flex;
+  align-items: center;
+  margin-left: 30px; 
+}
+
+.blackBar{
+  color: white;
+  background-color: black;
+  height:50px;
+  padding-left: 30px;
+  display: flex;
+  align-items: center;
+  font-size: 25px;
+}
+
+.list{
+   display: flex;
+   justify-content: center;
+   margin-bottom: 20px;
+}
+.text{
+    margin-left: 25px;
+    width: 100%;
+  }
+ .dogWalkersLeft{
+  
+   height:100px; 
+   width:85%;
+   overflow:hidden; 
+   overflow-y:scroll;
+   background-color: white;
+   list-style: none;
+ 
+  }
+  .dogWalkersRight{
+  
+    height:100px; 
+    width:85%;
+    overflow:hidden; 
+    overflow-y:scroll;
+    background-color: white;
+    list-style: none;
+   }
+  
+  .bottomOrange{
+    background-color: var(--brightOrange);
+    width: 100%;
+    height: 250px;
+  }
+  .userNav{
+    display: flex;
+    justify-content: space-between;
+  }
+  .userNav h1{
+    margin-left: 30px;
+  }
+  .logoutAndHome{
+    display: flex;
+    justify-content: space-between;
+  }
+  .logout{
+    margin-right: 5px;
+  }
+  .newLocationSearchInput{
+    background-color: var(--brightOrange);
+    border: none;
+    height: 15px;
+    border-radius: 25px;
+    padding: 10px;
+    padding-top: 12px;
+    padding-left: 15px;
+    border-radius: 20px;
+    color: white;
+    font-size: 1.2em;
+    
+  }
+  .newLocationSearchInput::placeholder {
+    color: white;
+    font-size: 1em;
+  }
+  .newLocationSearchButton{
+    height: 35px;
+    width: 35px;
+    text-align: center;
+    background-color: var(--brightOrange);
+    border-radius: 25px;
+    border: none;
+    margin-left: 13px;
+    
+  }
+  .scroll::-webkit-scrollbar {
+    width: 6px;               /* width of the entire scrollbar */
+  }
+  
+  .scroll::-webkit-scrollbar-track {
+    /*background: orange;        /* color of the tracking area */
+  }
+  
+  .scroll::-webkit-scrollbar-thumb {
+    background-color:var(--midToneGrey);    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    /*border: 3px solid orange;  /* creates padding around scroll thumb */
+  }
+ /***********************end of User***************************/
+ /*************************************************************/
