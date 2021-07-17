@@ -1,38 +1,180 @@
-.App {
-  text-align: center;
+:root {
+  --brightOrange: #F7931E;
+  --brightBlue: #27AAE1;
+  --textAndButtonYellow: #F3BD1F;
+  --darkOrange: #EE7023;
+  --lightGrey: #F1F2F2;
+  --midLightGrey: #E6E7E8;
+  --midToneGrey: #D1D3D4;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  margin: 0;
+ font-family: 'Poppins', sans-serif;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+html,body { 
+  height:100%; 
   display: flex;
   flex-direction: column;
-  align-items: center;
+  background-color: white;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+/*****************begin of login/signup css*****************/
+.leftLayout{
+  background-color: black;
+  height: 100%;
+  width: 50%;
+  position: absolute;
+    top: 0;
+    bottom: 0;
+  color: var(--textAndButtonYellow);
+  font-size: 30px;
+  text-align: left;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+.leftSwitchedLayout{
+  background-color: black;
+  height: 100%;
+  width: 50%;
+  position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+  color: var(--textAndButtonYellow);
+  font-size: 30px;
+  text-align: left;
+  display: flex;
+  justify-content: center;
+}
+.leftLayout h1{
+  width:65%;
+  margin-left: 50px;
+}
+.leftSwitchedLayout h1{
+  width:65%;
+  margin-left: 50px;
+}
+.blueOutline{
+border:solid 4px var(--brightBlue); 
+width: 85%;
+margin-top: 40px;
+margin-bottom: 40px; 
+display: flex;
+justify-content: center;
+}
+.rightLayout{
+  background-color:var(--brightOrange);
+  position: absolute;
+   right: 0;
+   top: 0;
+   bottom: 0;
+   height: 80%;
+   width: 50%;
+}
+.rightSwitchedLayout{
+  background-color:var(--brightOrange);
+  position: absolute;
+   left: 0;
+   top: 0;
+   bottom: 0;
+   height: 80%;
+   width: 50%;
+}
+.rightLayout h1{
+  margin-bottom: 40px;
+  margin-top: 35px;
+  font-size: 25px;
+  color: var(--textAndButtonYellow);
+}
+.rightSwitchedLayout h1{
+  margin-bottom: 40px;
+  margin-top: 35px;
+  font-size: 25px;
+  color: var(--textAndButtonYellow);
+}
+.alignForm{
+ margin-left: 50px;
+ color: white;
+
+
+}
+
+.alignForm input{
+  margin-top: 8px;
+  margin-bottom: 10px;
+  border: none;
+  height: 20px;
+  border-radius: 5px;
+}
+.alignSwitchedForm input{
+  margin-top: 8px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  border: none;
+  height: 20px;
+  border-radius: 5px;
+}
+input[type=text]:focus {
+   outline: none;
+}
+.alignForm form{
+  display: flex;
+  flex-direction: column; 
+  width: 40%;
+  font-size: 13px;
+}
+.yellowButton{
+  height: 50px;
+  width: 135px;
+  text-align: center;
+  background-color: #4CAF50; /* Green */
+  /*background-color: var(--textAndButtonYellow);*/
+  border-radius: 20px;
   color: white;
+  font-size: 23px;
+  border: none;
+  margin-top: 30px; 
 }
-
-.App-link {
-  color: #61dafb;
+.yellowSwitchedButton{
+  height: 50px;
+  width: 135px;
+  text-align: center;
+  background-color: #4CAF50; /* Green */
+  /*background-color: var(--textAndButtonYellow);*/
+  border-radius: 20px;
+  color: white;
+  font-size: 23px;
+  border: none;
+  margin-top: 100px; 
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.buttonDiv{
+  display: flex;
+  justify-content: space-around;
+}
+.dogsNum{
+  width: 12%;
+}
+.bottomBlue{
+background-color: var(--brightBlue);
+position: absolute;
+right: 0;
+bottom: 0;
+width: 50%;
+height: 20%;
+}
+.bottomSwitchedBlue{
+  background-color: var(--brightBlue);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 50%;
+  height: 30%;
   }
-  to {
-    transform: rotate(360deg);
-  }
-}
+/*********************end of login/signup css*******************************/
+/****************************************************/
