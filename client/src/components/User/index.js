@@ -41,7 +41,7 @@ import { Route } from 'react-router-dom';
                                 <h3>Contact</h3>
                                 <h4>JohnSmith@gmail.com</h4>
                             </div>
-                            <h3>My Current Dog Walkers</h3>
+                            <h3 className = "current">My Current Dog Walkers</h3>
                         </div>
                             <div className = "list">
                                 
@@ -79,12 +79,10 @@ import { Route } from 'react-router-dom';
                  </div>
                  
              </div>
-                <h4>Your Dogs</h4>
+                <h4 className = "yourDogs">Your Dogs</h4>
              </div> 
 
-             <div>
                  <div className = "bottomOrange"></div>
-             </div>
          </div>
      )
  };

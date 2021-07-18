@@ -15,7 +15,7 @@ function Login(){
 
         <div className = 'rightSwitchedLayout'>
 
-            <div className= 'alignForm'>
+            <div className= 'alignFormAltered'>
 
            
            
