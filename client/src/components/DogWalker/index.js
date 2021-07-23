@@ -5,6 +5,7 @@ import Calendar from 'react-calendar'
  function DogWalker(){
     const [value, onChange] = useState(new Date());
      return(   
+         <div>
         <div className= "allUserElements">
            <div className = "userNav">
                <h1>
@@ -58,12 +59,14 @@ import Calendar from 'react-calendar'
                            <h4>JohnSmith@gmail.com</h4>
                         </div>
             </div>
-                    
-                <div>
-                    <div className = "bottomOrange"></div>
-                </div>
+                 
+            </div> 
 
-            </div>
+            <h4 className = "yourDogs"></h4> 
+
+           
+        </div> 
+            <div className = "bottomOrange"></div>
         </div>
      )
  };

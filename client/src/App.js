@@ -10,7 +10,7 @@ import {Route, Link} from 'react-router-dom';
 function App() {
   return (
     <div className="App">
-    <Navbar />
+    
     <Route exact path= "/" component = {Home}/>
     <Route exact path= "/User" component = {User}/>
     <Route exact path= "/DogWalker" component = {DogWalker}/>
@@ -19,5 +19,5 @@ function App() {
     </div>
   );
 }
-
+/*<Navbar />*/
 export default App;
