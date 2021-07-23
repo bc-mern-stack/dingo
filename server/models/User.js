@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
-import availabilitySchema from "./Availability";
+const availabilitySchema = "./Availability";
 
 const userSchema = new Schema(
   {
@@ -32,6 +32,12 @@ const userSchema = new Schema(
       {
         type: Schema.Types.ObjectId,
         ref: "Doggo",
+      },
+    ],
+    appointments: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Appointment",
       },
     ],
   },

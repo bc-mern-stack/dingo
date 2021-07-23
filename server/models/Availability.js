@@ -1,5 +1,5 @@
 const { Schema, model } = require("mongoose");
-import hourlySchema from "./Hourly";
+const hourlySchema = "./Hourly";
 
 const availabilitySchema = new Schema(
   {
@@ -21,6 +21,6 @@ const availabilitySchema = new Schema(
   }
 );
 
-const Availability = model("Availibility", availabilitySchema);
+const Availability = model("Availability", availabilitySchema);
 
 module.exports = { Availability, availabilitySchema };

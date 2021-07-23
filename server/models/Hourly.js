@@ -1,13 +1,9 @@
 const { Schema, model } = require("mongoose");
 
-const availabilitySchema = new Schema(
+const hourlySchema = new Schema(
   {
     date_range: {
       type: String,
-      required: true,
-    },
-    rate: {
-      type: Number,
       required: true,
     },
     mo: [
@@ -59,8 +55,6 @@ const availabilitySchema = new Schema(
         max: 23,
       },
     ],
-    hours_available: [hourlySchema],
-    hours_busy: [hourlySchema],
   },
   {
     toJSON: {
@@ -69,6 +63,6 @@ const availabilitySchema = new Schema(
   }
 );
 
-const Hourly = model("Availibility", availabilitySchema);
+const Hourly = model("Hourly", hourlySchema);
 
 module.exports = { Hourly, hourlySchema };

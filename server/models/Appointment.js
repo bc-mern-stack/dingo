@@ -1,5 +1,5 @@
 const { Schema, model } = require("mongoose");
-import Doggo from "./Doggo";
+const Doggo = "./Doggo";
 
 const appointmentSchema = new Schema(
   {
