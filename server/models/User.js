@@ -60,7 +60,7 @@ userSchema.pre("save", async function (next) {
 
 // compare the incoming password with the hashed password
 userSchema.methods.isCorrectPassword = async function (pass) {
-  return bcrypt.compare(pass, this.pass);
+  return bcrypt.compare(pass, this.password);
 };
 
 const User = model("User", userSchema);
