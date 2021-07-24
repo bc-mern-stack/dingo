@@ -3,6 +3,8 @@ const { gql } = require("apollo-server-express");
 
 // create our typeDefs
 const typeDefs = gql`
+  scalar Date
+
   type User {
     _id: ID
     username: String
@@ -15,14 +17,25 @@ const typeDefs = gql`
 
   type Availability {
     _id: ID
-    date_range: String
+    date_start: Date
+    date_end: Date
     rate: Int
-    hours_available: [Hourly]
-    hours_busy: [Hourly]
+    hours_available: Hourly
+    hours_busy: Hourly
   }
 
   type Hourly {
     _id: ID
+    mo: [Int]
+    tu: [Int]
+    we: [Int]
+    th: [Int]
+    fr: [Int]
+    sa: [Int]
+    su: [Int]
+  }
+
+  input hourlyInput {
     mo: [Int]
     tu: [Int]
     we: [Int]
@@ -66,6 +79,12 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     addFavorite(favoriteId: ID!): User
     removeFavorite(favoriteId: ID!): User
+    addAvailability(
+      date_start: Date!
+      date_end: Date!
+      rate: Int!
+      hours_available: hourlyInput!
+    ): User
   }
 `;
 

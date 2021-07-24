@@ -3,8 +3,16 @@ const hourlySchema = "./Hourly";
 
 const availabilitySchema = new Schema(
   {
-    date_range: {
-      type: String,
+    _id: {
+      type: Schema.Types.ObjectId,
+      default: Schema.Types.ObjectId,
+    },
+    date_start: {
+      type: Date,
+      required: true,
+    },
+    date_end: {
+      type: Date,
       required: true,
     },
     rate: {
@@ -21,6 +29,6 @@ const availabilitySchema = new Schema(
   }
 );
 
-const Availability = model("Availability", availabilitySchema);
+// const Availability = model("Availability", availabilitySchema);
 
-module.exports = { Availability, availabilitySchema };
+module.exports = { availabilitySchema };

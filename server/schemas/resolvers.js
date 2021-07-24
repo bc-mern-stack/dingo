@@ -49,9 +49,9 @@ const resolvers = {
         throw new AuthenticationError("Incorrect credentials");
       }
 
-      const correctPw = await user.isCorrectPassword(password);
+      const correctPassword = await user.isCorrectPassword(password);
 
-      if (!correctPw) {
+      if (!correctPassword) {
         throw new AuthenticationError("Incorrect credentials");
       }
 
@@ -78,6 +78,34 @@ const resolvers = {
           { $pull: { favorites: favoriteId } },
           { new: true }
         ).populate("favorites");
+
+        return updatedUser;
+      }
+
+      throw new AuthenticationError("You need to be logged in!");
+    },
+    addAvailability: async (
+      parent,
+      { date_start, date_end, rate, hours_available },
+      context
+    ) => {
+      console.log("user", context.user._id);
+      if (context.user) {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          {
+            $push: {
+              availability: {
+                date_start,
+                date_end,
+                rate,
+                hours_available,
+              },
+            },
+          },
+          { new: true }
+        ).select("-__v -password");
+        console.log("updated user", updatedUser);
 
         return updatedUser;
       }
