@@ -12,9 +12,16 @@ import Calendar from 'react-calendar'
                    Dog Walking Availability
                </h1>
                <div className = "logoutAndHome">
-                   <h2 className = "logout">
+               <Route render={({ history}) => (
+                    <h2 className = "logout"
+                        type='button'
+                        onClick={() => { history.push('/Login') }}
+                    >
                        Logout /
                    </h2>
+                    )}/>
+                    
+                   
                    
                        <Route render={({ history}) => (
                    <h2

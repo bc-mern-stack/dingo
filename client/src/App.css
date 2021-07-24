@@ -388,8 +388,9 @@ height: 20%;
  /*************************home page****************************/
  .bluePat{
    background-image: url(./assets/bluePattern.png);
-   height: 190px;
+   height: 210px;
    width: auto;
+  
  }
 .logo{
    height: 70px;
@@ -397,11 +398,19 @@ height: 20%;
    margin: 40px;
    margin-top: 15px;
 }
+
 .signUpBox{
  background-color: var(--midToneGrey);
  color: var(--darkOrange);
  padding: 10px;
+ padding-top: 12px;
  width: 200px;
+ height: 20px;
+ margin: 45px 45px 0px 0;
+ display: flex;
+ justify-content: space-between;
+ 
+ 
 }
 .navigation{
   width: 90%;
@@ -409,21 +418,204 @@ height: 20%;
   justify-content: space-between;
   background-color: white;
   padding: 10px;
+  position: relative;
+  z-index: 0;
   border-radius: 30px;
   border: 10px solid var(--midLightGrey);
+  margin: auto;
+  box-shadow: 0 10px 10px rgb(0, 0, 0);
+  
+}
+.navigation div{
+  width: 100%;
+  padding-left:20px;
+
+}
+.navigation:after {
+  content: " ";
+  position: absolute;
+  z-index: -1;
+  padding-top: 30px;
+  top: -17px;
+  left: -17px;
+  right: -17px;
+  bottom: -17px;
+  border: 7px solid #000000;
+  border-radius: 50px;
+}
+.logoAndLogin{
+  display: flex;
+  justify-content: space-between;
+}
+.display{
+  position:absolute;
+  
+}
+.element:hover{
+  color: #ffffff;
+  background-color: #000000;
+  /*background-color: #08b92f;*/
+  /*margin-right: -19px;*/
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-bottom: -20px;
+  margin-top: -20px;
+  box-shadow: 0px 5px 15px rgb(0, 0, 0);
+  /*border-radius: 0px 35px 35px 0px;*/
+ 
+}
+.right:hover{
+  color: #ffffff;
+  background-color: #000000;
+  /*background-color: #08b92f;*/
+  margin-right: -20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-bottom: -20px;
+  margin-top: -20px;
+  /*box-shadow: 0px 5px 0px rgb(0, 0, 0);*/
+  border-radius: 0px 35px 35px 0px;
+  padding-right: 19px;
+}
+.left:hover{
+  color: #ffffff;
+  background-color: #000000;
+  /*background-color: #08b92f;*/
+  margin-left: -20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-bottom: -20px;
+  margin-top: -20px;
+  /*box-shadow: 0px 5px 0px rgb(0, 0, 0);*/
+  border-radius: 35px 0px 0px 35px ;
+  padding-left: 39px;
 }
 .orangeBox{
-  height: 300px;
+  height: 400px;
   width:100%;
   background-color: var(--darkOrange);
   border-bottom: 30px solid var(--lightGrey);
+  display: flex;
+  justify-content: center;
+}
+.illustration{
+  height: 400px;
+  width: auto;
 }
 .bottomBorder{
   background-image: url(./assets/bluePattern.png);
   height: 60px;
-  border-top: white 200px solid;
+  /*border-top: white 350px solid;*/
+}
+.line{
+  border-left: 1px solid rgb(197, 197, 197);
+  height: 50px;
+  margin-bottom: -25px;
+  margin-top: -15px;
 }
 
+.dogsRow{
+
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: space-around;
+  width: 90%;
+  
+}
+.dogsRow img{
+  height: 250px; 
+  width: auto; 
+  
+}
+.user{
+  height: 30px;
+  width: auto;
+  margin-top: -5px;
+}
+.seacrhCircle{
+  position: absolute;
+  right: 1px;
+  top: 1px;
+  height: 25px;
+  width: 25px;
+  background-color: var(--darkOrange) ;
+  border-radius: 20px;
+  border: white 5px solid;
+  margin-bottom: -30px;
+  
+}
+.seacrhCircle:after {
+  content: " ";
+  position: absolute;
+  z-index: 1;
+  top: -13px;
+  left: -13px;
+  right: -13px;
+  bottom: -13px;
+  border: 10px solid var(--darkOrange);
+  border-radius: 50px;
+}
+/******************modal popup************************/
+/*.content{
+  
+  z-index: 99;
+  background-color: var(--brightOrange);
+  border-radius: 20px;
+  outline: none;
+  width: 270px;
+  height: 325px;
+  border-radius: 20px;
+  margin: auto;
+  box-shadow: 0 7px 10px rgb(0, 0, 0);
+
+}*/
+.contentHome p{
+  color: white;
+  margin-left: 25px;
+}
+.contentHome ul{
+  margin-top: 25px;
+  border-radius: 10px;
+
+}
+.contentHome li{
+  padding-left: 10px;
+  padding-bottom: 5px;
+}
+.test{
+  border: yellowgreen 2px solid;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+/*****************************************************/
+
+/********************animation************************/
+
+/*.shape:hover {
+  position: relative;
+  
+  
+  x-transition: all .75s ease-in-out;
+  animation: ani .75s infinite;
+}
+
+
+@keyframes ani {
+  0% {
+    top: 0;
+  }
+  50% {
+    top: 5px;
+    
+  }
+  100% {
+    top: 0;
+  }
+}*/
 
 
 
@@ -609,6 +801,56 @@ height: 20%;
       margin-top: 35px;
     }
   }
+  @media only screen and (max-width: 1000px) {
+    .line{
+      border-left: 1px solid rgb(197, 197, 197);
+      height: 45px;
+      margin-bottom: -25px;
+      margin-top: -15px;
+    }
+    .seacrhCircle{
+      position: absolute;
+      right: 1px;
+      top: 1px;
+      height: 20px;
+      width: 20px;
+      background-color: var(--darkOrange) ;
+      border-radius: 20px;
+      border: white 5px solid;
+      margin-bottom: -30px;
+      
+    }
+    .seacrhCircle:after {
+      content: " ";
+      position: absolute;
+      z-index: 1;
+      top: -13px;
+      left: -13px;
+      right: -13px;
+      bottom: -13px;
+      border: 10px solid var(--darkOrange);
+      border-radius: 50px;
+    }
+  .element{
+    font-size: 12px ;
+  }
+  .dogsRow{
+
+    margin-top: 60px;
+    margin-bottom: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-around;
+    width: 90%;
+    
+  }
+  .dogsRow img{
+    height: 200px; 
+    width: auto; 
+    
+  }
+  }
  @media only screen and (min-width: 1100px) {
   .leftSwitchedLayout h1{
     width:50%;
@@ -620,6 +862,7 @@ height: 20%;
     margin-left: 50px;
     font-size: 55px;
   }
+ 
   }
  @media only screen and (min-width: 1400px) {
   
@@ -687,5 +930,34 @@ height: 20%;
     margin-top: 100px; 
   }
 }
- 
- 
+@media only screen and (min-width: 1600px) {
+
+.dogsRow{
+
+  margin-top: 60px;
+  margin-bottom: 60px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
+  
+}
+.dogsRow img{
+  height: 300px; 
+  width: auto; 
+  
+}
+.orangeBox{
+  height: 500px;
+  width:100%;
+  background-color: var(--darkOrange);
+  border-bottom: 30px solid var(--lightGrey);
+  display: flex;
+  justify-content: center;
+}
+.illustration{
+  height: 500px;
+  width: auto;
+}
+}
