@@ -46,10 +46,10 @@ const typeDefs = gql`
 
   type Appointment {
     _id: ID
-    owner: ID
-    walker: ID
+    owner: User
+    walker: User
     date: String
-    hour: String
+    hour: Int
     doggos: [Doggo]
   }
 
@@ -93,6 +93,14 @@ const typeDefs = gql`
       picture: String!
     ): User
     removeDoggo(doggoId: ID!): User
+    addAppointment(
+      owner: ID!
+      walker: ID!
+      date: Date!
+      hour: Int!
+      doggos: [ID]
+    ): Appointment
+    removeAppointment(appId: ID!): Appointment
   }
 `;
 

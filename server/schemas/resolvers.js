@@ -12,7 +12,6 @@ const resolvers = {
           .populate({ path: "availability", model: Availability })
           .populate("doggos")
           .populate("appointments");
-
         return userDatas;
       }
       throw new AuthenticationError("Not logged in");
@@ -98,7 +97,7 @@ const resolvers = {
           hours_available,
         });
         // now save it to the db
-        newAvailability.save((err) => {
+        await newAvailability.save((err) => {
           if (err) {
             throw new Error("Error saving availability");
           }
@@ -158,7 +157,7 @@ const resolvers = {
           picture,
         });
         // now save it to the db
-        newDoggo.save((err) => {
+        await newDoggo.save((err) => {
           if (err) {
             throw new Error("Error saving doggo");
           }
@@ -197,6 +196,53 @@ const resolvers = {
           .select("-__v -password")
           .populate("doggos");
         return updatedUser;
+      }
+    },
+    addAppointment: async (
+      parent,
+      { owner, walker, date, hour, doggos },
+      context
+    ) => {
+      if (context.user) {
+        // create the new appointment...
+        // users are updated in the Appointment model after saving
+        const newAppointment = await Appointment.create({
+          owner,
+          walker,
+          date,
+          hour,
+          doggos,
+        });
+        const saved = Appointment.findOne({ _id: newAppointment._id })
+          .populate("owner")
+          .populate("walker")
+          .populate("doggos");
+        return saved;
+      }
+
+      throw new AuthenticationError("You need to be logged in!");
+    },
+    removeAppointment: async (parent, { appId }, context) => {
+      if (context.user) {
+        const removedAppointment = await Appointment.findOneAndRemove({
+          _id: appId,
+          // owner: context.user._id,
+        });
+
+        // functionality to make sure only owners and walkers can remove
+        // appointments should be here, would look like this:
+        //
+        // console.log(
+        //   "owner and logged in user: \n",
+        //   removedAppointment.owner,
+        //   context.user._id
+        // );
+        // if (removedAppointment?.owner !== context.user._id) {
+        //   console.log("failed to remove appointment");
+        //   throw new Error("You can't remove someone else's appointment!");
+        // }
+
+        return removedAppointment;
       }
     },
   },
