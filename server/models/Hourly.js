@@ -65,4 +65,4 @@ const hourlySchema = new Schema(
 
 const Hourly = model("Hourly", hourlySchema);
 
-module.exports = { Hourly, hourlySchema };
+module.exports = hourlySchema;

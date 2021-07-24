@@ -20,8 +20,7 @@ const typeDefs = gql`
     date_start: Date
     date_end: Date
     rate: Int
-    hours_available: Hourly
-    hours_busy: Hourly
+    hours_available: [Hourly]
   }
 
   type Hourly {
@@ -85,6 +84,7 @@ const typeDefs = gql`
       rate: Int!
       hours_available: hourlyInput!
     ): User
+    removeAvailability(availId: ID!): User
   }
 `;
 

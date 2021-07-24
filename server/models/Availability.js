@@ -3,10 +3,6 @@ const hourlySchema = "./Hourly";
 
 const availabilitySchema = new Schema(
   {
-    _id: {
-      type: Schema.Types.ObjectId,
-      default: Schema.Types.ObjectId,
-    },
     date_start: {
       type: Date,
       required: true,
@@ -20,7 +16,6 @@ const availabilitySchema = new Schema(
       required: true,
     },
     hours_available: [hourlySchema],
-    hours_busy: [hourlySchema],
   },
   {
     toJSON: {
@@ -29,6 +24,6 @@ const availabilitySchema = new Schema(
   }
 );
 
-// const Availability = model("Availability", availabilitySchema);
+const Availability = model("Availability", availabilitySchema);
 
-module.exports = { availabilitySchema };
+module.exports = Availability;

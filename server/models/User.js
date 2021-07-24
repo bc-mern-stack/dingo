@@ -1,6 +1,5 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
-const availabilitySchema = "./Availability";
 
 const userSchema = new Schema(
   {
@@ -27,7 +26,12 @@ const userSchema = new Schema(
         ref: "User",
       },
     ],
-    availability: [availabilitySchema],
+    availability: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Availablity",
+      },
+    ],
     doggos: [
       {
         type: Schema.Types.ObjectId,

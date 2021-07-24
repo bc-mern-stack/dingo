@@ -9,7 +9,7 @@ const resolvers = {
         const userDatas = await User.findOne({ _id: context.user._id })
           .select("-__v -password")
           .populate("favorites")
-          .populate("availability")
+          .populate({ path: "availability", model: Availability })
           .populate("doggos")
           .populate("appointments");
 
@@ -21,7 +21,7 @@ const resolvers = {
       return User.find()
         .select("-__v -password")
         .populate("favorites")
-        .populate("availability")
+        .populate({ path: "availability", model: Availability })
         .populate("doggos")
         .populate("appointments");
     },
@@ -30,7 +30,7 @@ const resolvers = {
       return User.findOne({ username })
         .select("-__v -password")
         .populate("favorites")
-        .populate("availability")
+        .populate({ path: "availability", model: Availability })
         .populate("doggos")
         .populate("appointments");
     },
@@ -89,28 +89,58 @@ const resolvers = {
       { date_start, date_end, rate, hours_available },
       context
     ) => {
-      console.log("user", context.user._id);
       if (context.user) {
+        // create the new availability
+        const newAvailability = await new Availability({
+          date_start,
+          date_end,
+          rate,
+          hours_available,
+        });
+        // now save it to the db
+        newAvailability.save((err) => {
+          if (err) {
+            throw new AuthenticationError("Error saving availability");
+          }
+          return newAvailability;
+        });
+        // and update the user with that new availability
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
           {
             $push: {
-              availability: {
-                date_start,
-                date_end,
-                rate,
-                hours_available,
-              },
+              availability: newAvailability._id,
             },
           },
           { new: true }
-        ).select("-__v -password");
+        )
+          .select("-__v -password")
+          .populate({ path: "availability", model: Availability })
+          .populate({ path: "hours_available", model: Hourly });
         console.log("updated user", updatedUser);
 
         return updatedUser;
       }
 
       throw new AuthenticationError("You need to be logged in!");
+    },
+    removeAvailability: async (parent, { availId }, context) => {
+      if (context.user) {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          {
+            $pull: {
+              availability: availId,
+            },
+          },
+          { new: true }
+        )
+          .select("-__v -password")
+          .populate({ path: "availability", model: Availability });
+        console.log("updated user", updatedUser);
+
+        return updatedUser;
+      }
     },
   },
 };
