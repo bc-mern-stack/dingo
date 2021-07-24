@@ -17,4 +17,4 @@ const doggoSchema = new Schema(
 
 const Doggo = model("Doggo", doggoSchema);
 
-module.exports = { Doggo, doggoSchema };
+module.exports = Doggo;

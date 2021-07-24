@@ -100,7 +100,7 @@ const resolvers = {
         // now save it to the db
         newAvailability.save((err) => {
           if (err) {
-            throw new AuthenticationError("Error saving availability");
+            throw new Error("Error saving availability");
           }
           return newAvailability;
         });
@@ -117,7 +117,6 @@ const resolvers = {
           .select("-__v -password")
           .populate({ path: "availability", model: Availability })
           .populate({ path: "hours_available", model: Hourly });
-        console.log("updated user", updatedUser);
 
         return updatedUser;
       }
@@ -126,19 +125,77 @@ const resolvers = {
     },
     removeAvailability: async (parent, { availId }, context) => {
       if (context.user) {
+        const removedAvailability = await Availability.findOneAndRemove({
+          _id: availId,
+        });
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
           {
             $pull: {
-              availability: availId,
+              availability: removedAvailability._id,
             },
           },
           { new: true }
         )
           .select("-__v -password")
           .populate({ path: "availability", model: Availability });
-        console.log("updated user", updatedUser);
 
+        return updatedUser;
+      }
+    },
+    addDoggo: async (
+      parent,
+      { name, size, behavior, temperament, picture },
+      context
+    ) => {
+      if (context.user) {
+        // create the new doggo
+        const newDoggo = await new Doggo({
+          name,
+          size,
+          behavior,
+          temperament,
+          picture,
+        });
+        // now save it to the db
+        newDoggo.save((err) => {
+          if (err) {
+            throw new Error("Error saving doggo");
+          }
+          return newDoggo;
+        });
+        // and update the user with that new doggo
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          {
+            $push: {
+              doggos: newDoggo._id,
+            },
+          },
+          { new: true }
+        )
+          .select("-__v -password")
+          .populate("doggos");
+
+        return updatedUser;
+      }
+
+      throw new AuthenticationError("You need to be logged in!");
+    },
+    removeDoggo: async (parent, { doggoId }, context) => {
+      if (context.user) {
+        const deletedDoggo = await Doggo.findOneAndRemove({ _id: doggoId });
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          {
+            $pull: {
+              doggos: deletedDoggo._id,
+            },
+          },
+          { new: true }
+        )
+          .select("-__v -password")
+          .populate("doggos");
         return updatedUser;
       }
     },

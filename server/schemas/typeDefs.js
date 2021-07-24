@@ -56,7 +56,7 @@ const typeDefs = gql`
   type Doggo {
     _id: ID
     name: String
-    size: String
+    size: Int
     behavior: String
     temperament: String
     picture: String
@@ -85,6 +85,14 @@ const typeDefs = gql`
       hours_available: hourlyInput!
     ): User
     removeAvailability(availId: ID!): User
+    addDoggo(
+      name: String!
+      size: Int!
+      behavior: String!
+      temperament: String!
+      picture: String!
+    ): User
+    removeDoggo(doggoId: ID!): User
   }
 `;
 
