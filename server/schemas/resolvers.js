@@ -156,20 +156,10 @@ const resolvers = {
         return updatedUser;
       }
     },
-    addDoggo: async (
-      parent,
-      { name, size, behavior, temperament, picture },
-      context
-    ) => {
+    addDoggo: async (parent, args, context) => {
       if (context.user) {
         // create the new doggo
-        const newDoggo = await new Doggo({
-          name,
-          size,
-          behavior,
-          temperament,
-          picture,
-        });
+        const newDoggo = await new Doggo(args);
         // now save it to the db
         await newDoggo.save((err) => {
           if (err) {

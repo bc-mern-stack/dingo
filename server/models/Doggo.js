@@ -4,6 +4,8 @@ const doggoSchema = new Schema(
   {
     name: { type: String, required: true },
     size: { type: Number, required: true },
+    age: { type: Number, required: true },
+    breed: { type: String, required: true },
     behavior: { type: String, required: true },
     temperament: { type: String, required: true },
     picture: { type: String, required: true },

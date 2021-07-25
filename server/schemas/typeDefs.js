@@ -79,6 +79,8 @@ const typeDefs = gql`
   type Doggo {
     _id: ID
     name: String
+    age: Int
+    breed: String
     size: Int
     behavior: String
     temperament: String
@@ -117,6 +119,8 @@ const typeDefs = gql`
     addDoggo(
       name: String!
       size: Int!
+      age: Int!
+      breed: String!
       behavior: String!
       temperament: String!
       picture: String!
