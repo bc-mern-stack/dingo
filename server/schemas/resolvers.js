@@ -1,4 +1,11 @@
-const { User, Availability, Hourly, Appointment, Doggo } = require("../models");
+const {
+  User,
+  Address,
+  Availability,
+  Hourly,
+  Appointment,
+  Doggo,
+} = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth"); // uses jsonwebtoken
 
@@ -8,6 +15,7 @@ const resolvers = {
       if (context.user) {
         const userDatas = await User.findOne({ _id: context.user._id })
           .select("-__v -password")
+          .populate("address")
           .populate("favorites")
           .populate({ path: "availability", model: Availability })
           .populate("doggos")
@@ -19,6 +27,7 @@ const resolvers = {
     users: async () => {
       return User.find()
         .select("-__v -password")
+        .populate("address")
         .populate("favorites")
         .populate({ path: "availability", model: Availability })
         .populate("doggos")
@@ -28,6 +37,7 @@ const resolvers = {
     user: async (parent, { username }) => {
       return User.findOne({ username })
         .select("-__v -password")
+        .populate("address")
         .populate("favorites")
         .populate({ path: "availability", model: Availability })
         .populate("doggos")
@@ -36,7 +46,11 @@ const resolvers = {
   },
   Mutation: {
     addUser: async (parent, args) => {
-      const user = await User.create(args);
+      const address = await Address.create(args.address);
+      console.log(address);
+
+      const user = await User.create({ ...args, address: address._id });
+
       const token = signToken(user);
 
       return { token, user };

@@ -20,6 +20,11 @@ const userSchema = new Schema(
       required: true,
       minlength: 5,
     },
+    about: { type: String, default: "" },
+    address: {
+      type: Schema.Types.ObjectId,
+      ref: "Address",
+    },
     favorites: [
       {
         type: Schema.Types.ObjectId,

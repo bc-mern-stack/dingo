@@ -9,10 +9,33 @@ const typeDefs = gql`
     _id: ID
     username: String
     email: String
+    about: String
+    address: Address
     favorites: [User]
     availability: [Availability]
     doggos: [Doggo]
     appointments: [Appointment]
+  }
+
+  type Address {
+    _id: ID
+    street: String
+    city: String
+    state: String
+    zip: Int
+    phone_number: String
+    lat: Float
+    lng: Float
+  }
+
+  input addressInput {
+    street: String
+    city: String
+    state: String
+    zip: Int
+    phone_number: String
+    lat: Float
+    lng: Float
   }
 
   type Availability {
@@ -75,7 +98,13 @@ const typeDefs = gql`
 
   type Mutation {
     login(email: String!, password: String!): Auth
-    addUser(username: String!, email: String!, password: String!): Auth
+    addUser(
+      username: String!
+      email: String!
+      password: String!
+      about: String
+      address: addressInput!
+    ): Auth
     addFavorite(favoriteId: ID!): User
     removeFavorite(favoriteId: ID!): User
     addAvailability(
