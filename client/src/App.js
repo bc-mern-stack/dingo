@@ -6,6 +6,7 @@ import DogWalker from './components/DogWalker';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import {Route, Link} from 'react-router-dom';
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
     <Route exact path= "/DogWalker" component = {DogWalker}/>
     <Route exact path= "/Login" component = {Login}/>
     <Route exact path= "/SignUp" component = {SignUp}/>
+    <Footer/>
     </div>
   );
 }

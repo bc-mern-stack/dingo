@@ -229,20 +229,38 @@ height: 20%;
 /****************************************************/
 /*********************User Profile*******************/
 .allUserElements{
-  width: 80%;
+  width: 70%;
   flex-wrap: wrap;
   align-items: center;
   margin-left: auto;
   margin-right: auto;
+ 
   /*border: yellowgreen solid 2px;*/
 }
 .leftAndRight{
   display: flex;
   justify-content: space-between;
+  
 }
 .leftSideUser{
   background-color: var(--lightGrey);
   width: 55%;
+  border-radius: 10px;
+  
+
+}
+.leftSideUserProfile{
+  background-color: #20c5ee;
+  width: 50%;
+  z-index: 99;
+  border-radius: 10px;
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+}
+.contact{
+  margin-top: 40px;
 }
 .contact h4{
  margin-top: -5px;
@@ -254,11 +272,23 @@ height: 20%;
   width: 90%;
 }
 .rightSideUser{
-  background-color: var(--lightGrey);
-  width: 42%;
+  border-radius: 10px;
+  background-color: var(--brightOrange);
+  color: white;
+  width: 50%;
   display: flex;
   flex-wrap: wrap;
   align-content: space-between;
+  /*border: yellowgreen 2px solid;*/
+}
+.rightSideUserCalender{
+  background-color: var(--lightGrey);
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  border-radius: 10px;
+
   /*border: yellowgreen 2px solid;*/
 }
 .rightSideUser form{
@@ -275,43 +305,71 @@ height: 20%;
   display: flex;
   align-items: center;
   font-size: 25px;
+  border-radius: 10px;
+  margin-bottom: 20px;
 }
 
 .list{
-   display: flex;
-   justify-content: center;
+   
    margin-bottom: 20px;
+   margin-left: 25px;
 }
 .text{
     margin-left: 25px;
     width: 100%;
-    height: max-content;
+    
   }
+  .textLocation{
+    margin-left: 25px;
+    width: 100%;
+    color: white;
+  }
+  .dogWalkers{
+  
+    height:100px; 
+    width:150px;
+    overflow:hidden; 
+    overflow-y:scroll;
+    background-color: rgb(236, 236, 236);
+    list-style: none;
+    padding: 10px;
+    border-radius: 10px;
+    border: 10px white solid;
+    margin-right: 20px;
+   }
  .dogWalkersLeft{
   
    height:100px; 
-   width:85%;
+   width:500px;
    overflow:hidden; 
    overflow-y:scroll;
-   background-color: white;
+   background-color: rgb(236, 236, 236);
    list-style: none;
    padding: 10px;
+   border-radius: 10px;
+   border: 10px white solid;
   }
   .dogWalkersRight{
   
-    height:100px; 
-    width:85%;
+    height:200px; 
+    width:500px;
     overflow:hidden; 
     overflow-y:scroll;
-    background-color: white;
+    background-color: rgb(236, 236, 236);
     list-style: none;
     padding: 10px;
-   }
+    border-radius: 10px;
+    border: 10px rgb(255, 255, 255) solid;
+    margin-bottom: 20px;
+  }
    .dogWalkersLeft li{
-     margin-bottom: 5px;
+     margin-bottom: 10px;
+     color: rgb(0, 0, 0);
    }
    .dogWalkersRight li{
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    color: rgb(0, 0, 0);
+
   }
   
   .bottomOrange{
@@ -325,7 +383,8 @@ height: 20%;
   .userNav{
     display: flex;
     justify-content: space-between;
-    margin-bottom: 50px;
+    margin-bottom: 60px;
+    background-color: rgb(235, 232, 232);
   }
   .userNav h1{
     margin-left: 30px;
@@ -334,19 +393,20 @@ height: 20%;
     display: flex;
     justify-content: space-between;
     cursor: pointer;
+    margin-right: 30px;
   }
   .logout{
     margin-right: 5px;
   }
   .newLocationSearchInput{
-    background-color: var(--brightOrange);
+    background-color: black;
     border: none;
     height: 15px;
     border-radius: 25px;
     padding: 10px;
     padding-top: 12px;
     padding-left: 15px;
-    border-radius: 20px;
+    border-radius: 10px;
     color: white;
     font-size: 1.2em;
     margin-bottom: 25px;
@@ -356,11 +416,30 @@ height: 20%;
     color: white;
     font-size: 1em;
   }
+  .newLocationSearchInputHome{
+    background-color: rgb(255, 255, 255);
+    border: none;
+    height: 10px;
+    border-radius: 25px;
+    padding: 10px;
+    padding-top: 12px;
+    padding-left: 15px;
+    border-radius: 10px;
+    color: rgb(0, 0, 0);
+    font-size: 1.2em;
+    margin-bottom: 25px;
+    width: 120px;
+    margin: 20px;
+  }
+  .newLocationSearchInputHome::placeholder {
+    color: white;
+    font-size: 1em;
+  }
   .newLocationSearchButton{
     height: 35px;
     width: 35px;
     text-align: center;
-    background-color: var(--brightOrange);
+    background-color: black;
     border-radius: 25px;
     border: none;
     margin-left: 13px;
@@ -368,13 +447,117 @@ height: 20%;
     cursor: pointer;
 
   }
+  .newLocationSearchButtonHome{
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 25px;
+    border: none;
+    margin-left: 5px;
+    margin-bottom: 30px;
+    cursor: pointer;
+    margin-top: 20px;
+
+  }
+  .dropDownlocation form{
+    display: flex;
+    justify-content: flex-start;
+    
+  }
+  .close{
+    height: 30px;
+    width: auto;
+    position: relative;
+    top: 10px;
+    margin-left: 235px;
+  }
+  .closeRight{
+    height: 30px;
+    width: auto;
+    position: relative;
+    top: 10px;
+    margin-left: 190px;
+  }
+  .arrow-down-blue {
+    /*width: 0; 
+    height: 0; 
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    transform: rotate(45deg);*/
+    /*border-bottom: 50px solid var(--brightOrange);*/
+    position: absolute;
+    right: 51%;
+    z-index: 0;
+    margin-top: 15px;
+  }
+  .arrow-down-orange{
+    /*width: 0; 
+    height: 0; 
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    transform: rotate(45deg);*/
+    /*border-bottom: 50px solid var(--darkOrange);*/
+    position: absolute;
+    right: 51%;
+    z-index: 0;
+    margin-top: 15px;
+  }
+  
   .current{
-    margin-bottom: -5px;
+    margin-bottom: 0px;
     margin-top: 30px;
   }
+  .secondRow{
+    display: flex;
+    justify-content: space-between;
+  }
   .yourDogs{
-    margin-top: 50px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    width: 100%;
+    height:auto;
+     display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    border-radius: 10px;
+  }
+  .dogTitle{
+    border-radius: 10px;
+    background-color: #000000;
+    margin-top: 75px;
+    color: white;
+    padding: 10px;
+  }
+  .dogBlock{
+    width: 49%;
     margin-bottom: 25px;
+    
+  }
+  .eachDog{
+    background-color: var(--lightGrey);
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: space-between;  
+    border-radius: 10px;
+    /*border: rgb(0, 0, 0) 5px solid;*/
+  }
+  .dogPic{
+    height: 100px;
+    width: 100px;
+    background-color: black;
+    margin: 20px;
+    border-radius: 20px;
+
+  }
+  .dogInfo p{
+    margin: 13px;
+    font-weight: 500;
+  }
+  .dogInfo{
+    margin-top: 0px;
+    /*border-left: .05rem solid black;*/
   }
   .alignRightSide{
     display: flex;
@@ -519,6 +702,8 @@ height: 20%;
 .bottomBorder{
   background-image: url(./assets/bluePattern.png);
   height: 60px;
+  border-bottom: var(--brightOrange) 200px solid;
+
   /*border-top: white 350px solid;*/
 }
 .line{
@@ -586,6 +771,31 @@ height: 20%;
   box-shadow: 0 7px 10px rgb(0, 0, 0);
 
 }*/
+.bothDropDowns{
+  
+  display: flex;
+  justify-content: center;
+  justify-content: space-between;
+  width: 90%;
+  margin: auto;
+  margin-top: 10px;
+}
+.dropDown{
+  z-index: 99;
+  border-radius: 10px;
+  background-color: var(--brightOrange);
+  box-shadow: 0 5px 10px rgb(0, 0, 0);
+
+}
+.dropDownlocation{
+  z-index: 99;
+  height: 160px;
+  width: 280px;
+  background-color: var(--brightOrange);
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgb(0, 0, 0);
+
+}
 .contentHome p{
   color: white;
   margin-left: 25px;
@@ -753,7 +963,7 @@ height: 20%;
   background: #a9d4ff;
 }
 .react-calendar__tile--active {
-  background: #006edc;
+  background: #20c5ee;
   color: white;
 }
 .react-calendar__tile--active:enabled:hover,
@@ -769,13 +979,21 @@ height: 20%;
  font-size: 12px;
 }
 /*************************************************************/
+/****************************footer*********************************/
+.footer{
+  
+  height: 0px;
+  text-align: center;
+  position: relative;
+  bottom: 50px;
+  color: white;
+}
+
+
+
+
+
 /*************************************************************/
-
-
-
-
-
-
 
 
 
@@ -816,7 +1034,45 @@ height: 20%;
     }
   
   }
+  @media only screen and (max-width: 800px) {
+    .leftSideUserProfile{
+      width: 100%;
+    }
+    .leftAndRight{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      
+    }
+    .rightSideUserCalender{
+      width: 100%;
+      margin-top: 25px;
+    }
+    .dogBlock{
+      width: 100%;
+      
+    }
+    .rightSideUser{
+      width: 100%;
+      margin-top: 25px;
+    }
+    .arrow-down-blue {
+      
+      right: 7%;
+      
+    }
+    .arrow-down-orange{
+    
+      right: 7%;
+      
+    }
+    .leftSideUser{
+      width: 100%;
+    }
+}
+  
   @media only screen and (max-width: 1000px) {
+    
     .line{
       border-left: none;
     }
@@ -916,17 +1172,28 @@ height: 20%;
     width: auto; 
     
   }
+  .leftSideUserProfile{
+    height: 60%;
   }
+  .react-calendar {
+  
+    
+    line-height: .1em;
+    
+  }
+  .dogWalkersRight{
+   height: 150px;
+  }
+}
  @media only screen and (max-width: 1100px) {
   .newLocationSearchInput{
-    background-color: var(--brightOrange);
+    background-color: black;
     border: none;
     height: 15px;
-    border-radius: 25px;
     padding: 10px;
     padding-top: 12px;
     padding-left: 15px;
-    border-radius: 20px;
+
     color: white;
     font-size: 1.2em;
     margin-bottom: 25px;
@@ -950,8 +1217,24 @@ height: 20%;
   }
  
   }
+  @media only screen and (max-width: 1300px) {
+  .rightSideUser h2{
+    width: 70%;
+  }
+  .allUserElements{
+    width: 90%;
+  }
+  }
+  @media only screen and (max-width: 1400px) {
+    .dogWalkersRight{
+      width: 250px;
+    }
+    .dogWalkersLeft{
+      width: 250px;
+    }
+  }
  @media only screen and (min-width: 1400px) {
-  
+ 
   .leftLayout h1{
     width:50%;
     margin-left: 50px;
@@ -1046,4 +1329,12 @@ height: 20%;
   height: 500px;
   width: auto;
 }
+}
+@media only screen and (max-width: 1700px) {
+  .dogWalkersLeft{
+    width:250px;
+  }
+  .dogWalkersRight{
+    width:250px;
+  }
 }

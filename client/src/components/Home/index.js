@@ -1,4 +1,4 @@
-import React from 'react';
+import {React, useState } from 'react';
 import { Route } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
@@ -11,6 +11,7 @@ import dog2 from '../../assets/dog2.png';
 import dog3 from '../../assets/dog3.png';
 import user from '../../assets/user.png';
 import { element } from 'prop-types';
+import close from '../../assets/close.png'
 const customStyles = {
      overlay : {
         backgroundColor: null,
@@ -41,21 +42,12 @@ const customStyles = {
  function Home(){
 
 ///**************modal**********************/
-Modal.setAppElement('#root');
 
-
-let subtitle;
-const [modalIsOpen, setIsOpen] = React.useState(false);
+const [modalIsOpen, setIsOpen] = useState(false);
 
 function openModal() {
   setIsOpen(true);
 }
-
-function afterOpenModal() {
-  // references are now sync'd and can be accessed.
-  subtitle.style.color = 'red';
-}
-
 function closeModal() {
   setIsOpen(false);
 }
@@ -64,11 +56,7 @@ function closeModal() {
      return(
          <div className = "allHomeElements">
 
-<div class="container">
- <div class="path">
-    <span id="elem" class="shape trail"></span> 
-  </div>
-</div>
+
 
             <div className = "bluePat">
                 <div className = "logoAndLogin">
@@ -98,7 +86,7 @@ function closeModal() {
                         type='button'
                         onClick={() => { history.push('/User') }}
                     >
-                        My dog walkers
+                        Owner appointments
                         
                         </div>
                     )}/>
@@ -109,43 +97,57 @@ function closeModal() {
                         type='button'
                         onClick={() => { history.push('/DogWalker') }}
                     >
-                        My schedule</div>
+                        Walking for others</div>
                     )}/>
                     
                         <element className = "line"></element>
-                    <div onClick={openModal} className  = "endNav element right">Find new dog walkers</div>
-                   
-                     <Modal 
-                        isOpen={modalIsOpen}
-                        //onAfterOpen={afterOpenModal}
-                        onRequestClose={closeModal}
-                        style={customStyles}
-                        contentLabel="Example Modal"
-                    >
-                        <h2 ref={(_subtitle) => (subtitle = _subtitle)}></h2>
-                        <button onClick={closeModal}>close</button>
-                        <div className = "contentHome">
-                        <p>Dog Walkers In Your Area</p>
-                        <p>Milwaukee Wisconsin</p>
-                            <div className = "list">       
-                                <ul className = "dogWalkersLeft scroll">
-                                    <li>Jane Doe</li>
-                                    <li>John Smith</li>
-                                    <li>Steve Smith</li>
-                                    <li>Jack White</li>
-                                    <li>Jane Smith</li>
-                                    <li>John White</li> 
-                                </ul>
-                            </div>
-                            </div>
-                    </Modal>
-                    
+
+                        
+                        <div onClick={openModal} className  = "endNav element right">Find new dog walkers</div>
+
+                      
+
       <element className = "seacrhCircle"></element>
                 </div>
-              
-     
-                
-            </div>
+                   
+                {modalIsOpen ? <div className = "bothDropDowns"
+                      
+                      >
+                          <div className = "dropDownlocation">
+                          <img onClick={closeModal} className = "close" src = {close} alt = "close"/>
+
+                            
+                                <div>
+                                    <p className = "textLocation">New Location Search</p>
+                                    
+                                    <form>
+                                        <input className = "newLocationSearchInputHome" placeholder = "New Search" type="text" name="name" />
+                                        <button className = "newLocationSearchButtonHome" type="submit"></button>  
+                                    </form>
+                                </div>
+                           </div>
+
+                    <div className = "dropDown">
+                    <img onClick={closeModal} className = "closeRight" src = {close} alt = "close"/>
+                      <div className = "contentHome">
+                      <p>Dog Walkers In Your Area</p>
+                      <p>Milwaukee Wisconsin</p>
+                          <div className = "list">       
+                              <ul className = "dogWalkers scroll">
+                                  <li>Jane Doe</li>
+                                  <li>John Smith</li>
+                                  <li>Steve Smith</li>
+                                  <li>Jack White</li>
+                                  <li>Jane Smith</li>
+                                  <li>John White</li> 
+                              </ul>
+                          </div>
+                          </div>
+                  </div>  
+                  </div> : ''}
+
+                </div>
+            
             <div className = "orangeBox">
                 <img className = "illustration" src = {illustration} alt = "illustration"/>
 

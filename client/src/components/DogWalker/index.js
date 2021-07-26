@@ -43,7 +43,7 @@ import Calendar from 'react-calendar'
                
                 <div className = "leftSideUser">
                     <div className = "text">
-                        <h4>Select a Date and Time</h4>
+                        <h4>Appointments That YOU are walking.</h4>
                         <Calendar 
                         onChange={onChange}
                         value={value}
