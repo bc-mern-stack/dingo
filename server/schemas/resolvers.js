@@ -47,7 +47,6 @@ const resolvers = {
   Mutation: {
     addUser: async (parent, args) => {
       const address = await Address.create(args.address);
-      console.log(address);
 
       const user = await User.create({ ...args, address: address._id });
 

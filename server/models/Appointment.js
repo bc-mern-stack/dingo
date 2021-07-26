@@ -35,7 +35,6 @@ const appointmentSchema = new Schema(
 
 appointmentSchema.post("save", async function (next) {
   const { _id, owner, walker } = this;
-  // console.log("after save appointment ", owner[0], walker[0]);
   // and update the owner with that new appointment
   if (true) {
     const updateOwner = await User.findOneAndUpdate(
@@ -61,7 +60,6 @@ appointmentSchema.post("save", async function (next) {
 
 appointmentSchema.post("remove", async function (next) {
   const { _id, owner, walker } = this;
-  // console.log("after save appointment ", owner[0], walker[0]);
   // and update the owner with that new appointment
   if (true) {
     const updateOwner = await User.findOneAndUpdate(

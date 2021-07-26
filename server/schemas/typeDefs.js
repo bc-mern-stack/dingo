@@ -83,6 +83,7 @@ const typeDefs = gql`
     breed: String
     size: Int
     behavior: String
+    instructions: String
     temperament: String
     picture: String
   }
@@ -121,8 +122,9 @@ const typeDefs = gql`
       size: Int!
       age: Int!
       breed: String!
-      behavior: String!
-      temperament: String!
+      behavior: String
+      temperament: String
+      instructions: String
       picture: String!
     ): User
     removeDoggo(doggoId: ID!): User
