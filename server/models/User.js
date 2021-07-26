@@ -1,6 +1,5 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
-import availabilitySchema from "./Availability";
 
 const userSchema = new Schema(
   {
@@ -21,17 +20,33 @@ const userSchema = new Schema(
       required: true,
       minlength: 5,
     },
+    about: { type: String, default: "" },
+    address: {
+      type: Schema.Types.ObjectId,
+      ref: "Address",
+    },
     favorites: [
       {
         type: Schema.Types.ObjectId,
         ref: "User",
       },
     ],
-    availability: [availabilitySchema],
+    availability: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Availablity",
+      },
+    ],
     doggos: [
       {
         type: Schema.Types.ObjectId,
         ref: "Doggo",
+      },
+    ],
+    appointments: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Appointment",
       },
     ],
   },
@@ -54,7 +69,7 @@ userSchema.pre("save", async function (next) {
 
 // compare the incoming password with the hashed password
 userSchema.methods.isCorrectPassword = async function (pass) {
-  return bcrypt.compare(pass, this.pass);
+  return bcrypt.compare(pass, this.password);
 };
 
 const User = model("User", userSchema);

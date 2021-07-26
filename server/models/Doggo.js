@@ -4,7 +4,10 @@ const doggoSchema = new Schema(
   {
     name: { type: String, required: true },
     size: { type: Number, required: true },
-    behavior: { type: String, required: true },
+    age: { type: Number },
+    breed: { type: String },
+    behavior: { type: String },
+    instructions: { type: String },
     temperament: { type: String, required: true },
     picture: { type: String, required: true },
   },
@@ -17,4 +20,4 @@ const doggoSchema = new Schema(
 
 const Doggo = model("Doggo", doggoSchema);
 
-module.exports = { Doggo, doggoSchema };
+module.exports = Doggo;

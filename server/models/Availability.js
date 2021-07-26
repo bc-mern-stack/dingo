@@ -1,10 +1,14 @@
 const { Schema, model } = require("mongoose");
-import hourlySchema from "./Hourly";
+const hourlySchema = "./Hourly";
 
 const availabilitySchema = new Schema(
   {
-    date_range: {
-      type: String,
+    date_start: {
+      type: Date,
+      required: true,
+    },
+    date_end: {
+      type: Date,
       required: true,
     },
     rate: {
@@ -12,7 +16,6 @@ const availabilitySchema = new Schema(
       required: true,
     },
     hours_available: [hourlySchema],
-    hours_busy: [hourlySchema],
   },
   {
     toJSON: {
@@ -21,6 +24,6 @@ const availabilitySchema = new Schema(
   }
 );
 
-const Availability = model("Availibility", availabilitySchema);
+const Availability = model("Availability", availabilitySchema);
 
-module.exports = { Availability, availabilitySchema };
+module.exports = Availability;
