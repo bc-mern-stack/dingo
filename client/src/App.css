@@ -281,6 +281,16 @@ height: 20%;
   align-content: space-between;
   /*border: yellowgreen 2px solid;*/
 }
+.rightSideUserForDogWalking{
+  border-radius: 10px;
+  background-color: #20c5ee;
+  color: white;
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  /*border: yellowgreen 2px solid;*/
+}
 .rightSideUserCalender{
   background-color: var(--lightGrey);
   width: 50%;
@@ -530,7 +540,7 @@ height: 20%;
     border-radius: 10px;
   }
   .add{
-     height: 40px;
+     height: 25px;
      width: auto;
      margin-top: auto;
      margin-bottom: auto;

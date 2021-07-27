@@ -40,7 +40,7 @@ import { Route } from 'react-router-dom';
                     
                     <input type="text" name="location" />
                     
-                    <label>Enter your email.</label>
+                    <label>Enter your Email</label>
                     
                     <input type="text" name="email" />
                     
