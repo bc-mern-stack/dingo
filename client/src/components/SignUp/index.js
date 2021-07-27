@@ -36,7 +36,7 @@ import { Route } from 'react-router-dom';
                     
                     <input type="text" name="password" />
                     
-                    <label>Where do you live?</label>
+                    <label>Address</label>
                     
                     <input type="text" name="location" />
                     
@@ -44,9 +44,9 @@ import { Route } from 'react-router-dom';
                     
                     <input type="text" name="email" />
                     
-                    <label>How many dogs do you have?</label>
+                         {/*<label>How many dogs do you have?</label>
                     
-                    <input className="dogsNum" type="number" name="dogs" />
+                    <input className="dogsNum" type="number" name="dogs" />*/}
 
                     
                 </form>

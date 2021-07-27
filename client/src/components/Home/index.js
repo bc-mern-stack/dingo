@@ -16,11 +16,10 @@ const customStyles = {
      overlay : {
         backgroundColor: null,
         position: 'absolute',
-        
         top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
     },
     content : {
         backgroundColor: '#F7931E',
@@ -51,12 +50,52 @@ function openModal() {
 function closeModal() {
   setIsOpen(false);
 }
+const [FirstTimeUser, TakeMeToMyChoice] = useState(true);
+
+    function LetMeGo() {
+        TakeMeToMyChoice(false);
+    }
+     
  
 /**********************************************/
-     return(
+     return (
+         
+         
          <div className = "allHomeElements">
 
+        { FirstTimeUser ? <div className = "centeredView">
+            
+                <img onClick={LetMeGo} className="closeModal" src={close} alt="close" />
+                     
+                 <div className="modalViewLeft">
+                     <h1 className = "textStyle">Do you want to walk dogs?</h1>
+                     <Route render={({ history}) => (
+                    <button type='button' className="buttonClose button textStyle"
+                        
+                        onClick={() => { history.push('/DogWalker') }}
+                    >
 
+                        Let's go
+                        
+                    </button>
+                    )}/>
+                     
+                 </div >
+                 <div className="modalViewRight">
+                                          <h1 className = "textStyle">Need someone to walk dogs?</h1>
+
+                <Route render={({ history}) => (
+                    <button type='button' className="buttonClose button textStyle" 
+                        
+                        onClick={() => { history.push('/User') }}
+                    >
+
+                        Let's go
+                        
+                    </button>
+                    )}/>                </div>
+                   
+                  </div> : ''}
 
             <div className = "bluePat">
                 <div className = "logoAndLogin">
