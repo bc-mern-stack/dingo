@@ -1,7 +1,7 @@
 import { React,useState } from 'react';
 import { Route } from 'react-router-dom';
 import Calendar from 'react-calendar'
-import plus from '../../assets/add.png'
+import dogHouse from '../../assets/dogHouse.png'
  function User(){
     const [value, onChange] = useState(new Date());
 
@@ -117,7 +117,8 @@ import plus from '../../assets/add.png'
                  <div>
                      <div className = "completeTitle">
                         <h4 className="dogTitle" >Your Dogs</h4>
-                         <img className = "add" src={plus} alt="add"></img>
+                         
+                         <img className = "add" src={dogHouse} alt="dog house"></img>
                      </div>
              <div className = "yourDogs">
                 
