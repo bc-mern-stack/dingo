@@ -4,12 +4,14 @@ import { Route } from 'react-router-dom';
  function SignUp(){
      return(
          <section className = 'totalLayout'>
-         <div className = 'leftLayout'>
+             <div className='leftLayout'>
+                 
              <div className = 'blueOutline'>
                 <h1>
                 Sign up to find dog walkers in your area or  walk dogs for others.             
                 </h1>
-             </div>
+                 </div>
+                 
          </div>
 
          <div className = 'rightLayout'>
@@ -40,7 +42,7 @@ import { Route } from 'react-router-dom';
                     
                     <input type="text" name="location" />
                     
-                    <label>Email</label>
+                    <label>Enter your Email</label>
                     
                     <input type="text" name="email" />
                     
@@ -49,9 +51,10 @@ import { Route } from 'react-router-dom';
                     <input className="dogsNum" type="number" name="dogs" />*/}
 
                     
-                </form>
+                     </form>
+                     <div className="buttonDiv"><button className="greenButton" type="submit">Sign Up</button></div>
+
             </div>
-            <div className = "buttonDiv"><button className = "greenButton" type="submit">Sign Up</button></div>
             
          </div>
          

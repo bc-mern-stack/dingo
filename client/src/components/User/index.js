@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 import Calendar from 'react-calendar'
 import dogHouse from '../../assets/dogHouse.png'
 import { useQuery } from '@apollo/client';
-import { QUERY_USERS } from '../../utils/queries.js';
+import { QUERY_USERS } from '../../utils/queries';
 
 
 function User() {

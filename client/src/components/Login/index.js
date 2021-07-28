@@ -9,7 +9,8 @@ function Login(){
         <div className = 'leftSwitchedLayout'>
             <div className = 'blueOutline'>
                <h1>
-               Login to view your details and find dog walkers in your area.               </h1>
+                    Login to view your details and find dog walkers in your area.
+                </h1>
             </div>
         </div>
 
