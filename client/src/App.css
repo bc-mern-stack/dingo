@@ -481,6 +481,11 @@ height: 20%;
     position: absolute;
     top: 15px;
     right: 15px;
+  
+  }
+  .closeModal:hover{
+      transform: rotate(180deg);
+      transition: transform 150ms ease,
   }
   .close{
     height: 30px;
@@ -508,6 +513,7 @@ height: 20%;
     z-index: 0;
     margin-top: 15px;
   }
+
   .arrow-down-orange{
     /*width: 0; 
     height: 0; 
@@ -540,7 +546,7 @@ height: 20%;
     border-radius: 10px;
   }
   .add{
-     height: 35px;
+     height: 30px;
      width: auto;
      margin-top: auto;
      margin-bottom: auto;
@@ -913,6 +919,10 @@ height: 20%;
     font-size: 30px;
     padding: 10px 20px 10px 20px;
     border-radius: 20px;
+  }
+    .buttonClose:hover{
+     transform: scale(1.1);
+      transition: transform 150ms ease,
   }
   .textStyle{
 

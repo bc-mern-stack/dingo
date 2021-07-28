@@ -2,10 +2,19 @@ import { React,useState } from 'react';
 import { Route } from 'react-router-dom';
 import Calendar from 'react-calendar'
 import dogHouse from '../../assets/dogHouse.png'
- function User(){
-    const [value, onChange] = useState(new Date());
+import { useQuery } from '@apollo/client';
+import { QUERY_USERS } from '../../utils/queries.js';
 
-        const [isOpened, setIsOpened] = useState(false);
+
+function User() {
+    const { loading, data } = useQuery(QUERY_USERS);
+        const users = data?.users || [];
+        
+        console.log(users);
+    
+    
+    const [value, onChange] = useState(new Date());
+    const [isOpened, setIsOpened] = useState(false);
     
         function toggle() {
             setIsOpened(true);
