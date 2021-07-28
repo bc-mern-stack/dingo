@@ -134,6 +134,13 @@ justify-content: center;
   height: 20px;
   border-radius: 3px;
 }
+.alignForm select{
+  margin-top: 8px;
+  margin-bottom: 10px;
+  border: none;
+  height: 20px;
+  border-radius: 3px;
+}
 .alignSwitchedForm input{
   margin-top: 10px;
   margin-bottom: 10px;

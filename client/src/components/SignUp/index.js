@@ -1,65 +1,175 @@
-import React from 'react';
-import { Route } from 'react-router-dom';
+import React, { useState } from "react";
+import { Route } from "react-router-dom";
+import StateList from "./StateList";
 
- function SignUp(){
-     return(
-         <section className = 'totalLayout'>
-         <div className = 'leftLayout'>
-             <div className = 'blueOutline'>
-                <h1>
-                Sign up to find dog walkers in your area or  walk dogs for others.             
-                </h1>
-             </div>
-         </div>
+import { useMutation } from "@apollo/client";
+import { ADD_USER } from "../../utils/mutations";
 
-         <div className = 'rightLayout'>
+import Auth from "../../utils/auth";
 
-             <div className= 'alignForm'>
+function SignUp() {
+  const [formState, setFormState] = useState({
+    email: "",
+    username: "",
+    password: "",
+    about: "",
+  });
 
-            
-             <Route render={({ history}) => (
-            <h1
-                type='button'
-                onClick={() => { history.push('/Login') }}
-            >
+  const [addressFormState, setAddressFormState] = useState({
+    street: "",
+    city: "",
+    state: "",
+    zip: "",
+    phone_number: "",
+  });
+
+  const userData = { ...formState, address: addressFormState };
+
+  const [addUser, { error }] = useMutation(ADD_USER);
+
+  const handleChangeAddress = (event) => {
+    const { name, value } = event.target;
+
+    setAddressFormState({
+      ...addressFormState,
+      [name]: value,
+    });
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
+  // submit form
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const { data } = await addUser({
+        variables: { ...userData },
+      });
+
+      Auth.login(data.login.token);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  return (
+    <section className="totalLayout">
+      <div className="leftLayout">
+        <div className="blueOutline">
+          <h1>
+            Sign up to find dog walkers in your area or walk dogs for others.
+          </h1>
+        </div>
+      </div>
+
+      <div className="rightLayout">
+        <div className="alignForm">
+          <Route
+            render={({ history }) => (
+              <h1
+                type="button"
+                onClick={() => {
+                  history.push("/Login");
+                }}
+              >
                 Login Instead
-            </h1>
-        
-            )} />
-            
-                <form>
-                    <label>Username</label>
+              </h1>
+            )}
+          />
 
-                    <input type="text" name="name" />
-                   
-                    <label>Password</label>
-                    
-                    <input type="text" name="password" />
-                    
-                    <label>Where do you live?</label>
-                    
-                    <input type="text" name="location" />
-                    
-                    <label>Enter your email.</label>
-                    
-                    <input type="text" name="email" />
-                    
-                    <label>How many dogs do you have?</label>
-                    
-                    <input className="dogsNum" type="number" name="dogs" />
+          <form>
+            <label htmlFor="email">Email:</label>
+            <input
+              type="text"
+              name="email"
+              autoComplete=""
+              value={formState.email}
+              onChange={handleChange}
+            />
 
-                    
-                </form>
-            </div>
-            <div className = "buttonDiv"><button className = "greenButton" type="submit">Sign Up</button></div>
-            
-         </div>
-         
-         <div className= "bottomBlue">
+            <label htmlFor="username">Username:</label>
+            <input
+              type="text"
+              name="username"
+              autoComplete=""
+              value={formState.username}
+              onChange={handleChange}
+            />
 
-         </div>
-         </section>
-     )
- };
+            <label htmlFor="password">Password:</label>
+            <input
+              type="password"
+              name="password"
+              autoComplete=""
+              value={formState.password}
+              onChange={handleChange}
+            />
 
- export default SignUp;
+            <span>ADDRESS</span>
+            <label htmlFor="street">Street:</label>
+            <input
+              type="text"
+              name="street"
+              autoComplete=""
+              value={addressFormState.street}
+              onChange={handleChangeAddress}
+            />
+
+            <label htmlFor="city">City:</label>
+            <input
+              type="text"
+              name="city"
+              autoComplete=""
+              value={addressFormState.city}
+              onChange={handleChangeAddress}
+            />
+
+            <label htmlFor="state">State:</label>
+            <StateList
+              addressFormState={addressFormState}
+              handleChangeAddress={handleChangeAddress}
+            />
+
+            <label htmlFor="street">Zip Code:</label>
+            <input
+              type="text"
+              name="zip"
+              autoComplete=""
+              value={addressFormState.zip}
+              onChange={handleChangeAddress}
+            />
+
+            <label htmlFor="street">Phone (optional):</label>
+            <input
+              type="text"
+              name="phone_number"
+              autoComplete=""
+              value={addressFormState.phone_number}
+              onChange={handleChangeAddress}
+            />
+          </form>
+        </div>
+        <div className="buttonDiv">
+          <button
+            className="greenButton"
+            type="submit"
+            onClick={handleFormSubmit}
+          >
+            Sign Up
+          </button>
+        </div>
+      </div>
+
+      <div className="bottomBlue"></div>
+    </section>
+  );
+}
+
+export default SignUp;
