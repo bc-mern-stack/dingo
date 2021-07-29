@@ -118,7 +118,7 @@ const [FirstTimeUser, TakeMeToMyChoice] = useState(true);
                         Location
                    
                     </div>
-                        <element className = "line"></element>
+                        <section className = "line"></section>
 
                         <Route render={({ history}) => (
                     <div className = "element"
@@ -130,7 +130,7 @@ const [FirstTimeUser, TakeMeToMyChoice] = useState(true);
                         </div>
                     )}/>
                     
-                        <element className = "line"></element>
+                        <section className = "line"></section>
                         <Route render={({ history}) => (
                     <div className = "element"
                         type='button'
@@ -139,14 +139,14 @@ const [FirstTimeUser, TakeMeToMyChoice] = useState(true);
                         Walking for others</div>
                     )}/>
                     
-                        <element className = "line"></element>
+                        <section className = "line"></section>
 
                         
                         <div onClick={openModal} className  = "endNav element right">Find new dog walkers</div>
 
                       
 
-      <element className = "seacrhCircle"></element>
+      <section className = "seacrhCircle"></section>
                 </div>
                    
                 {modalIsOpen ? <div className = "bothDropDowns"

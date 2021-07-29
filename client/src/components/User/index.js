@@ -2,17 +2,47 @@ import { React,useState } from 'react';
 import { Route } from 'react-router-dom';
 import Calendar from 'react-calendar'
 import dogHouse from '../../assets/dogHouse.png'
-import { useQuery } from '@apollo/client';
-import { QUERY_USERS } from '../../utils/queries';
+import { useQuery, gql, useMutation } from '@apollo/client';
+import { QUERY_USER } from '../../utils/queries';
+import { ADD_DOGGO } from '../../utils/mutations';
 
 
 function User() {
-    const { loading, data } = useQuery(QUERY_USERS);
-        const users = data?.users || [];
-        
-        console.log(users);
+    const { loading, error, data } = useQuery(QUERY_USER, {
+  variables: { username: "Darby.Orn" }
+});
+    const user = data?.user || [];
+    /*console.log(user);*/
     
+    const [addDoggo, { addDogError }] = useMutation(ADD_DOGGO);
     
+    const handleFormSubmit = async event => {
+    event.preventDefault();
+
+  // use try/catch instead of promises to handle errors
+  try {
+    // execute addUser mutation and pass in variable data from form
+      const { data } = await addDoggo({
+          variables: {
+              username:"Darby.Orn",
+              doggos: {
+                    name: "Mars",
+                    size: 50,
+                    age: 5,
+                    breed: "Husky",
+                    behavior: "Gentle",
+                    temperament: "Calm",
+                    picture: "placeholder",
+      }
+    }
+    });
+    console.log(data);
+  } catch (e) {
+      console.error(e);
+      console.log("error")
+  }
+};
+
     const [value, onChange] = useState(new Date());
     const [isOpened, setIsOpened] = useState(false);
     
@@ -24,9 +54,29 @@ function User() {
           }
 
      return(
+         
          <div>
-            
-             <div className= "allUserElements">
+
+                    <div>
+                    <p className="m-0">
+                        Character Count: 0/280
+                    </p>
+                    <form onSubmit = {handleFormSubmit} className="flex-row justify-center justify-space-between-md align-stretch">
+                        <textarea
+                        placeholder="Here's a new thought..."
+                        className="form-input col-12 col-md-9"
+                        ></textarea>
+                        <button className="btn col-12 col-md-3" type="submit">
+                        Submit
+                     </button>
+                     {error && <div>Sign up failed</div>}
+
+                    </form>
+                    </div>
+             
+
+             <div className="allUserElements">
+                 
                 <div className = "userNav">
                     <h1>
                         Owner Profile
@@ -58,32 +108,47 @@ function User() {
 
                  <div className = "leftAndRight">
                     
-                 {!isOpened ? 
+                 {!isOpened  ? 
                     <div className = "leftSideUserProfile">
-                     <img  onClick = {toggle} className = "arrow-down-blue" src="https://img.icons8.com/ios-filled/50/000000/year-of-dog.png"/>
-                            <div className = "text">
-                            <h3>Milwaukee Wisconsin</h3>
-                            <h3>Number of Dogs: 2</h3>
-                            <div className = "contact">
-                                <h3>Contact</h3>
-                                <h4>JohnSmith@gmail.com</h4>
-                            </div>
-                            
-                        </div>
                         
-                            <div className = "list"> 
+                     <img  onClick = {toggle} className = "arrow-down-blue" src="https://img.icons8.com/ios-filled/50/000000/year-of-dog.png"/>
+                           
+                             {data &&
+                                 <div className="text contact">
+                                     <h2>Address</h2>
+                                     <h4>{user.address.street}</h4>
+                                
+                                     <h4>{user.address.city} {user.address.state}</h4>
+
+                                     <div className="contact">
+                                         <h2>Contact</h2>
+                                         <h4>{user.email}</h4>
+                                         <h4>{user.address.phone_number}</h4>
+                                     </div>
+                                 </div> }
+                             
+                                {data ?
+                             <div className="list">
+                                 
+
                             <h2 className = "current">My Current Dog Walkers</h2>
-                                <ul className = "dogWalkersLeft scroll">
-                                    <li>Jane Doe</li>
-                                    <li>John Smith</li>
-                                    <li>Steve Smith</li>
-                                    <li>Jack White</li>
-                                    <li>Jane Smith</li>
-                                    <li>John White</li> 
-                                </ul>
-                            </div>
+                                 <ul className="dogWalkersLeft scroll">
+                                     {loading ? (<li>...Loading</li>
+                                 ) : (
+                                           
+                                     user.favorites.map(favorites => (
+                                        
+                                             <li key={favorites._id}>{ favorites.username}</li>
+                                             
+                                        
+                                     )))}
+                                         </ul>
+                            </div> : <div></div>}
                             
-                        </div>:
+                         </div> 
+
+                         :
+                        
                         <div className = "rightSideUser">
                      <img  onClick = {toggleOff} className = "arrow-down-orange" src="https://img.icons8.com/ios-filled/50/000000/year-of-dog.png"/>
                      <div className = "text">
@@ -124,45 +189,34 @@ function User() {
              </div>
 
                  <div>
-                     <div className = "completeTitle">
-                        <h4 className="dogTitle" >Your Dogs</h4>
-                         
+                     <div className="completeTitle">
+                          {data &&
+                         <h4 className="dogTitle" >Your Dogs: { user.doggos.length}</h4>
+                         }
                          <img className = "add" src={dogHouse} alt="dog house"></img>
                      </div>
              <div className = "yourDogs">
-                
-                <div className = "dogBlock">
-                    
-                    <div className = "eachDog">
+                         { loading ? (<div>...Loading</div>
+                         ) : (
+                            
+                             user.doggos.map(doggos => (
+                                 <div key={doggos._id} className="dogBlock">
+                                     
+                                     <div className="eachDog">
                         
-                        <div className = "dogInfo">
-                            <p>Name: Bruno</p>
-                            <p>Age: 3</p>
-                            <p>Size: 60lbs</p>
-                            <p>Breed: German Shepherd</p>
-                            <p>Behavior: Freindly</p>
-                            <p>Temperament: Territorial</p>
-                            <p>Special Instructions:</p>
-                        </div>
-                        <div className = "dogPic"></div>
-                    </div>
-                </div>
-                <div className = "dogBlock">
-                    
-                    <div className = "eachDog">
-                        <div className = "dogInfo">
-                            <p>Name: Mars</p>
-                            <p>Age: 2</p>
-                            <p>Size: 50lbs</p>
-                            <p>Breed: Doberman</p>
-                            <p>Behavior: Aggressive</p>
-                            <p>Temperament: Territorial</p>
-                            <p>Special Instructions:</p>
-                        </div>
-                        <div className = "dogPic"></div>
-
-                    </div>
-                </div>
+                                         <div className="dogInfo">
+                                             <p>Name: {doggos.name}</p>
+                                             <p>Age: {doggos.age}</p>
+                                             <p>Size: {doggos.size}</p>
+                                             <p>Breed: {doggos.breed}</p>
+                                             <p>Behavior: {doggos.behavior}</p>
+                                             <p>Temperament: {doggos.temperament}</p>
+                                             <p>Special Instructions:</p>
+                                         </div>
+                                         <div className="dogPic"></div>
+                                     </div>
+                                 </div>)))}
+                
             </div>
             
         

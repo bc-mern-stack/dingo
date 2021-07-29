@@ -277,10 +277,15 @@ height: 150px;
   align-content: space-between;
 }
 .contact{
-  margin-top: 40px;
+  margin-top: 20px;
+ 
 }
-.contact h4{
- margin-top: -5px;
+.contact h2{
+ margin: 0px;
+}
+.contact h4{  
+  margin-top: 10px;
+  margin-bottom: 7px;
 }
 .contactDogWalker{
  margin-bottom: 20px;
@@ -346,6 +351,8 @@ height: 150px;
     width: 100%;
     
   }
+
+  
   .textLocation{
     margin-left: 25px;
     width: 100%;
@@ -1130,7 +1137,7 @@ height: 150px;
 
 
 /*************************************************************/
-  @media only screen and (max-height: 550px) {
+  @media only screen and (max-height: 575px) {
     .rightSwitchedLayout{
       z-index: 99;
     }
@@ -1152,7 +1159,7 @@ height: 150px;
   margin-left: 50px;
   margin-right: 50px;
   margin-bottom: 20px; 
-  font-size: 35px
+  font-size: 37px
 }
 
 .leftSwitchedLayout h1{
@@ -1160,7 +1167,7 @@ height: 150px;
   margin-left: 50px;
   margin-right: 50px;
   margin-bottom: 20px; 
-  font-size: 35px
+  font-size: 37px
 }
   
   }
