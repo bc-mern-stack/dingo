@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { Route } from "react-router-dom";
+import { Route, useHistory } from "react-router-dom";
 import StateList from "./StateList";
 
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../../utils/mutations";
 
-import Auth from "../../utils/auth";
-
 function SignUp() {
+  const history = useHistory();
+
   const [formState, setFormState] = useState({
     email: "",
     username: "",
@@ -48,12 +48,15 @@ function SignUp() {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
+    userData.address.zip = parseInt(userData.address.zip);
+
     try {
       const { data } = await addUser({
         variables: { ...userData },
       });
-
-      Auth.login(data.login.token);
+      if (data) {
+        history.push("/");
+      }
     } catch (e) {
       console.error(e);
     }
@@ -72,7 +75,7 @@ function SignUp() {
       <div className="rightLayout">
         <div className="alignForm">
           <Route
-            render={({ history }) => (
+            render={() => (
               <h1
                 type="button"
                 onClick={() => {
@@ -154,6 +157,7 @@ function SignUp() {
               value={addressFormState.phone_number}
               onChange={handleChangeAddress}
             />
+            {error && <div className="error">{error.toString()}</div>}
           </form>
         </div>
         <div className="buttonDiv">
