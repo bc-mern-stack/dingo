@@ -5,6 +5,8 @@ import StateList from "./StateList";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../../utils/mutations";
 
+import Auth from "../../utils/auth";
+
 function SignUp() {
   const history = useHistory();
 
@@ -54,6 +56,8 @@ function SignUp() {
       const { data } = await addUser({
         variables: { ...userData },
       });
+      Auth.login(data.addUser.token);
+
       if (data) {
         history.push("/");
       }
