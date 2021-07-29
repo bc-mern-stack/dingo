@@ -10,7 +10,7 @@ const typeDefs = gql`
     username: String
     email: String
     about: String
-    address: Address
+    address: [Address]
     favorites: [User]
     availability: [Availability]
     doggos: [Doggo]

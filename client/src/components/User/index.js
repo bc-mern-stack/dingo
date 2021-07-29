@@ -57,7 +57,7 @@ function User() {
          
          <div>
 
-                    <div>
+             {/*<div>
                     <p className="m-0">
                         Character Count: 0/280
                     </p>
@@ -73,7 +73,7 @@ function User() {
 
                     </form>
                     </div>
-             
+                    */}
 
              <div className="allUserElements">
                  
@@ -104,7 +104,7 @@ function User() {
                     </div>
                 </div>
 
-                 <h1 className = "blackBar">John Smith</h1>
+                 <h1 className="blackBar">{user.username}</h1>
 
                  <div className = "leftAndRight">
                     
@@ -113,7 +113,8 @@ function User() {
                         
                      <img  onClick = {toggle} className = "arrow-down-blue" src="https://img.icons8.com/ios-filled/50/000000/year-of-dog.png"/>
                            
-                             {data &&
+                               { loading ? (<div>...Loading</div>
+                         ) : (
                                  <div className="text contact">
                                      <h2>Address</h2>
                                      <h4>{user.address.street}</h4>
@@ -125,7 +126,7 @@ function User() {
                                          <h4>{user.email}</h4>
                                          <h4>{user.address.phone_number}</h4>
                                      </div>
-                                 </div> }
+                                 </div> )}
                              
                                 {data ?
                              <div className="list">
