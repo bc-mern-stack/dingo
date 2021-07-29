@@ -82,7 +82,7 @@ function Login() {
                   onChange={handleChange}
                 />
               </div>
-              {error && <div>{error.toString()}</div>}
+              {error && <div className="error">{error.toString()}</div>}
             </div>
           </form>
         </div>
