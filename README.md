@@ -1,6 +1,6 @@
 # dingo
 
-app for dogs and their walkers. Link to repo is [here](https://github.com/japankid-code/book-searcher).
+app for dogs and their walkers. Link to repo is [here](https://github.com/bc-mern-stack/dingo). App is [deployed here](https://dingo-dog-walker.herokuapp.com/)
 
 ![language badge](https://img.shields.io/github/languages/top/bc-mern-stack/dingo?style=for-the-badge)
 [![gitmoji](https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square)](https://gitmoji.dev)
