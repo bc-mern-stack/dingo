@@ -120,8 +120,8 @@ export const QUERY_USER = gql`
 `;
 
 export const QUERY_ME = gql`
-  query me {
-    me {
+   { me 
+     {
       _id
       username
       email
@@ -162,17 +162,22 @@ export const QUERY_ME = gql`
         age
         breed
         behavior
-        instructions
         temperament
         picture
       }
       appointments {
         _id
         date
-        owner
-        walker
+        owner{
+          username
+        }
+        walker{
+          username
+        }
         hour
-        doggos
+        doggos{
+          name
+        }
       }
     }
   }

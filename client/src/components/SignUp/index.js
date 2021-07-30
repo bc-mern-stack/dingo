@@ -59,6 +59,7 @@ function SignUp() {
         variables: { ...userData },
       });
       if (data) {
+        
         history.push("/");
       }
     } catch (e) {

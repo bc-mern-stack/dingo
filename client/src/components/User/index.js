@@ -3,15 +3,49 @@ import { Route } from 'react-router-dom';
 import Calendar from 'react-calendar'
 import dogHouse from '../../assets/dogHouse.png'
 import { useQuery, gql, useMutation } from '@apollo/client';
-import { QUERY_USER } from '../../utils/queries';
+import { QUERY_USER, QUERY_ME } from '../../utils/queries';
 import { ADD_DOGGO } from '../../utils/mutations';
-
+import Auth from '../../utils/auth';
+import { useParams } from 'react-router-dom';
 
 function User() {
-    const { loading, error, data } = useQuery(QUERY_USER, {
+    const {  data,error } = useQuery(QUERY_ME);
+    console.log(data);
+    console.log(error);
+    {Auth.loggedIn && data ? (
+  <div>
+    
+      username={data.me.username}
+      
+    
+  </div>
+) : null}
+     if (Auth.loggedIn())
+     {
+         console.log('logged in')
+         
+     }
+    {/*   const { loading, error, data } = useQuery(QUERY_USER, {
   variables: { username: "Darby.Orn" }
 });
-    const user = data?.user || [];
+const user = data?.user || [];*/}
+    /*console.log(user);*/
+   /*const { username: userParam } = useParams();
+
+  const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
+    
+      variables: { username: userParam }
+  });
+
+    const user = data?.me || data?.user || {};
+   
+    if (
+    Auth.loggedIn() &&
+    Auth.getProfile().data.username === userParam
+    ) {
+        console.log("you are logged in")
+    //return <Redirect to="/profile" />;
+  }*/
     /*console.log(user);*/
     
     const [addDoggo, { addDogError }] = useMutation(ADD_DOGGO);
@@ -74,7 +108,7 @@ function User() {
                     </form>
                     </div>
                     */}
-
+{/*
              <div className="allUserElements">
                  
                 <div className = "userNav">
@@ -222,7 +256,7 @@ function User() {
             
         
                 </div>
-             </div> 
+             </div> */}
 
                  <div className = "bottomOrange"></div>
          </div>
