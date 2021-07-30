@@ -163,10 +163,16 @@ export const QUERY_ME = gql`
       appointments {
         _id
         date
-        owner
-        walker
+        owner {
+          username
+        }
+        walker {
+          username
+        }
         hour
-        doggos
+        doggos {
+          name
+        }
       }
     }
   }
