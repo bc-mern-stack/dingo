@@ -8,8 +8,6 @@ import WalkerAvailabilty from "../components/WalkerAvailability";
 import { useQuery } from "@apollo/client";
 import { QUERY_ME, QUERY_USER } from "../utils/queries";
 
-import Auth from "../utils/auth";
-
 function DogWalker() {
   const { username: userParam } = useParams();
 
@@ -22,10 +20,11 @@ function DogWalker() {
   // checks for both kinds of responses, either me or user
   const user = data?.me || data?.user || {};
 
-  console.log(user);
-
   if (loading) {
     return <div>Loading...</div>;
+  }
+  if (error) {
+    return <div>{error.toString()}</div>;
   }
 
   return (
