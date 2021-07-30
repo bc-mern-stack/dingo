@@ -3,6 +3,9 @@ import { ReactComponentElement } from "react";
 import DatePicker from "react-date-picker";
 import "./custom.css";
 
+import { useMutation } from "@apollo/client";
+import { ADD_AVAILABILITY } from "../../utils/mutations";
+
 export default function AddAvailability({ user }: any) {
   const [startDateValue, setStartDateValue] = useState(new Date());
   const [endDateValue, setEndDateValue] = useState(new Date());
@@ -11,13 +14,6 @@ export default function AddAvailability({ user }: any) {
   // define types for the hours array
   interface HourlyOptions {
     [index: string]: number[];
-    mo: number[];
-    tu: number[];
-    we: number[];
-    th: number[];
-    fr: number[];
-    sa: number[];
-    su: number[];
   }
   // create an object with those types
   let hourlyObject: HourlyOptions = {
@@ -95,50 +91,61 @@ export default function AddAvailability({ user }: any) {
   });
 
   const handleRateChange = (e: any) => {
-    setRateValue(e.target.value);
+    setRateValue(parseInt(e.target.value));
   };
 
   // bring state into availability object
   const availabilityData = {
-    start_date: startDateValue,
-    end_date: endDateValue,
+    date_start: startDateValue,
+    date_end: endDateValue,
     rate: rateValue,
     hours_available: hourlyValue,
   };
 
-  const handleFormSubmit = () => {
-    // this will eventually call the mutation
-    console.log(availabilityData);
+  const [addAvailability, { error }] = useMutation(ADD_AVAILABILITY);
+
+  const handleFormSubmit = async (e: any) => {
+    e.preventDefault();
+    try {
+      await addAvailability({
+        variables: availabilityData,
+      });
+      window.location.reload();
+    } catch (error) {
+      console.error("form submit catch", error);
+    }
   };
 
   return (
     <>
       <h1 className="blackBar">Add Availability</h1>
-      <div>
-        <span>Start Date:</span>
-        <DatePicker onChange={setStartDateValue} value={startDateValue} />
-      </div>
-      <div>
-        <span>End Date:</span>
-        <DatePicker onChange={setEndDateValue} value={endDateValue} />
-      </div>
-      <div>
-        <span>Rate ($ / dog / hour):</span>
-        <input
-          type="number"
-          onChange={handleRateChange}
-          value={rateValue}
-        ></input>
-      </div>
-      <div>
-        <span>Hours Available:</span>
-        <table>
-          <tbody className="add-availability">{weekdaysHourly}</tbody>
-        </table>
-      </div>
-      <button className="submit-btn" type="submit" onClick={handleFormSubmit}>
-        submit
-      </button>
+      <form>
+        <div>
+          <span>Start Date:</span>
+          <DatePicker onChange={setStartDateValue} value={startDateValue} />
+        </div>
+        <div>
+          <span>End Date:</span>
+          <DatePicker onChange={setEndDateValue} value={endDateValue} />
+        </div>
+        <div>
+          <span>Rate ($ / dog / hour):</span>
+          <input
+            type="number"
+            onChange={handleRateChange}
+            value={rateValue}
+          ></input>
+        </div>
+        <div>
+          <span>Hours Available:</span>
+          <table>
+            <tbody className="add-availability">{weekdaysHourly}</tbody>
+          </table>
+        </div>
+        <button className="submit-btn" type="submit" onClick={handleFormSubmit}>
+          submit
+        </button>
+      </form>
     </>
   );
 }
