@@ -7,7 +7,20 @@ export default function AddAvailability({ user }: any) {
   const [startDateValue, setStartDateValue] = useState(new Date());
   const [endDateValue, setEndDateValue] = useState(new Date());
   const [rateValue, setRateValue] = useState(0);
-  const [hourlyValue, setHourlyValue] = useState({
+
+  // define types for the hours array
+  interface HourlyOptions {
+    [index: string]: number[];
+    mo: number[];
+    tu: number[];
+    we: number[];
+    th: number[];
+    fr: number[];
+    sa: number[];
+    su: number[];
+  }
+  // create an object with those types
+  let hourlyObject: HourlyOptions = {
     mo: [],
     tu: [],
     we: [],
@@ -15,21 +28,30 @@ export default function AddAvailability({ user }: any) {
     fr: [],
     sa: [],
     su: [],
-  });
+  };
+
+  const [hourlyValue, setHourlyValue] = useState<HourlyOptions>(hourlyObject);
 
   const hourlyChangeHandler = (e: any) => {
-    const { name, value } = e.target;
-    console.log("hourly before set", hourlyValue);
-    // check the hourly values here
+    const { name, value, checked } = e.target;
 
-    // if the value is not in the list, add it
-
-    // if the value is in the list, remove it
-
-    setHourlyValue({
-      ...hourlyValue,
-      [name]: [parseInt(value)],
-    });
+    if (checked === true) {
+      // if the target is checked, add it
+      setHourlyValue({
+        ...hourlyValue,
+        [name]: [...hourlyValue[name as string], parseInt(value)],
+      });
+    } else {
+      // if the target is not checked, remove it
+      setHourlyValue({
+        ...hourlyValue,
+        [name]: [
+          ...hourlyValue[name as string].filter(
+            (hour) => hour !== parseInt(value)
+          ),
+        ],
+      });
+    }
   };
 
   // map out generic weekdays
