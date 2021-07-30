@@ -3,6 +3,7 @@ import { Route, useParams } from "react-router-dom";
 import Calendar from "react-calendar";
 
 import WalkerCard from "../components/WalkerCard";
+import WalkerAvailabilty from "../components/WalkerAvailability";
 
 import { useQuery } from "@apollo/client";
 import { QUERY_ME, QUERY_USER } from "../utils/queries";
@@ -61,9 +62,7 @@ function DogWalker() {
             />
           </div>
         </div>
-
         <h1 className="blackBar">{user.username}</h1>
-
         <div className="leftAndRight">
           <div className="leftSideUser">
             <div className="text">
@@ -74,8 +73,7 @@ function DogWalker() {
 
           <WalkerCard user={user}></WalkerCard>
         </div>
-
-        <h4 className="yourDogs"></h4>
+        <WalkerAvailabilty user={user}></WalkerAvailabilty>
       </div>
       <div className="bottomOrange"></div>
     </div>
