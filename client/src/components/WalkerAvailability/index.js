@@ -1,6 +1,6 @@
 import React from "react";
 
-import AddAvailability from "./AddAvailability";
+import AddAvailability from "./AddAvailability.tsx";
 
 export default function WalkerAvailabilty({ user }) {
   return (
