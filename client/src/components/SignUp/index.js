@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { Route, useHistory } from "react-router-dom";
 import StateList from "./StateList";
 
-import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../../utils/mutations";
+import { useMutation } from "@apollo/client";
+
 
 import Auth from "../../utils/auth";
 
@@ -36,6 +37,8 @@ function SignUp() {
       ...addressFormState,
       [name]: value,
     });
+        //console.log(addressFormState);
+
   };
 
   const handleChange = (event) => {
@@ -44,6 +47,7 @@ function SignUp() {
       ...formState,
       [name]: value,
     });
+    
   };
 
   // submit form
