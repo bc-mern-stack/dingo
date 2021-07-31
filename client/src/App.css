@@ -36,7 +36,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
 /*****************begin of login/signup css*****************/
+.totalLayout{
+   overflow: hidden;
+}
 .leftLayout{
   background-color: black;
   height: 100%;
@@ -45,7 +54,8 @@ code {
     top: 0;
     bottom: 0;
   color: var(--textAndButtonYellow);
-  font-size: 30px;
+  overflow: hidden;
+  
   text-align: left;
   display: flex;
   justify-content: center;
@@ -59,19 +69,27 @@ code {
     bottom: 0;
     right: 0;
   color: var(--textAndButtonYellow);
-  font-size: 30px;
   text-align: left;
   display: flex;
   justify-content: center;
+  overflow: hidden;
 }
 .leftLayout h1{
   width:65%;
   margin-left: 50px;
+  margin-right: 50px;
+  margin-bottom: 20px; 
+  font-size: clamp(40px, 5vw, 65px)
 }
+
 .leftSwitchedLayout h1{
   width:65%;
   margin-left: 50px;
+  margin-right: 50px;
+  margin-bottom: 20px; 
+  font-size: clamp(40px, 5vw, 65px)
 }
+
 .blueOutline{
 border:solid 3px var(--brightBlue); 
 width: 85%;
@@ -79,6 +97,7 @@ margin-top: 40px;
 margin-bottom: 40px; 
 display: flex;
 justify-content: center;
+overflow: hidden;
 }
 .rightLayout{
   background-color:var(--brightOrange);
@@ -86,8 +105,9 @@ justify-content: center;
    right: 0;
    top: 0;
    bottom: 0;
-   height: 80%;
+   height: 100%;
    width: 50%;
+   overflow: hidden;
 }
 .rightSwitchedLayout{
   background-color:var(--brightOrange);
@@ -97,6 +117,7 @@ justify-content: center;
    bottom: 0;
    height: 100%;
    width: 50%;
+   overflow: hidden;
 }
 .rightLayout h1{
   margin-bottom: 40px;
@@ -114,7 +135,7 @@ justify-content: center;
 .alignForm{
  margin-left: 50px;
  color: white;
-
+ 
 }
 .alignForm h1{
   cursor: pointer;
@@ -171,12 +192,14 @@ input[type=text]:focus {
   flex-direction: column; 
   width: 40%;
   font-size: 15px;
+  z-index: 100;
 }
 .alignFormAltered form{
   display: flex;
   flex-direction: column; 
   width: 40%;
   font-size: 15px;
+  z-index: 100;
 }
 .greenButton{
   height: 50px;
@@ -188,8 +211,8 @@ input[type=text]:focus {
   color: white;
   font-size: 23px;
   border: none;
-  margin-top: 30px; 
-  z-index: 1;
+  margin-top: 50px; 
+  z-index: 99;
   cursor: pointer;
 }
 .greenSwitchedButton{
@@ -203,7 +226,7 @@ input[type=text]:focus {
   font-size: 23px;
   border: none;
   margin-top: 100px; 
-  z-index: 1;
+  z-index: 99;
   cursor: pointer;
 }
 .buttonDiv{
@@ -219,7 +242,7 @@ position: absolute;
 right: 0;
 bottom: 0;
 width: 50%;
-height: 20%;
+height: 150px;
 }
 .bottomSwitchedBlue{
   background-color: var(--brightBlue);
@@ -227,7 +250,7 @@ height: 20%;
   left: 0;
   bottom: 0;
   width: 50%;
-  height: 30%;
+height: 150px;
   
   }
 /*********************end of login/signup css*******************************/
@@ -267,10 +290,15 @@ height: 20%;
   align-content: space-between;
 }
 .contact{
-  margin-top: 40px;
+  margin-top: 20px;
+ 
 }
-.contact h4{
- margin-top: -5px;
+.contact h2{
+ margin: 0px;
+}
+.contact h4{  
+  margin-top: 10px;
+  margin-bottom: 7px;
 }
 .contactDogWalker{
  margin-bottom: 20px;
@@ -281,6 +309,16 @@ height: 20%;
 .rightSideUser{
   border-radius: 10px;
   background-color: var(--brightOrange);
+  color: white;
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  /*border: yellowgreen 2px solid;*/
+}
+.rightSideUserForDogWalking{
+  border-radius: 10px;
+  background-color: #20c5ee;
   color: white;
   width: 50%;
   display: flex;
@@ -326,6 +364,8 @@ height: 20%;
     width: 100%;
     
   }
+
+  
   .textLocation{
     margin-left: 25px;
     width: 100%;
@@ -472,6 +512,18 @@ height: 20%;
     justify-content: flex-start;
     
   }
+  .closeModal{
+    height: 30px;
+    width: auto;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+  
+  }
+  .closeModal:hover{
+      transform: rotate(180deg);
+      transition: transform 150ms ease,
+  }
   .close{
     height: 30px;
     width: auto;
@@ -498,6 +550,7 @@ height: 20%;
     z-index: 0;
     margin-top: 15px;
   }
+
   .arrow-down-orange{
     /*width: 0; 
     height: 0; 
@@ -524,17 +577,69 @@ height: 20%;
     margin-bottom: 50px;
     width: 100%;
     height:auto;
-     display: flex;
+    display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     border-radius: 10px;
   }
-  .dogTitle{
+  .eachDogNew{
+     background-color: black;
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: space-between;  
     border-radius: 10px;
-    background-color: #000000;
-    margin-top: 75px;
+  }
+  .eachDogNew label{
     color: white;
+    display: block;
+  }
+  .eachDogNew form{
+    padding: 15px; 
+    display: flex;
+    justify-content: space-between ;
+    width: 100%;
+  }
+  .eachDogNew input{
+   background: none;
+   color: white;
+   border: none;
+   outline: none;
+   margin-bottom: 15px;
+   width: 50%;
+  }
+  .submitNewDog{
+    border-radius: 20px;
+    background-color: var(--brightBlue);
+    outline: none;
+    border: none;
     padding: 10px;
+    color: white;
+    height: 30px;
+    margin-top: 5px;
+    width: 80px;
+  }
+  
+  .add{
+     height: 30px;
+     width: auto;
+     margin-top: auto;
+     margin-bottom: auto;
+     margin-right: 15px;
+
+  }
+  .completeTitle{
+    display: flex;
+    justify-content: space-between;
+    background-color: #000000;
+    border-radius: 10px;
+    margin-top: 75px;
+    padding-left: 10px;
+  }
+  .dogTitle{
+    
+    color: white;
+    
   }
   .dogBlock{
     width: 49%;
@@ -550,18 +655,19 @@ height: 20%;
     border-radius: 10px;
     /*border: rgb(0, 0, 0) 5px solid;*/
   }
-  .dogPic{
+  .dogPic img{
     height: 100px;
     width: 100px;
     background-color: black;
     margin: 20px;
     border-radius: 20px;
-
+    object-fit:cover
   }
   .dogInfo p{
     margin: 13px;
     font-weight: 500;
   }
+  
   .dogInfo{
     margin-top: 0px;
     /*border-left: .05rem solid black;*/
@@ -822,8 +928,104 @@ height: 20%;
   display: flex;
   justify-content: flex-end;
 }
-/*****************************************************/
 
+  .centeredView {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    margin-left: auto;
+    background-color: rgba(255, 255, 255, 0.712);
+  }
+  .modalViewLeft h1{
+    font-size: 30px;
+    width: 65%;
+    margin-bottom: 100px;
+  }
+  .modalViewRight h1{
+    font-size: 30px;
+    width: 70%;
+    margin-bottom: 100px;
+  }
+    .modalViewLeft {
+    margin-top: 235px;
+    height:450px;
+    width:35%;
+    margin: 20;
+    background-color: var(--brightOrange);
+    border-radius: 20px 0px 0px 20px;
+    padding: 35;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+
+    
+  }
+    .modalViewRight {
+    margin-top: 235px;
+    height:450px;
+    width:35%;
+    margin: 20;
+    background-color: var(--brightBlue);
+    border-radius: 0px 20px 20px 0px;
+    padding: 35;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    
+  }
+  .button{
+    border-radius: 20;
+    padding: 10;
+    
+  }
+  .buttonOpen{
+    background-color: #F194FF;
+  }
+  .buttonClose{
+    background-color: #4CAF50;
+    outline: none;
+    border: none;
+    margin-bottom: 50px;
+    
+    font-size: 30px;
+    padding: 10px 20px 10px 20px;
+    border-radius: 20px;
+  }
+    .buttonClose:hover{
+     transform: scale(1.1);
+      transition: transform 150ms ease,
+  }
+  .textStyle{
+
+    color: white;
+    font-weight: bold;
+    text-align: center;
+  }
+  .modalText {
+    margin-bottom: 15;
+    text-align: center;
+  }
+/*****************************************************/
+.badlink{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--midToneGrey);
+  height: 100vh;
+}
+.badlink img{
+  height: 300px;
+  
+  margin-top: 70px;
+
+}
+.badlink h2{
+position: relative;}
 /********************animation************************/
 
 /*.shape:hover {
@@ -1005,44 +1207,38 @@ height: 20%;
 
 
 /*************************************************************/
-
-
-
-
-
-
-
-
- @media only screen and (min-width: 800px) {
-  .leftSwitchedLayout h1{
-    width:50%;
-    margin-left: 50px;
-    font-size: 50px;
+  @media only screen and (max-height: 575px) {
+    .rightSwitchedLayout{
+      z-index: 99;
+    }
+  .rightLayout{
+  
+   z-index: 99;
+    }
   }
-  .leftLayout h1{
-    width:50%;
-    margin-left: 50px;
-    font-size: 50px;
-  }
-  }
-
   @media only screen and (max-height: 650px) {
-    .leftSwitchedLayout h1{
-      width:50%;
-      margin-left: 50px;
-      font-size: 40px;
-    }
-    .leftLayout h1{
-      width:50%;
-      margin-left: 50px;
-      font-size: 40px;
-    }
+   
     .greenButton{
       margin-top: 35px;
     }
     .greenSwitchedButton{
       margin-top: 35px;
     }
+    .leftLayout h1{
+  width:65%;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-bottom: 20px; 
+  font-size: 37px
+}
+
+.leftSwitchedLayout h1{
+  width:65%;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-bottom: 20px; 
+  font-size: 37px
+}
   
   }
   @media only screen and (max-width: 800px) {
@@ -1082,6 +1278,8 @@ height: 20%;
     }
 }
   
+
+
   @media only screen and (max-width: 1000px) {
     
     .line{
@@ -1216,16 +1414,7 @@ height: 20%;
     margin-left: 30px; 
     
   }
-  .leftSwitchedLayout h1{
-    width:50%;
-    margin-left: 50px;
-    font-size: 55px;
-  }
-  .leftLayout h1{
-    width:50%;
-    margin-left: 50px;
-    font-size: 55px;
-  }
+ 
  
   }
   @media only screen and (max-width: 1300px) {
@@ -1243,19 +1432,10 @@ height: 20%;
     .dogWalkersLeft{
       width: 250px;
     }
+    
   }
  @media only screen and (min-width: 1400px) {
  
-  .leftLayout h1{
-    width:50%;
-    margin-left: 50px;
-    font-size: 60px;
-  }
-  .leftSwitchedLayout h1{
-    width:50%;
-    margin-left: 50px;
-    font-size: 60px;
-  }
  
   .alignForm{
    margin-left: 50px;
@@ -1310,6 +1490,14 @@ height: 20%;
     margin-top: 100px; 
   }
 }
+@media only screen and (max-width: 1600px) {
+ .modalViewLeft {
+    height: 350px;
+  }
+  .modalViewRight{
+    height: 350px;
+  }
+}
 @media only screen and (min-width: 1600px) {
 
 .dogsRow{
@@ -1340,6 +1528,16 @@ height: 20%;
   height: 500px;
   width: auto;
 }
+  .modalViewLeft h1{
+    font-size: 35px;
+    width: 75%;
+    margin-bottom: 150px;
+  }
+  .modalViewRight h1{
+    font-size: 35px;
+    width: 80%;
+    margin-bottom: 150px;
+  }
 }
 @media only screen and (max-width: 1700px) {
   .dogWalkersLeft{
@@ -1348,4 +1546,6 @@ height: 20%;
   .dogWalkersRight{
     width:250px;
   }
+
+ 
 }

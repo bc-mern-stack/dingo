@@ -51,7 +51,7 @@ import Calendar from 'react-calendar'
                     </div>    
                 </div>
 
-            <div className = "rightSideUser">
+            <div className = "rightSideUserForDogWalking">
                    <div className = "text alignRightSide">
                        <h3>Milwaukee Wisconsin</h3>
                        <div className = "about">
