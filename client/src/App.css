@@ -1005,7 +1005,21 @@ height: 150px;
     text-align: center;
   }
 /*****************************************************/
+.badlink{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--midToneGrey);
+  height: 100vh;
+}
+.badlink img{
+  height: 300px;
+  
+  margin-top: 70px;
 
+}
+.badlink h2{
+position: relative;}
 /********************animation************************/
 
 /*.shape:hover {

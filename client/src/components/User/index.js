@@ -1,5 +1,5 @@
 import { React,useState } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Link} from 'react-router-dom';
 import Calendar from 'react-calendar'
 import dogHouse from '../../assets/dogHouse.png'
 import { useQuery, gql, useMutation } from '@apollo/client';
@@ -63,7 +63,7 @@ function User() {
     
     const handleSearchAddress = (event) => {
         const { name, value } = event.target;
-        console.log(name, value)
+        //console.log(name, value)
         newAddressSearch({
             ...addressSearch,
             [name]: value
@@ -71,21 +71,16 @@ function User() {
         }
     const handleNewSearchForWalkers = async event => {
         event.preventDefault();
-        const peopleInMyCity = []
-        const myCity = data.me.address.city;
-        console.log(addressSearch.city);
         userData.users.forEach(element => {
-        
            
             if (newEntry === true) {
-                    setNewentry(false)
+                setNewentry(false);
             }
-            
-            if (element.address.city === addressSearch.city
-                && element.username != data.me.username) {
+           
+            if (element.address.city.toLowerCase() === addressSearch.city.toLowerCase().trim()
+                && element.username != data.me.username && element.availability.length > 0) {
                 totalSearch.push(element.username);
-                setNewentry(true)
-            
+                setNewentry(true);
            }
 
             
@@ -253,15 +248,17 @@ function User() {
                              
                      </div>
                         <div>
-                                <ul className = "dogWalkersRight scroll text">
+                                 <ul className="dogWalkersRight scroll text">
+                                     
                                      {newEntry ?
                                          totalSearch.map(person => (
                                         
-                                             <li key={person.toString()}>{person}</li>
-                                             
-                                        
+                                        <Link to={`/DogWalker/${person}`} key={person.toString()}>
+                                             <li>{person}</li>     
+                                        </Link>
                                          )):<div></div>
-                                        }
+                                         }
+                                     
                                  </ul>
                      <form onSubmit = {handleNewSearchForWalkers}>
                          <input name="city" autoComplete="" value={addressSearch.name} onChange= {handleSearchAddress} className = "newLocationSearchInput" placeholder = "New Search" type="text" />

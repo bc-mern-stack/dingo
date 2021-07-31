@@ -5,6 +5,7 @@ import DogWalker from "./components/DogWalker";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import Footer from "./components/Footer";
+import NotFound from "./components/NotFound"
 import { Route } from "react-router-dom";
 
 // add apollo client to the App
@@ -44,9 +45,12 @@ function App() {
       <div className="App">
         <Route exact path="/" component={Home} />
         <Route exact path="/User" component={User} />
-        <Route exact path="/DogWalker" component={DogWalker} />
+        
+        <Route exact path="/DogWalker/:username?" component={DogWalker} />
         <Route exact path="/Login" component={Login} />
         <Route exact path="/SignUp" component={SignUp} />
+
+        <Route component={NotFound} />
         <Footer />
       </div>
     </ApolloProvider>
