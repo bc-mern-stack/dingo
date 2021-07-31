@@ -40,7 +40,7 @@ function Login() {
       <div className="leftSwitchedLayout">
         <div className="blueOutline">
           <h1>
-            Login to view your details and find dog walkers in your area.{" "}
+            Log in to view your details and find dog walkers in your area.
           </h1>
         </div>
       </div>
@@ -92,7 +92,7 @@ function Login() {
             type="submit"
             onClick={handleFormSubmit}
           >
-            Login
+            Log in
           </button>
         </div>
       </div>

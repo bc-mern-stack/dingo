@@ -1,7 +1,7 @@
 import "./App.css";
 import Home from "./components/Home";
 import User from "./components/User";
-import DogWalker from "./components/DogWalker";
+import DogWalker from "./pages/DogWalker";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import Footer from "./components/Footer";
@@ -43,10 +43,10 @@ function App() {
     <ApolloProvider client={client}>
       <div className="App">
         <Route exact path="/" component={Home} />
-        <Route exact path="/User" component={User} />
-        <Route exact path="/DogWalker" component={DogWalker} />
-        <Route exact path="/Login" component={Login} />
-        <Route exact path="/SignUp" component={SignUp} />
+        <Route exact path="/user" component={User} />
+        <Route exact path="/dogwalker/:username?" component={DogWalker} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/signup" component={SignUp} />
         <Footer />
       </div>
     </ApolloProvider>
