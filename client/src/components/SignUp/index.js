@@ -57,6 +57,10 @@ function SignUp() {
         variables: { ...userData },
       });
       Auth.login(data.addUser.token);
+
+      if (data) {
+        history.push("/");
+      }
     } catch (e) {
       console.error(e);
     }
