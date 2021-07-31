@@ -1,4 +1,38 @@
+.hidden {
+  display: none !important;
+}
 /* ---------------------begin add availability styling--------------------- */
+
+.add-avail-bar {
+  display: flex;
+}
+
+.add-avail-bar-text {
+  flex-grow: 1;
+}
+
+.add-avail-plus {
+  height: 1.5rem;
+  width: 1.5rem;
+  margin-right: 1.6rem;
+  align-self: center;
+  cursor: pointer;
+}
+
+.add-avail-modal-bg {
+  position: fixed;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.425);
+}
+
 .add-availability-form {
   display: flex;
   flex-direction: column;
@@ -6,13 +40,16 @@
   border-radius: 10px;
   padding: 10px;
   margin-bottom: 30px;
+  z-index: 3;
   background-color: #f1f2f2;
 }
 
-.add-hourly-availability {
+tbody.add-hourly-availability {
   display: grid;
   grid-template-columns: repeat(8, 25px);
   justify-content: center;
+  border: 1px solid #ababab99;
+  border-radius: 4px;
 }
 
 .add-hourly-column {
@@ -22,7 +59,8 @@
   width: 25px;
 }
 
-.add-hourly-cell {
+.add-hourly-cell,
+.add-hourly-hour {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30,7 +68,13 @@
   padding: 0px;
   height: 25px;
   width: 25px;
-  border: 1px solid #ababab99;
+}
+
+.add-hourly-hour,
+.add-hourly-h,
+.add-hourly-day {
+  font-size: small;
+  color: rgba(0, 0, 0, 0.425);
 }
 
 .add-hourly-checkbox {
@@ -97,22 +141,23 @@
 
 /* ---------------------end add availability styling--------------------- */
 
-.submit-btn {
-  height: 2rem;
-  width: 5rem;
-  text-align: center;
-  background-color: #4caf50;
-  border-radius: 10px;
-  color: white;
-  font-size: 19px;
-  border: none;
-  margin: 10px;
-  z-index: 1;
-  cursor: pointer;
+/* ---------------------begin show availability styling--------------------- */
+
+.show-avail-eye {
+  height: 1.5rem;
+  width: 2.7rem;
+  margin-right: 1rem;
   align-self: center;
+  cursor: pointer;
 }
 
-/* ---------------------begin show availability styling--------------------- */
+.show-avail-bar {
+  display: flex;
+}
+
+.show-avail-bar-text {
+  flex-grow: 1;
+}
 
 .show-avail-card-container {
   display: flex;
@@ -130,16 +175,134 @@
   background-color: #f1f2f2;
 }
 
-.show-hourly-cell-available {
-  background-color: #4caf50;
-  width: 20px;
-  height: 20px;
+tbody.show-hourly-availability {
+  display: grid;
+  grid-template-columns: repeat(8, auto);
+  border: 1px solid #ababab99;
+  border-radius: 4px;
+  justify-content: center;
 }
 
-.show-hourly-cell {
+tr.show-hourly-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 22px;
+}
+
+tr.show-hourly-column-hours {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30px;
+}
+
+td.show-hourly-cell-available {
+  background-color: #4caf50;
+}
+
+td.show-hourly-cell {
   background-color: #eaebc350;
+}
+
+td.show-hourly-hour {
+  font-size: small;
+  color: rgba(0, 0, 0, 0.425);
+}
+
+td.show-hourly-day {
+  font-size: small;
+  color: rgba(0, 0, 0, 0.425);
+}
+
+td.show-hourly-cell,
+td.show-hourly-cell-available,
+td.show-hourly-hour,
+td.show-hourly-day {
+  padding: 1px;
   width: 20px;
   height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.show-avail-start {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+}
+
+.show-avail-start-text {
+  padding: 5px;
+  font-weight: bold;
+}
+
+.show-avail-end {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+}
+
+.show-avail-end-text {
+  padding: 5px;
+  font-weight: bold;
+}
+
+.show-avail-rate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+}
+
+.show-avail-rate-text {
+  padding: 5px;
+  font-weight: bold;
+}
+
+.show-avail-hourly {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+}
+
+.show-avail-hourly-text {
+  padding: 5px;
+  font-weight: bold;
 }
 
 /* ---------------------end show availability styling--------------------- */
+
+.submit-btn {
+  height: 2rem;
+  width: 5rem;
+  text-align: center;
+  background-color: #4caf50;
+  border-radius: 10px;
+  color: white;
+  font-size: 19px;
+  border: none;
+  margin: 10px;
+  z-index: 1;
+  cursor: pointer;
+  align-self: center;
+}
+
+.delete-avail-btn {
+  height: 2rem;
+  width: 5rem;
+  text-align: center;
+  background-color: #da3c3c;
+  border-radius: 10px;
+  color: white;
+  font-size: 19px;
+  border: none;
+  margin: 10px;
+  z-index: 1;
+  cursor: pointer;
+  align-self: center;
+}

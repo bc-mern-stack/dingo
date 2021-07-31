@@ -61,7 +61,10 @@ function DogWalker() {
 
           <WalkerCard user={user}></WalkerCard>
         </div>
-        <WalkerAvailabilty user={user}></WalkerAvailabilty>
+        <WalkerAvailabilty
+          user={user}
+          userParam={userParam}
+        ></WalkerAvailabilty>
       </div>
       <div className="bottomOrange"></div>
     </div>
