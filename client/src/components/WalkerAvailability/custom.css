@@ -1,24 +1,101 @@
+/* ---------------------begin add availability styling--------------------- */
+.add-availability-form {
+  display: flex;
+  flex-direction: column;
+  max-width: min-content;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 30px;
+  background-color: #f1f2f2;
+}
+
 .add-hourly-availability {
   display: grid;
-  grid-template-columns: repeat(8, 40px);
+  grid-template-columns: repeat(8, 25px);
+  justify-content: center;
 }
 
 .add-hourly-column {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 25px;
 }
 
 .add-hourly-cell {
   display: flex;
   align-items: center;
-  align-self: center;
+  justify-content: center;
+  margin: 0px;
+  padding: 0px;
+  height: 25px;
+  width: 25px;
+  border: 1px solid #ababab99;
 }
 
 .add-hourly-checkbox {
-  height: 20px;
-  width: 20px;
+  margin: 0px;
+  padding: 0px;
+  height: 25px;
+  width: 25px;
 }
+
+.add-avail-start-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+}
+
+.add-avail-start-date-text {
+  padding: 5px;
+  font-weight: bold;
+}
+
+.add-avail-end-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+}
+
+.add-avail-end-date-text {
+  padding: 5px;
+  font-weight: bold;
+}
+
+.add-avail-rate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+}
+
+.add-avail-rate-text {
+  padding: 5px;
+  font-weight: bold;
+}
+
+.add-avail-rate-input {
+  padding: 5px;
+  margin: 10px;
+  margin-bottom: 0;
+  width: 3rem;
+}
+
+.add-avail-hourly {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+}
+
+.add-avail-hourly-text {
+  padding: 5px;
+  font-weight: bold;
+}
+
+/* ---------------------end add availability styling--------------------- */
 
 .submit-btn {
   height: 2rem;
@@ -32,6 +109,25 @@
   margin: 10px;
   z-index: 1;
   cursor: pointer;
+  align-self: center;
+}
+
+/* ---------------------begin show availability styling--------------------- */
+
+.show-avail-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+
+.show-avail-card {
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  max-width: min-content;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #f1f2f2;
 }
 
 .show-hourly-cell-available {
@@ -45,3 +141,5 @@
   width: 20px;
   height: 20px;
 }
+
+/* ---------------------end show availability styling--------------------- */

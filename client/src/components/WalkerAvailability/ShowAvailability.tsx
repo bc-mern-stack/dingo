@@ -3,7 +3,6 @@ import "./custom.css";
 
 export default function ShowAvailability({ user }: any) {
   const { availability } = user;
-  console.log(availability);
   interface HourlyOptions {
     [index: string]: number[];
   }
@@ -38,7 +37,7 @@ export default function ShowAvailability({ user }: any) {
           availability[availIndex].hours_available[0][day as string];
 
         let result = hourlyArray.find((output: any) => output === hour);
-
+        // conditionally render the class names by result
         let cell = (
           <td
             key={day + hour}
@@ -65,19 +64,25 @@ export default function ShowAvailability({ user }: any) {
   };
   const availabilityCards = availability.map(
     (availability: AvailabilityObject, index: number) => {
-      console.log(availability);
-      const { date_start, date_end, rate, hours_available } = availability;
+      const { date_start, date_end, rate } = availability;
       return (
-        <article>
-          <div key={index + date_start}>Start date:{date_start}</div>
-          <div key={index + date_end}>End date:{date_end}</div>
-          <div key={index + rate}>Rate:{rate}</div>
-          <div key={index}>
-            <table>
-              Hourly options:
-              <tbody className="show-hourly-availability">
-                {weekdaysHourly(index)}
-              </tbody>
+        <article key={index} className="show-avail-card">
+          <div key={"start" + index} className="show-avail-start">
+            <span className="show-avail-start-text">Start date:</span>
+            <span>{date_start}</span>
+          </div>
+          <div key={"end" + index} className="show-avail-end">
+            <span className="show-avail-end-text">End date:</span>
+            <span>{date_end}</span>
+          </div>
+          <div key={"rate" + index} className="show-avail-rate">
+            <span className="show-avail-rate-text">Rate:</span>
+            <span>{rate}</span>
+          </div>
+          <div key={"hourly" + index} className="show-avail-hourly">
+            <span className="show-avail-hourly-text">Hourly options:</span>
+            <table className="show-avail-hourly-table">
+              <tbody className="show-hourly">{weekdaysHourly(index)}</tbody>
             </table>
           </div>
         </article>
@@ -87,7 +92,7 @@ export default function ShowAvailability({ user }: any) {
   return (
     <section>
       <h1 className="blackBar">Availability</h1>
-      <div>{availabilityCards}</div>
+      <div className="show-avail-card-container">{availabilityCards}</div>
     </section>
   );
 }

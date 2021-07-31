@@ -70,7 +70,6 @@ export default function AddAvailability({ user }: any) {
       } else {
         let cell = (
           <td key={day + hour} className="add-hourly-cell">
-            &nbsp;
             <input
               type="checkbox"
               name={day}
@@ -124,25 +123,26 @@ export default function AddAvailability({ user }: any) {
   return (
     <>
       <h1 className="blackBar">Add Availability</h1>
-      <form>
-        <div>
-          <span>Start Date:</span>
+      <form className="add-availability-form">
+        <div className="add-avail-start-date">
+          <span className="add-avail-start-date-text">Start Date:</span>
           <DatePicker onChange={setStartDateValue} value={startDateValue} />
         </div>
-        <div>
-          <span>End Date:</span>
+        <div className="add-avail-end-date">
+          <span className="add-avail-end-date-text">End Date:</span>
           <DatePicker onChange={setEndDateValue} value={endDateValue} />
         </div>
-        <div>
-          <span>Rate ($ / dog / hour):</span>
+        <div className="add-avail-rate">
+          <span className="add-avail-rate-text">Rate ($ / dog / hour):</span>
           <input
+            className="add-avail-rate-input"
             type="number"
             onChange={handleRateChange}
             value={rateValue}
           ></input>
         </div>
-        <div>
-          <span>Hours Available:</span>
+        <div className="add-avail-hourly">
+          <span className="add-avail-hourly-text">Hours Available:</span>
           <table>
             <tbody className="add-hourly-availability">{weekdaysHourly}</tbody>
           </table>
