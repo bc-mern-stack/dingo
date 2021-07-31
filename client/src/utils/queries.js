@@ -168,7 +168,6 @@ export const QUERY_ME = gql`
       appointments {
         _id
         date
-<<<<<<< HEAD
         owner {
           username
         }
@@ -177,16 +176,6 @@ export const QUERY_ME = gql`
         }
         hour
         doggos {
-=======
-        owner{
-          username
-        }
-        walker{
-          username
-        }
-        hour
-        doggos{
->>>>>>> businessInFrontPartyInBack
           name
         }
       }
