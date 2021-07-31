@@ -61,17 +61,22 @@ export default function AddAvailability({ user }: any) {
     let cells: JSX.Element[] = [];
     for (const hour of hours) {
       if (day === "H") {
-        let cell = <td key={day + hour}>{hour}</td>;
+        let cell = (
+          <td key={day + hour} className="add-hourly-cell">
+            {hour}
+          </td>
+        );
         cells.push(cell);
       } else {
         let cell = (
-          <td key={day + hour} className="availability-cell">
+          <td key={day + hour} className="add-hourly-cell">
             &nbsp;
             <input
               type="checkbox"
               name={day}
               value={hour}
               onChange={hourlyChangeHandler}
+              className="add-hourly-checkbox"
             ></input>
           </td>
         );
@@ -83,7 +88,7 @@ export default function AddAvailability({ user }: any) {
   // map out weekdays breaking them down with the hourly function
   const weekdaysHourly = weekdays.map((day) => {
     return (
-      <tr key={day} className="availability-column">
+      <tr key={day} className="add-hourly-column">
         <td>{day}</td>
         {hourly(day)}
       </tr>
@@ -139,7 +144,7 @@ export default function AddAvailability({ user }: any) {
         <div>
           <span>Hours Available:</span>
           <table>
-            <tbody className="add-availability">{weekdaysHourly}</tbody>
+            <tbody className="add-hourly-availability">{weekdaysHourly}</tbody>
           </table>
         </div>
         <button className="submit-btn" type="submit" onClick={handleFormSubmit}>
