@@ -143,6 +143,10 @@ tbody.add-hourly-availability {
 
 /* ---------------------begin show availability styling--------------------- */
 
+.no-availability {
+  margin-left: 1.5rem;
+}
+
 .show-avail-eye {
   height: 1.5rem;
   width: 2.7rem;

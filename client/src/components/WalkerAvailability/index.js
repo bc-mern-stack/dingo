@@ -11,7 +11,7 @@ import eyeClosed from "../../assets/eye-closed.png";
 export default function WalkerAvailabilty({ user, userParam }) {
   const [addAvailModal, setAddAvailModal] = useState(false);
 
-  const [showAvailModal, setShowAvailModal] = useState(true);
+  const [showAvailModal, setShowAvailModal] = useState(false);
 
   const toggleBoolean = (boolean) => {
     return boolean ? false : true;

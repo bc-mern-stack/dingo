@@ -153,7 +153,15 @@ export default function ShowAvailability({ user }: any) {
 
   return (
     <section>
-      <div className="show-avail-card-container">{availabilityCards}</div>
+      <div className="show-avail-card-container">
+        {availability.length > 0 ? (
+          availabilityCards
+        ) : (
+          <div className="no-availability">
+            No availability, add some with the button below!
+          </div>
+        )}
+      </div>
     </section>
   );
 }
