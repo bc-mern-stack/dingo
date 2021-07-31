@@ -1,10 +1,11 @@
-import { React, useState } from "react";
-import { Route, useParams } from "react-router-dom";
+import { useState } from "react";
+import { useParams, Link } from "react-router-dom";
 import Calendar from "react-calendar";
 
 import WalkerCard from "../components/WalkerCard";
 import WalkerAvailabilty from "../components/WalkerAvailability";
 
+import Auth from "../utils/auth";
 import { useQuery } from "@apollo/client";
 import { QUERY_ME, QUERY_USER } from "../utils/queries";
 
@@ -27,38 +28,26 @@ function DogWalker() {
     return <div>{error.toString()}</div>;
   }
 
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+  };
+
   return (
     <div>
       <div className="allUserElements">
         <div className="userNav">
           <h1>Your Dog Walking Availability</h1>
           <div className="logoutAndHome">
-            <Route
-              render={({ history }) => (
-                <h2
-                  className="logout"
-                  type="button"
-                  onClick={() => {
-                    history.push("/Login");
-                  }}
-                >
-                  Logout /
-                </h2>
-              )}
-            />
+            <Link to="/">
+              <h2 className="logout" type="button" onClick={logout}>
+                Logout /
+              </h2>
+            </Link>
 
-            <Route
-              render={({ history }) => (
-                <h2
-                  type="button"
-                  onClick={() => {
-                    history.push("/");
-                  }}
-                >
-                  Home
-                </h2>
-              )}
-            />
+            <Link to="/">
+              <h2>Home</h2>
+            </Link>
           </div>
         </div>
         <h1 className="blackBar">{user.username}</h1>
@@ -72,7 +61,10 @@ function DogWalker() {
 
           <WalkerCard user={user}></WalkerCard>
         </div>
-        <WalkerAvailabilty user={user}></WalkerAvailabilty>
+        <WalkerAvailabilty
+          user={user}
+          userParam={userParam}
+        ></WalkerAvailabilty>
       </div>
       <div className="bottomOrange"></div>
     </div>

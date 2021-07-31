@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import { ReactComponentElement } from "react";
+import { useState } from "react";
 import DatePicker from "react-date-picker";
 import "./custom.css";
+
+import { hConvert } from "../../utils/helpers";
 
 import { useMutation } from "@apollo/client";
 import { ADD_AVAILABILITY } from "../../utils/mutations";
@@ -50,8 +51,12 @@ export default function AddAvailability({ user }: any) {
     }
   };
 
+  const handleRateChange = (e: any) => {
+    setRateValue(parseInt(e.target.value));
+  };
+
   // map out generic weekdays
-  const weekdays = ["H", "mo", "tu", "we", "th", "fr", "sa", "su"];
+  const weekdays = ["h", "mo", "tu", "we", "th", "fr", "sa", "su"];
   let hours: number[] = [];
   for (let i = 0; i < 24; i++) {
     hours.push(i);
@@ -59,18 +64,18 @@ export default function AddAvailability({ user }: any) {
   // map out generic hours with checkboxes
   const hourly = (day: string) => {
     let cells: JSX.Element[] = [];
+    // make a checkbox for each hour
     for (const hour of hours) {
-      if (day === "H") {
+      if (day === "h") {
         let cell = (
-          <td key={day + hour} className="add-hourly-cell">
-            {hour}
+          <td key={day + hour} className="add-hourly-hour">
+            {hConvert(hour)}
           </td>
         );
         cells.push(cell);
       } else {
         let cell = (
           <td key={day + hour} className="add-hourly-cell">
-            &nbsp;
             <input
               type="checkbox"
               name={day}
@@ -85,19 +90,18 @@ export default function AddAvailability({ user }: any) {
     }
     return cells;
   };
-  // map out weekdays breaking them down with the hourly function
+
+  // map out weekdays breaking them down by hour with the hourly function
   const weekdaysHourly = weekdays.map((day) => {
     return (
       <tr key={day} className="add-hourly-column">
-        <td>{day}</td>
+        <td className={day === "h" ? "add-hourly-h" : "add-hourly-day"}>
+          {day}
+        </td>
         {hourly(day)}
       </tr>
     );
   });
-
-  const handleRateChange = (e: any) => {
-    setRateValue(parseInt(e.target.value));
-  };
 
   // bring state into availability object
   const availabilityData = {
@@ -123,32 +127,32 @@ export default function AddAvailability({ user }: any) {
 
   return (
     <>
-      <h1 className="blackBar">Add Availability</h1>
-      <form>
-        <div>
-          <span>Start Date:</span>
+      <form className="add-availability-form">
+        <div className="add-avail-start-date">
+          <span className="add-avail-start-date-text">Start Date:</span>
           <DatePicker onChange={setStartDateValue} value={startDateValue} />
         </div>
-        <div>
-          <span>End Date:</span>
+        <div className="add-avail-end-date">
+          <span className="add-avail-end-date-text">End Date:</span>
           <DatePicker onChange={setEndDateValue} value={endDateValue} />
         </div>
-        <div>
-          <span>Rate ($ / dog / hour):</span>
+        <div className="add-avail-rate">
+          <span className="add-avail-rate-text">Rate ($/dog/hr):</span>
           <input
+            className="add-avail-rate-input"
             type="number"
             onChange={handleRateChange}
             value={rateValue}
           ></input>
         </div>
-        <div>
-          <span>Hours Available:</span>
+        <div className="add-avail-hourly">
+          <span className="add-avail-hourly-text">Hours Available:</span>
           <table>
             <tbody className="add-hourly-availability">{weekdaysHourly}</tbody>
           </table>
         </div>
         <button className="submit-btn" type="submit" onClick={handleFormSubmit}>
-          submit
+          add
         </button>
       </form>
     </>

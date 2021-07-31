@@ -96,7 +96,6 @@ function SignUp() {
               value={formState.email}
               onChange={handleChange}
             />
-
             <label htmlFor="username">Username:</label>
             <input
               type="text"
@@ -105,7 +104,6 @@ function SignUp() {
               value={formState.username}
               onChange={handleChange}
             />
-
             <label htmlFor="password">Password:</label>
             <input
               type="password"
@@ -114,7 +112,14 @@ function SignUp() {
               value={formState.password}
               onChange={handleChange}
             />
-
+            <label htmlFor="street">Tell Us About You:</label>
+            <input
+              type="text"
+              name="about"
+              autoComplete=""
+              value={addressFormState.about}
+              onChange={handleChange}
+            />
             <span>ADDRESS</span>
             <label htmlFor="street">Street:</label>
             <input
@@ -124,7 +129,6 @@ function SignUp() {
               value={addressFormState.street}
               onChange={handleChangeAddress}
             />
-
             <label htmlFor="city">City:</label>
             <input
               type="text"
@@ -133,22 +137,19 @@ function SignUp() {
               value={addressFormState.city}
               onChange={handleChangeAddress}
             />
-
             <label htmlFor="state">State:</label>
             <StateList
               addressFormState={addressFormState}
               handleChangeAddress={handleChangeAddress}
             />
-
             <label htmlFor="street">Zip Code:</label>
             <input
-              type="text"
+              type="number"
               name="zip"
               autoComplete=""
               value={addressFormState.zip}
               onChange={handleChangeAddress}
             />
-
             <label htmlFor="street">Phone (optional):</label>
             <input
               type="text"

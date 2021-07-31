@@ -1,24 +1,281 @@
-.add-hourly-availability {
+.hidden {
+  display: none !important;
+}
+/* ---------------------begin add availability styling--------------------- */
+
+.add-avail-bar {
+  display: flex;
+}
+
+.add-avail-bar-text {
+  flex-grow: 1;
+}
+
+.add-avail-plus {
+  height: 1.5rem;
+  width: 1.5rem;
+  margin-right: 1.6rem;
+  align-self: center;
+  cursor: pointer;
+}
+
+.add-avail-modal-bg {
+  position: fixed;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.425);
+}
+
+.add-availability-form {
+  display: flex;
+  flex-direction: column;
+  max-width: min-content;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 30px;
+  z-index: 3;
+  background-color: #f1f2f2;
+}
+
+tbody.add-hourly-availability {
   display: grid;
-  grid-template-columns: repeat(8, 40px);
+  grid-template-columns: repeat(8, 25px);
+  justify-content: center;
+  border: 1px solid #ababab99;
+  border-radius: 4px;
 }
 
 .add-hourly-column {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 25px;
 }
 
-.add-hourly-cell {
+.add-hourly-cell,
+.add-hourly-hour {
   display: flex;
   align-items: center;
-  align-self: center;
+  justify-content: center;
+  margin: 0px;
+  padding: 0px;
+  height: 25px;
+  width: 25px;
+}
+
+.add-hourly-hour,
+.add-hourly-h,
+.add-hourly-day {
+  font-size: small;
+  color: rgba(0, 0, 0, 0.425);
 }
 
 .add-hourly-checkbox {
-  height: 20px;
-  width: 20px;
+  margin: 0px;
+  padding: 0px;
+  height: 25px;
+  width: 25px;
 }
+
+.add-avail-start-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+}
+
+.add-avail-start-date-text {
+  padding: 5px;
+  font-weight: bold;
+}
+
+.add-avail-end-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+}
+
+.add-avail-end-date-text {
+  padding: 5px;
+  font-weight: bold;
+}
+
+.add-avail-rate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+}
+
+.add-avail-rate-text {
+  padding: 5px;
+  font-weight: bold;
+}
+
+.add-avail-rate-input {
+  padding: 5px;
+  margin: 10px;
+  margin-bottom: 0;
+  width: 3rem;
+}
+
+.add-avail-hourly {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+}
+
+.add-avail-hourly-text {
+  padding: 5px;
+  font-weight: bold;
+}
+
+/* ---------------------end add availability styling--------------------- */
+
+/* ---------------------begin show availability styling--------------------- */
+
+.show-avail-eye {
+  height: 1.5rem;
+  width: 2.7rem;
+  margin-right: 1rem;
+  align-self: center;
+  cursor: pointer;
+}
+
+.show-avail-bar {
+  display: flex;
+}
+
+.show-avail-bar-text {
+  flex-grow: 1;
+}
+
+.show-avail-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+
+.show-avail-card {
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  max-width: min-content;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #f1f2f2;
+}
+
+tbody.show-hourly-availability {
+  display: grid;
+  grid-template-columns: repeat(8, auto);
+  border: 1px solid #ababab99;
+  border-radius: 4px;
+  justify-content: center;
+}
+
+tr.show-hourly-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 22px;
+}
+
+tr.show-hourly-column-hours {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30px;
+}
+
+td.show-hourly-cell-available {
+  background-color: #4caf50;
+}
+
+td.show-hourly-cell {
+  background-color: #eaebc350;
+}
+
+td.show-hourly-hour {
+  font-size: small;
+  color: rgba(0, 0, 0, 0.425);
+}
+
+td.show-hourly-day {
+  font-size: small;
+  color: rgba(0, 0, 0, 0.425);
+}
+
+td.show-hourly-cell,
+td.show-hourly-cell-available,
+td.show-hourly-hour,
+td.show-hourly-day {
+  padding: 1px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.show-avail-start {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+}
+
+.show-avail-start-text {
+  padding: 5px;
+  font-weight: bold;
+}
+
+.show-avail-end {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+}
+
+.show-avail-end-text {
+  padding: 5px;
+  font-weight: bold;
+}
+
+.show-avail-rate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+}
+
+.show-avail-rate-text {
+  padding: 5px;
+  font-weight: bold;
+}
+
+.show-avail-hourly {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+}
+
+.show-avail-hourly-text {
+  padding: 5px;
+  font-weight: bold;
+}
+
+/* ---------------------end show availability styling--------------------- */
 
 .submit-btn {
   height: 2rem;
@@ -32,16 +289,20 @@
   margin: 10px;
   z-index: 1;
   cursor: pointer;
+  align-self: center;
 }
 
-.show-hourly-cell-available {
-  background-color: #4caf50;
-  width: 20px;
-  height: 20px;
-}
-
-.show-hourly-cell {
-  background-color: #eaebc350;
-  width: 20px;
-  height: 20px;
+.delete-avail-btn {
+  height: 2rem;
+  width: 5rem;
+  text-align: center;
+  background-color: #da3c3c;
+  border-radius: 10px;
+  color: white;
+  font-size: 19px;
+  border: none;
+  margin: 10px;
+  z-index: 1;
+  cursor: pointer;
+  align-self: center;
 }
