@@ -94,7 +94,7 @@ export default function AddAvailability({ user }: any) {
   // map out weekdays breaking them down by hour with the hourly function
   const weekdaysHourly = weekdays.map((day) => {
     return (
-      <tr key={day} className="add-hourly-column">
+      <tr key={day} className="add-hourly-row">
         <td className={day === "h" ? "add-hourly-h" : "add-hourly-day"}>
           {day}
         </td>
@@ -147,7 +147,7 @@ export default function AddAvailability({ user }: any) {
         </div>
         <div className="add-avail-hourly">
           <span className="add-avail-hourly-text">Hours Available:</span>
-          <table>
+          <table className="add-hourly-table">
             <tbody className="add-hourly-availability">{weekdaysHourly}</tbody>
           </table>
         </div>

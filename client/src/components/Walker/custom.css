@@ -1,6 +1,30 @@
 .hidden {
   display: none !important;
 }
+
+.walker-profile-card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.walker-calendar-card {
+  background-color: var(--lightGrey);
+  width: 47%;
+  border-radius: 10px;
+}
+
+.walker-info-card {
+  border-radius: 10px;
+  background-color: var(--brightOrange);
+  color: white;
+  width: 47%;
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  /*border: yellowgreen 2px solid;*/
+}
+
 /* ---------------------begin add availability styling--------------------- */
 
 .add-avail-bar {
@@ -44,23 +68,30 @@
   background-color: #f1f2f2;
 }
 
+.add-hourly-table {
+  width: 100%;
+}
+
 tbody.add-hourly-availability {
   display: grid;
-  grid-template-columns: repeat(8, 25px);
+  width: content;
+  grid-template-rows: repeat(8, 25px);
   justify-content: center;
   border: 1px solid #ababab99;
   border-radius: 4px;
 }
 
-.add-hourly-column {
+.add-hourly-row {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  width: 25px;
+  justify-content: center;
+  width: auto;
 }
 
 .add-hourly-cell,
-.add-hourly-hour {
+.add-hourly-hour,
+.add-hourly-h,
+.add-hourly-day {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -68,13 +99,16 @@ tbody.add-hourly-availability {
   padding: 0px;
   height: 25px;
   width: 25px;
-}
-
-.add-hourly-hour,
-.add-hourly-h,
-.add-hourly-day {
+  flex-grow: 1;
   font-size: small;
   color: rgba(0, 0, 0, 0.425);
+}
+
+.add-hourly-day {
+  flex-grow: 1;
+  align-items: center;
+  justify-self: center;
+  text-align: center;
 }
 
 .add-hourly-checkbox {
@@ -166,6 +200,8 @@ tbody.add-hourly-availability {
 .show-avail-card-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: start;
+  overflow-x: scroll;
   max-width: 100%;
 }
 
@@ -179,26 +215,29 @@ tbody.add-hourly-availability {
   background-color: #f1f2f2;
 }
 
+.show-avail-hourly-table {
+  width: 100%;
+  display: flex;
+}
+
 tbody.show-hourly-availability {
   display: grid;
-  grid-template-columns: repeat(8, auto);
+  grid-template-rows: repeat(8, auto);
   border: 1px solid #ababab99;
   border-radius: 4px;
   justify-content: center;
 }
 
-tr.show-hourly-column {
+tr.show-hourly-row {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  width: 22px;
 }
 
-tr.show-hourly-column-hours {
+tr.show-hourly-row-hours {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  width: 30px;
 }
 
 td.show-hourly-cell-available {
@@ -210,7 +249,7 @@ td.show-hourly-cell {
 }
 
 td.show-hourly-hour {
-  font-size: small;
+  font-size: 11px;
   color: rgba(0, 0, 0, 0.425);
 }
 

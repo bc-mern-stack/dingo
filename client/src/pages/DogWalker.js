@@ -2,8 +2,9 @@ import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import Calendar from "react-calendar";
 
-import WalkerCard from "../components/WalkerCard";
-import WalkerAvailabilty from "../components/WalkerAvailability";
+import WalkerCard from "../components/Walker/WalkerCard";
+import WalkerAppointments from "../components/Walker/WalkerAppointments";
+import WalkerAvailabilty from "../components/Walker/WalkerAvailability";
 
 import Auth from "../utils/auth";
 import { useQuery } from "@apollo/client";
@@ -51,8 +52,8 @@ function DogWalker() {
           </div>
         </div>
         <h1 className="blackBar">{user.username}</h1>
-        <div className="leftAndRight">
-          <div className="leftSideUser">
+        <div className="walker-profile-card-container">
+          <div className="walker-calendar-card">
             <div className="text">
               <h4>Your Calendar:</h4>
               <Calendar onChange={onChange} value={value} />
@@ -60,6 +61,11 @@ function DogWalker() {
           </div>
 
           <WalkerCard user={user}></WalkerCard>
+
+          <WalkerAppointments
+            user={user}
+            userParam={userParam}
+          ></WalkerAppointments>
         </div>
         <WalkerAvailabilty
           user={user}

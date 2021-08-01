@@ -62,7 +62,7 @@ export default function ShowAvailability({ user }: any) {
     return weekdays.map((day, i) => {
       if (day === "h") {
         return (
-          <tr key={day} className="show-hourly-column-hours ">
+          <tr key={day} className="show-hourly-row-hours ">
             <td key={day + i} className="show-hourly-day">
               {day}
             </td>
@@ -71,7 +71,7 @@ export default function ShowAvailability({ user }: any) {
         );
       } else {
         return (
-          <tr key={day} className="show-hourly-column">
+          <tr key={day} className="show-hourly-row">
             <td key={day + i} className="show-hourly-day">
               {day}
             </td>
