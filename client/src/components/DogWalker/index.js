@@ -41,10 +41,10 @@ import Calendar from 'react-calendar'
             <div className = "leftAndRight">
                
                
-                <div className = "leftSideUser">
+                <div className = "rightSideUserCalender">
                     <div className = "text">
-                        <h4>Appointments That YOU are walking.</h4>
-                        <Calendar 
+                        <h4 className = "text">Appointments That YOU are walking.</h4>
+                        <Calendar className = "cal"
                         onChange={onChange}
                         value={value}
                         />

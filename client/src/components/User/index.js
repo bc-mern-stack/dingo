@@ -1,24 +1,25 @@
 import { React,useState } from 'react';
-import { Route, Link} from 'react-router-dom';
+import { Route, Link,useParams} from 'react-router-dom';
 import Calendar from 'react-calendar'
 import dogHouse from '../../assets/dogHouse.png'
 import { useQuery, gql, useMutation } from '@apollo/client';
-import { QUERY_USERS, QUERY_ME } from '../../utils/queries';
+import { QUERY_USERS, QUERY_ME, QUERY_USER } from '../../utils/queries';
 import { ADD_DOGGO } from '../../utils/mutations';
 import Auth from '../../utils/auth';
-
+import camera from '../../assets/camera.png'
 
 function User() {
 
     /***************************************************************************************/
-        const {  loading, data, error } = useQuery(QUERY_ME);
-    
-        const me = data?.me || {};
+      const { username: userParam } = useParams();
 
-        const { data: userData } = useQuery(QUERY_USERS);
-    
+  const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
+    variables: { username: userParam }
+  });
+
+  const user = data?.me || data?.user || {};
        // console.log(userData)
-    
+    const { data: userData } = useQuery(QUERY_USERS);
     /*****************************************************************************************/
     const [value, onChange] = useState(new Date());
 
@@ -48,7 +49,8 @@ function User() {
         breed: "",
         behavior: "",
         temperament: "",
-        picture: ""
+        picture: "",
+        instructions: ""
       });
     
     /*************************location search*********************************/
@@ -87,11 +89,17 @@ function User() {
         });
     }
     /***********************************************************/
+    const [photoStatus, uploadPhoto] = useState(false);
+
+    function uploadedComplete() {
+        uploadPhoto(true);
+    }
 
     const dogData = { ...dogFormState };
     const handleChange = (event) => {
         const { name, value } = event.target;
         if (name === "picture") {
+            uploadedComplete()
             console.log(event.target.files[0])
 
             const formData = new FormData();
@@ -190,7 +198,7 @@ function User() {
                     </div>
                 </div>
 
-                 <h1 className="blackBar">{me.username}</h1>
+                 <h1 className="blackBar">{user.username}</h1>
 
                  <div className = "leftAndRight">
                     
@@ -204,14 +212,14 @@ function User() {
                                  <div className="text contact">
                                          <h2>Address</h2>
                                          
-                                     <h4>{me.address.street}</h4>
+                                     <h4>{user.address.street}</h4>
                                 
-                                     <h4>{me.address.city} {me.address.state}</h4>
+                                     <h4>{user.address.city} {user.address.state}</h4>
 
                                      <div className="contact">
                                          <h2>Contact</h2>
-                                         <h4>{me.email}</h4>
-                                         <h4>{me.address.phone_number}</h4>
+                                         <h4>{user.email}</h4>
+                                         <h4>{user.address.phone_number}</h4>
                                      </div>
                                  </div> )}
                              
@@ -224,7 +232,7 @@ function User() {
                                      {loading ? (<li>...Loading</li>
                                  ) : (
                                            
-                                     me.favorites.map(favorites => (
+                                     user.favorites.map(favorites => (
                                         
                                              <li key={favorites._id}>{ favorites.username}</li>
                                              
@@ -266,16 +274,17 @@ function User() {
                         
                      </form>
                      </div>
-                  </div>}
-                        <div className = "rightSideUserCalender">
-                    <div className = "text">
-                        <h4>Appointments for OTHERS walking your dog(s).</h4>
-                        <Calendar 
-                        onChange={onChange}
-                        value={value}
-                        />
-                    </div>    
-                </div>
+                         </div>}
+                     
+                        <div className = "userCalender">
+                          
+                                <h4 className = "text">Appointments for OTHERS walking your dog(s).</h4>
+                                <Calendar  className = "cal"
+                                onChange={onChange}
+                                value={value}
+                                />
+                               
+                        </div>
                 
                  
              </div>
@@ -283,7 +292,7 @@ function User() {
                  <div>
                      <div className="completeTitle">
                           {data &&
-                         <h4 className="dogTitle" >Your Dogs: { me.doggos.length}</h4>
+                         <h4 className="dogTitle" >Your Dogs: { user.doggos.length}</h4>
                          }
                          <img onClick = {newDog} className = "add" src={dogHouse} alt="add buton"></img>
                      </div>
@@ -292,8 +301,8 @@ function User() {
                      <div className="dogBlock">
                          <div className="eachDogNew">
                              <form onSubmit={handleFormSubmit} >
-                                <div>
-                                 <label htmlFor="doggo">name: <input
+                                <div className = "insideForm">
+                                 <label htmlFor="doggo">Name: <input
                                      type="text"
                                      name="name"
                                      autoComplete=""
@@ -302,7 +311,7 @@ function User() {
                                  /></label>
                                  
                              
-                                 <label htmlFor="doggo">size: <input
+                                 <label htmlFor="doggo">Size: <input
                                      type="text"
                                      name="size"
                                      autoComplete=""
@@ -310,7 +319,7 @@ function User() {
                                      onChange={handleChange}
                                  /></label>
                                 
-                                 <label htmlFor="doggo">age: <input
+                                 <label htmlFor="doggo">Age: <input
                                      type="text"
                                      name="age"
                                      autoComplete=""
@@ -318,7 +327,7 @@ function User() {
                                      onChange={handleChange}
                                  /></label>
                                  
-                                 <label htmlFor="doggo">breed: <input
+                                 <label htmlFor="doggo">Breed: <input
                                      type="text"
                                      name="breed"
                                      autoComplete=""
@@ -326,7 +335,7 @@ function User() {
                                      onChange={handleChange}
                                  /></label>
                                  
-                                 <label htmlFor="doggo">behavior: <input
+                                 <label htmlFor="doggo">Behavior: <input
                                      type="text"
                                      name="behavior"
                                      autoComplete=""
@@ -334,26 +343,61 @@ function User() {
                                      onChange={handleChange}
                                  /></label>
                               
-                                 <label htmlFor="doggo">temperament:<input
+                                 <label htmlFor="doggo">Temperament:<input
                                      type="text"
                                      name="temperament"
                                      autoComplete=""
                                      value={dogFormState.temperament}
                                      onChange={handleChange}
-                                 /></label>
-                                 
-                                 <label htmlFor="doggo">picture: <input
-                                     type="file"
-                                     name="picture"
+                                             /></label>
+                                             
+                                             <label htmlFor="doggo">Special Instructions: </label>
+                                             <textarea
+                                     type="textarea"
+                                     name="instructions"
                                      autoComplete=""
-                                     
+                                     value={dogFormState.instructions}
                                      onChange={handleChange}
-                                 /></label>
+                                 />
                                 </div>
+                                         <div className="alignButtons">
+                                             {!photoStatus ?
+                                                 <div>
+                                         <div className="dogPic">
+                                                 <label htmlFor="doggo"></label>
+                                            <input
+                                                className="file"
+                                                type="file"
+                                                name="picture"
+                                                autoComplete=""
+                                                
+                                                onChange={handleChange}
+                                                 />
+                                                 
+                                             </div>
+                                    
+                                             <div className = "cameraDiv">
+                                                 <img className="camera" src={camera} alt="pictureIcon" />
+                                                 <p>Add picture</p>
+                                                     </div>
+                                                 </div>
+                                        :<div className = "successPhoto">
+                                         <div className="dogPicSuccess">
+                                                
+
+                                             </div>
+                                    
+                                             <div className = "cameraDiv">
+                                                 <img className="camera" src={camera} alt="pictureIcon" />
+                                                    <p>Uploaded</p>
+
+                                                     </div>
+                                                 </div>
+                                                }
                                  <button className="submitNewDog" type="submit">
                                      Add Dog
                                          </button>
-
+                                </div>
                                 {addDogError && <div className="error">{addDogError.toString()}</div>}
 
 
@@ -363,7 +407,7 @@ function User() {
                          { loading ? (<div>...Loading</div>
                          ) : (
                             
-                             me.doggos.map(doggos => (
+                             user.doggos.map(doggos => (
                                  <div key={doggos._id} className="dogBlock">
                                      
                                      <div className="eachDog">
@@ -375,7 +419,8 @@ function User() {
                                              <p>Breed: {doggos.breed}</p>
                                              <p>Behavior: {doggos.behavior}</p>
                                              <p>Temperament: {doggos.temperament}</p>
-                                             <p>Special Instructions:</p>
+                                             <div className = "fixer">Special Instructions:</div>
+                                             <p className = "instructions scroll">{doggos.instructions}</p>
                                          </div>
 
                                          <div className="dogPic">

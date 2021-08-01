@@ -52,12 +52,15 @@ function DogWalker() {
         </div>
         <h1 className="blackBar">{user.username}</h1>
         <div className="leftAndRight">
-          <div className="leftSideUser">
-            <div className="text">
-              <h4>Your Calendar:</h4>
-              <Calendar onChange={onChange} value={value} />
-            </div>
-          </div>
+          <div className = "userCalender">
+                        
+                                <h4 className = "text">Your Calendar:</h4>
+                                <Calendar  className = "cal"
+                                onChange={onChange}
+                                value={value}
+                                />
+                              
+                        </div>
 
           <WalkerCard user={user}></WalkerCard>
         </div>

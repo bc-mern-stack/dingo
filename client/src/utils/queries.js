@@ -164,6 +164,7 @@ export const QUERY_ME = gql`
         behavior
         temperament
         picture
+        instructions
       }
       appointments {
         _id

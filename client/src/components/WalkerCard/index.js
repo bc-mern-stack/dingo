@@ -11,7 +11,8 @@ export default function WalkerCard({ user }) {
         </h3>
         <div className="about">
           <h3>About Me</h3>
-          <p>{about}</p>
+          <div className = "aboutHolder scroll"><p>{about}</p></div>
+          
         </div>
       </div>
       <div className="contactDogWalker text">

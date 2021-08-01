@@ -10,6 +10,7 @@ const doggoSchema = new Schema(
     instructions: { type: String },
     temperament: { type: String, required: true },
     picture: { type: String, required: true },
+    instructions: { type: String, required: true },
   },
   {
     toJSON: {

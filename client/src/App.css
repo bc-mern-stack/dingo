@@ -301,10 +301,27 @@ height: 150px;
   margin-bottom: 7px;
 }
 .contactDogWalker{
- margin-bottom: 20px;
+ margin-bottom: 30px;
 }
 .about{
   width: 90%;
+  border-color: white 3px solid;
+  
+}
+.about p{
+  
+    height: auto;
+    padding: 10px;
+    color: black;
+  
+}
+.aboutHolder {
+    max-height: 150px;
+    overflow:hidden; 
+    overflow-y:scroll;
+    background-color: rgb(236, 236, 236);
+    border-radius: 10px;
+    border: 10px white solid;
 }
 .rightSideUser{
   border-radius: 10px;
@@ -326,15 +343,29 @@ height: 150px;
   align-content: space-between;
   /*border: yellowgreen 2px solid;*/
 }
-.rightSideUserCalender{
+.userCalender{
   background-color: var(--lightGrey);
   width: 50%;
   display: flex;
   flex-wrap: wrap;
   align-content: space-between;
   border-radius: 10px;
+  
 
   /*border: yellowgreen 2px solid;*/
+}
+.userCalender .cal{
+    background-color: var(--lightGrey);
+    width: 90%;
+    height: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.cal{
+   display: flex;
+   flex-wrap: wrap;
+    justify-content: center;
+    
 }
 .rightSideUser form{
   display: flex;
@@ -492,6 +523,7 @@ height: 150px;
     margin-left: 13px;
     margin-bottom: 30px;
     cursor: pointer;
+    margin-top: 5px;
 
   }
   .newLocationSearchButtonHome{
@@ -583,9 +615,9 @@ height: 150px;
     border-radius: 10px;
   }
   .eachDogNew{
-     background-color: black;
+     background-color: var(--brightOrange);
     width: 100%;
-    height: 250px;
+    height: 350px;
     display: flex;
     justify-content: space-between;  
     border-radius: 10px;
@@ -595,31 +627,68 @@ height: 150px;
     display: block;
   }
   .eachDogNew form{
-    padding: 15px; 
+     
     display: flex;
     justify-content: space-between ;
     width: 100%;
   }
+  .insideForm{
+    padding: 15px;
+    width: 100%;
+  }
+  .eachDogNew textarea{
+    width: 500px;
+    height: 70px;
+    background-color: rgb(255, 255, 255);
+    outline: none;
+    border-radius: 10px;
+    border: var(--lightGrey) 10px solid;
+    margin-top: 10px;
+    resize: none;
+    position: absolute;
+    overflow:hidden; 
+    overflow-y:scroll;
+  }
+  .instructions {
+    width:500px;
+    height: 70px;
+    background-color: var(--lightGrey);
+    outline: none;
+    border-radius: 10px;
+    border: white 10px solid;
+    
+    resize: none;
+    overflow:hidden; 
+    overflow-y:scroll;
+    position: absolute;
+    
+  }
+
   .eachDogNew input{
    background: none;
    color: white;
    border: none;
    outline: none;
    margin-bottom: 15px;
-   width: 50%;
+   width: 40%;
   }
   .submitNewDog{
     border-radius: 20px;
     background-color: var(--brightBlue);
     outline: none;
     border: none;
-    padding: 10px;
+    padding: 7px;
     color: white;
     height: 30px;
-    margin-top: 5px;
     width: 80px;
+    margin-top: 10px;
   }
-  
+  .alignButtons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:flex-start;
+  }
   .add{
      height: 30px;
      width: auto;
@@ -649,28 +718,85 @@ height: 150px;
   .eachDog{
     background-color: var(--lightGrey);
     width: 100%;
-    height: 250px;
+    height: 350px;
     display: flex;
     justify-content: space-between;  
     border-radius: 10px;
     /*border: rgb(0, 0, 0) 5px solid;*/
   }
+  .dogPic{
+    height: 100px;
+    width: 100px;
+    background-color: var(--brightBlue);
+    margin: 20px;
+    border-radius: 20px;
+    object-fit:cover;
+    text-align: center;
+  }
   .dogPic img{
     height: 100px;
     width: 100px;
-    background-color: black;
-    margin: 20px;
     border-radius: 20px;
-    object-fit:cover
+    object-fit:cover;
+    
+
   }
+  .successPhoto{
+    padding: 20px;
+  }
+  .successPhoto .cameraDiv{
+    margin-top: -80px;
+  }
+  .dogPicSuccess{
+    background-color: var(--brightBlue);
+    height: 100px;
+    width: 100px;
+    
+    border-radius: 20px;
+    text-align: center;
+  }
+  .dogPic input{
+   
+    width: 100px;
+    height: 100px;
+    display: flex;
+   
+    border-radius: 20px;
+  }
+  .cameraDiv{
+    text-align: center;
+    margin-top: -100px;
+    color: white;
+    
+  }
+  .camera{
+    
+    width: 50px;
+    height:auto;
+    margin-bottom: -10px;
+  }
+  
+ .file {
+  opacity: 0;
+  
+
+}
+
   .dogInfo p{
-    margin: 13px;
+    margin-top: 0px;
+    margin-bottom: 15px;
+    
     font-weight: 500;
   }
   
+ .fixer{
+   margin-bottom: 10px;
+ }
   .dogInfo{
     margin-top: 0px;
     /*border-left: .05rem solid black;*/
+    padding: 15px;
+    width: 100%;
   }
   .alignRightSide{
     display: flex;
@@ -1065,9 +1191,12 @@ position: relative;}
   font-family: 'Poppins', sans-serif;
   line-height: 1.125em;
   margin-bottom: 30px;
+ 
+  
 }
 .react-calendar--doubleView {
   /*width: 700px;*/
+  
 }
 .react-calendar--doubleView .react-calendar__viewContainer {
   display: flex;
@@ -1093,21 +1222,26 @@ position: relative;}
   margin: 0;
   border: 0;
   outline: none;
+  
 }
 .react-calendar button:enabled:hover {
   cursor: pointer;
+  
 }
 .react-calendar__navigation {
   height: 44px;
   margin-bottom: 1em;
+  
 }
 .react-calendar__navigation button {
   min-width: 44px;
   background: none;
+  
 }
 .react-calendar__navigation button:enabled:hover,
 .react-calendar__navigation button:enabled:focus {
   background-color: #e6e6e6;
+  
 }
 .react-calendar__navigation button[disabled] {
   background-color: #f0f0f0;
@@ -1118,6 +1252,7 @@ position: relative;}
   font-weight: bold;
   font-size: 0.75em;
   margin-bottom: 10px;
+  
 }
 .react-calendar__month-view__weekdays__weekday {
   padding: 0.5em;
@@ -1125,6 +1260,7 @@ position: relative;}
 }
 .react-calendar__month-view__weekNumbers {
   font-weight: bold;
+  
 }
 .react-calendar__month-view__weekNumbers .react-calendar__tile {
   display: flex;
@@ -1132,9 +1268,11 @@ position: relative;}
   justify-content: center;
   font-size: 0.75em;
   padding: calc(0.75em / 0.75) calc(0.5em / 0.75);
+  
 }
 .react-calendar__month-view__days__day--weekend {
   color: #d10000;
+  
 }
 .react-calendar__month-view__days__day--neighboringMonth {
   color: #757575;
@@ -1143,15 +1281,18 @@ position: relative;}
 .react-calendar__decade-view .react-calendar__tile,
 .react-calendar__century-view .react-calendar__tile {
   padding: 2em 0.5em;
+  
 }
 .react-calendar__tile {
   max-width: 100%;
   text-align: center;
   padding: 1.5em 0.5em;
   background: none;
+  
 }
 .react-calendar__tile:disabled {
   background-color: #f0f0f0;
+  
 }
 .react-calendar__tile:enabled:hover,
 .react-calendar__tile:enabled:focus {
@@ -1186,6 +1327,7 @@ position: relative;}
  color: black;
  text-decoration: none;
  font-size: 12px;
+ line-height: 3em;
 }
 /*************************************************************/
 /****************************footer*********************************/
@@ -1251,7 +1393,7 @@ position: relative;}
       justify-content: space-between;
       
     }
-    .rightSideUserCalender{
+    .userCalender{
       width: 100%;
       margin-top: 25px;
     }
@@ -1546,6 +1688,11 @@ position: relative;}
   .dogWalkersRight{
     width:250px;
   }
-
+.instructions{
+ width:290px;
  
+}
+.eachDogNew textarea{
+  width: 290px;
+}
 }
