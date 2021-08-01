@@ -113,6 +113,7 @@ export const QUERY_USER = gql`
         hour
         doggos {
           name
+          picture
         }
       }
     }
@@ -120,8 +121,8 @@ export const QUERY_USER = gql`
 `;
 
 export const QUERY_ME = gql`
-   { me 
-     {
+  {
+    me {
       _id
       username
       email

@@ -13,7 +13,7 @@ import { QUERY_ME, QUERY_USER } from "../utils/queries";
 function DogWalker() {
   const { username: userParam } = useParams();
 
-  const [value, onChange] = useState(new Date());
+  const [calendarValue, onCalendarChange] = useState(new Date());
 
   const { loading, data, error } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
     variables: { username: userParam },
@@ -53,19 +53,26 @@ function DogWalker() {
         </div>
         <h1 className="blackBar">{user.username}</h1>
         <div className="walker-profile-card-container">
-          <div className="walker-calendar-card">
-            <div className="text">
-              <h4>Your Calendar:</h4>
-              <Calendar onChange={onChange} value={value} />
+          <div className="walker-profile-top">
+            <div className="walker-calendar-card">
+              <div className="text">
+                <h4>Walker Calendar:</h4>
+                <Calendar onChange={onCalendarChange} value={calendarValue} />
+              </div>
             </div>
+
+            <WalkerCard user={user}></WalkerCard>
           </div>
 
-          <WalkerCard user={user}></WalkerCard>
-
-          <WalkerAppointments
-            user={user}
-            userParam={userParam}
-          ></WalkerAppointments>
+          {userParam ? (
+            "you can't view other's appointments"
+          ) : (
+            <WalkerAppointments
+              user={user}
+              userParam={userParam}
+              calendarValue={calendarValue}
+            />
+          )}
         </div>
         <WalkerAvailabilty
           user={user}
