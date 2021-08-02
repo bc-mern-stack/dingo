@@ -2,8 +2,12 @@ import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import Calendar from "react-calendar";
 
-import WalkerCard from "../components/WalkerCard";
-import WalkerAvailabilty from "../components/WalkerAvailability";
+import "../components/Walker/custom.css";
+
+import WalkerCard from "../components/Walker/WalkerCard";
+import WalkerAppointments from "../components/Walker/WalkerAppointments";
+import WalkerAvailabilty from "../components/Walker/WalkerAvailability";
+import ScheduleAppointments from "../components/Walker/ScheduleAppointments";
 
 import Auth from "../utils/auth";
 import { useQuery } from "@apollo/client";
@@ -12,7 +16,7 @@ import { QUERY_ME, QUERY_USER } from "../utils/queries";
 function DogWalker() {
   const { username: userParam } = useParams();
 
-  const [value, onChange] = useState(new Date());
+  const [calendarValue, onCalendarChange] = useState(new Date());
 
   const { loading, data, error } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
     variables: { username: userParam },
@@ -51,15 +55,36 @@ function DogWalker() {
           </div>
         </div>
         <h1 className="blackBar">{user.username}</h1>
-        <div className="leftAndRight">
-          <div className="leftSideUser">
-            <div className="text">
-              <h4>Your Calendar:</h4>
-              <Calendar onChange={onChange} value={value} />
+        <div className="walker-profile-card-container">
+          <div className="walker-profile-top">
+            <div className="walker-calendar-card">
+              <div className="text">
+                <h4>Walker Calendar:</h4>
+                <Calendar onChange={onCalendarChange} value={calendarValue} />
+              </div>
             </div>
+
+            <WalkerCard user={user}></WalkerCard>
           </div>
 
-          <WalkerCard user={user}></WalkerCard>
+          {userParam ? (
+            user.availability?.length > 0 ? (
+              <ScheduleAppointments
+                user={user}
+                userParam={userParam}
+                calendarValue={calendarValue}
+              />
+            ) : (
+              "this user has no availability, walking appointments cannot be made!"
+            )
+          ) : (
+            // show user's appointments when they are looking at their own profile
+            <WalkerAppointments
+              user={user}
+              userParam={userParam}
+              calendarValue={calendarValue}
+            />
+          )}
         </div>
         <WalkerAvailabilty
           user={user}

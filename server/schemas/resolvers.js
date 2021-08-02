@@ -14,34 +14,55 @@ const resolvers = {
     me: async (parent, args, context) => {
       if (context.user) {
         const userDatas = await User.findOne({ _id: context.user._id })
-          .select("-__v -password")
           .populate("address")
           .populate("favorites")
           .populate({ path: "availability", model: Availability })
           .populate("doggos")
-          .populate("appointments");
+          .populate({
+            path: "appointments",
+            model: Appointment,
+            populate: [
+              { path: "owner", model: User },
+              { path: "walker", model: User },
+              { path: "doggos", model: Doggo },
+            ],
+          });
         return userDatas;
       }
       throw new AuthenticationError("Not logged in");
     },
     users: async () => {
       return User.find()
-        .select("-__v -password")
         .populate("address")
         .populate("favorites")
         .populate({ path: "availability", model: Availability })
         .populate("doggos")
-        .populate("appointments");
+        .populate({
+          path: "appointments",
+          model: Appointment,
+          populate: [
+            { path: "owner", model: User },
+            { path: "walker", model: User },
+            { path: "doggos", model: Doggo },
+          ],
+        });
     },
     // get a user by username
     user: async (parent, { username }) => {
       return User.findOne({ username })
-        .select("-__v -password")
         .populate("address")
         .populate("favorites")
         .populate({ path: "availability", model: Availability })
         .populate("doggos")
-        .populate("appointments");
+        .populate({
+          path: "appointments",
+          model: Appointment,
+          populate: [
+            { path: "owner", model: User },
+            { path: "walker", model: User },
+            { path: "doggos", model: Doggo },
+          ],
+        });
     },
   },
   Mutation: {
@@ -207,7 +228,6 @@ const resolvers = {
       context
     ) => {
       if (context.user) {
-        // create the new appointment...
         // users are updated in the Appointment model after saving
         const newAppointment = await Appointment.create({
           owner,
