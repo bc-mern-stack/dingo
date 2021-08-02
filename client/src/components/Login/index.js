@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../utils/mutations";
@@ -48,18 +48,10 @@ function Login() {
       <div className="rightSwitchedLayout">
         <div className="alignFormAltered">
           <form className="alignSwitchedForm">
-            <Route
-              render={({ history }) => (
-                <h1
-                  type="button"
-                  onClick={() => {
-                    history.push("/SignUp");
-                  }}
-                >
-                  Sign up Instead
-                </h1>
-              )}
-            />
+            <Link to="/SignUp">
+              <h1>Sign up Instead</h1>
+            </Link>
+
             <div className="mainDiv">
               <div className="controlDiv">
                 <p>Email</p>

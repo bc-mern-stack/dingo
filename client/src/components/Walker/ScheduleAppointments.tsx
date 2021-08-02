@@ -29,7 +29,8 @@ export default function ScheduleAppointments({
     data: meData,
     error: meError,
   } = useQuery(QUERY_ME);
-  const me = meData?.me;
+
+  const me = meData?.me || {};
 
   const appointmentObject = {
     owner: me?._id,
@@ -142,6 +143,7 @@ export default function ScheduleAppointments({
         >
           schedule
         </button>
+        {error && <div className="error">{error.message}</div>}
       </div>
     </form>
   );

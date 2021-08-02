@@ -40,7 +40,7 @@ function DogWalker() {
     return <div>Loading...</div>;
   }
   if (error) {
-    return <div>{error.toString()}</div>;
+    return <div className="error">{error.toString()}</div>;
   }
 
   const logout = (event) => {
@@ -74,14 +74,13 @@ function DogWalker() {
                 <Calendar
                   onChange={onCalendarChange}
                   value={calendarValue}
-                  tileClassName={({ activeStartDate, date, view }) => {
+                  tileDisabled={({ activeStartDate, date, view }) => {
                     let available = allAvailableDates.includes(
                       date.toISOString()
                     );
-                    return available ? "available-day" : null;
+                    return !available;
                   }}
                 />
-                <h5>Dates with openings are light blue!</h5>
               </div>
             </div>
 
