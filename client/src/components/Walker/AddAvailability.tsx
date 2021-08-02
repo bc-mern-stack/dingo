@@ -120,8 +120,8 @@ export default function AddAvailability({ user }: any) {
         variables: availabilityData,
       });
       window.location.reload();
-    } catch (error) {
-      console.error("form submit catch", error);
+    } catch (e) {
+      console.error("form submit catch", e);
     }
   };
 
@@ -154,6 +154,7 @@ export default function AddAvailability({ user }: any) {
         <button className="submit-btn" type="submit" onClick={handleFormSubmit}>
           add
         </button>
+        {error && <p className="error">{error}</p>}
       </form>
     </>
   );

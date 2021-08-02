@@ -108,6 +108,7 @@ export const QUERY_USER = gql`
           username
         }
         walker {
+          _id
           username
         }
         hour

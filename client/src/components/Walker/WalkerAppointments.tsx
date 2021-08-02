@@ -6,9 +6,12 @@ export default function WalkerAppointments({
   userParam,
   calendarValue,
 }: any) {
-  const { _id: userId, availability, appointments } = user;
+  const { appointments } = user;
+  const myWalkerAppointments = appointments.filter(
+    (a: any) => a.walker._id === user._id
+  );
 
-  const appointmentCards = appointments.map(
+  const appointmentCards = myWalkerAppointments.map(
     (appointment: any, index: number) => {
       const {
         _id: appointmentId,
@@ -24,11 +27,11 @@ export default function WalkerAppointments({
         return (
           <article className="little-doggo-card" key={doggoId}>
             <img
-              className="doggo-card-picture"
+              className="little-doggo-card-picture"
               alt={"a doggo named " + name}
               src={picture}
             ></img>
-            <div className="doggo-card-name">{name}</div>
+            <div className="little-doggo-card-name">{name}</div>
           </article>
         );
       });
@@ -50,10 +53,10 @@ export default function WalkerAppointments({
             <span>Appointment Time: </span>
             <span>{hConvert(hour)}</span>
           </div>
-          {/* <div className="appointment-walker">
+          <div className="appointment-walker">
             <span>Walker Name: </span>
             <span>{walker.username}</span>
-          </div> */}
+          </div>
           <div className="appointment-owner">
             <span>Owner Name: </span>
             <Link to={"/User/" + owner.username}>{owner.username}</Link>
@@ -76,5 +79,5 @@ export default function WalkerAppointments({
     </div>
   );
 
-  return appointmentsElement;
+  return myWalkerAppointments.length > 0 ? appointmentsElement : "";
 }

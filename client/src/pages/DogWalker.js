@@ -2,9 +2,12 @@ import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import Calendar from "react-calendar";
 
+import "../components/Walker/custom.css";
+
 import WalkerCard from "../components/Walker/WalkerCard";
 import WalkerAppointments from "../components/Walker/WalkerAppointments";
 import WalkerAvailabilty from "../components/Walker/WalkerAvailability";
+import ScheduleAppointments from "../components/Walker/ScheduleAppointments";
 
 import Auth from "../utils/auth";
 import { useQuery } from "@apollo/client";
@@ -65,8 +68,17 @@ function DogWalker() {
           </div>
 
           {userParam ? (
-            "you can't view other's appointments"
+            user.availability?.length > 0 ? (
+              <ScheduleAppointments
+                user={user}
+                userParam={userParam}
+                calendarValue={calendarValue}
+              />
+            ) : (
+              "this user has no availability, walking appointments cannot be made!"
+            )
           ) : (
+            // show user's appointments when they are looking at their own profile
             <WalkerAppointments
               user={user}
               userParam={userParam}

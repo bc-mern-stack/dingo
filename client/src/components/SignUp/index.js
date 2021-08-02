@@ -5,7 +5,6 @@ import StateList from "./StateList";
 import { ADD_USER } from "../../utils/mutations";
 import { useMutation } from "@apollo/client";
 
-
 import Auth from "../../utils/auth";
 
 function SignUp() {
@@ -37,8 +36,6 @@ function SignUp() {
       ...addressFormState,
       [name]: value,
     });
-        //console.log(addressFormState);
-
   };
 
   const handleChange = (event) => {
@@ -47,7 +44,6 @@ function SignUp() {
       ...formState,
       [name]: value,
     });
-    
   };
 
   // submit form

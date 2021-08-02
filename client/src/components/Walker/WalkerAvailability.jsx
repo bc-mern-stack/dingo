@@ -72,7 +72,7 @@ export default function WalkerAvailabilty({ user, userParam }) {
             showAvailModal ? "show-avail-component-container" : "hidden"
           }
         >
-          <ShowAvailability user={user} />
+          <ShowAvailability user={user} userParam={userParam} />
         </div>
       </section>
       <section className="add-avail-section">
