@@ -11,6 +11,7 @@ import StateList from "../SignUp/StateList";
 
 import Auth from '../../utils/auth';
 import camera from '../../assets/camera.png'
+import { element, object } from 'prop-types';
 
 function User() {
 
@@ -59,6 +60,12 @@ function User() {
 
    
     /************************add new dog*********************************/
+    const [errorValue, setErrorValue] = useState(
+        false
+    )
+    const [errorForDog, setError] = useState({
+        error: ""
+    })
     const [dogRemoval, oneLessDog] = useState(false)
     const [dogToRemove, removeDogState] = useState({
         id: ""
@@ -111,7 +118,7 @@ function User() {
             ...addressSearch,
             [name]: value
         });
-        event.target.value = '';
+        //event.target.value = '';
     }
     const handleNewSearchForWalkers = async event => {
         event.preventDefault();
@@ -202,27 +209,48 @@ function User() {
         }
     });
     const handleFormSubmit = async event => {
+        let nullify = false;
         event.preventDefault();
         dogData.size = parseInt(dogData.size);
         dogData.age = parseInt(dogData.age);
         console.log(dogData)
-        // use try/catch instead of promises to handle errors
-        try {
-            // execute addUser mutation and pass in variable data from form
-            await addDoggo({
-                variables: {
-                    ...dogData
-                }
-                
-            });
-            if (data) {
-                    
-                console.log(data)
+        Object.keys(dogData).forEach(key => {
+            if (!dogData[key]) {
+                console.log(key + " is null")
+                nullify = true;
+                console.log(nullify);
+                //alert(key + " is required")
+                 setError({
+                     errorForDog: (key + " required"),
+                     
+    });
+                setErrorValue( true )
             }
-        } catch (e) {
-            console.error(e);
-        }
+                
             
+          
+        //console.log(key, dogData[key]);
+});
+            
+        if (!nullify) {
+            setErrorValue( false )
+            // use try/catch instead of promises to handle errors
+            try {
+                // execute addUser mutation and pass in variable data from form
+                await addDoggo({
+                    variables: {
+                        ...dogData
+                    }
+                
+                });
+                if (data) {
+                    
+                    console.log(data)
+                }
+            } catch (e) {
+                console.error(e);
+            }
+        }
     };
 
     const removeDogComplete = async (doggo) => {
@@ -346,7 +374,7 @@ function User() {
                                      <h2>Find Dog Walkers in Your Area</h2>
                                      {!newEntry ?
                                           
-                                         <h3>Enter a city</h3>:<h3>{addressSearch.city}</h3>
+                                         <h3>Nothing Found</h3>:<h3>{totalSearch.length} results for {addressSearch.city} {addressFormState.state}</h3>
                                      }
                              </div> 
                              
@@ -365,7 +393,7 @@ function User() {
                                      
                                  </ul>
                      <form className = "buttomSearch" onSubmit = {handleNewSearchForWalkers}>
-                        <input name="city" autoComplete="" value={addressSearch.name} onBlur= {handleSearchAddress} className = "newLocationSearchInput" placeholder = "New City Search" type="text" />
+                        <input name="city" autoComplete="" value={addressSearch.name} onChange= {handleSearchAddress} className = "newLocationSearchInput" placeholder = "New City Search" autoComplete ="off" type="text" />
                          <div className = "secondRow">
                         <label name="state"></label>
                             <StateList className = "stateSelect"
@@ -503,13 +531,16 @@ function User() {
                                                     <p>Uploaded</p>
 
                                                      </div>
+                                                     
                                                  </div>
                                                 }
                                  <button className="submitNewDog" type="submit">
                                      Add Dog
                                          </button>
+                                         {errorValue ? 
+                                                 <p className = "error">Missing info</p>:<p></p>
+                                         }
                                 </div>
-                                {addDogError && <div className="error">{addDogError.toString()}</div>}
 
 
                              </form>
