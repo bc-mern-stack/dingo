@@ -25,6 +25,17 @@ function DogWalker() {
   // checks for both kinds of responses, either me or user
   const user = data?.me || data?.user || {};
 
+  const { availability } = user;
+
+  let allAvailableDates = [];
+
+  try {
+    for (let avail of availability) {
+      const availableDates = avail.dates_available || [];
+      allAvailableDates = allAvailableDates.concat(availableDates);
+    }
+  } catch (e) {}
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -60,11 +71,21 @@ function DogWalker() {
             <div className="walker-calendar-card">
               <div className="text">
                 <h4>Walker Calendar:</h4>
-                <Calendar onChange={onCalendarChange} value={calendarValue} />
+                <Calendar
+                  onChange={onCalendarChange}
+                  value={calendarValue}
+                  tileClassName={({ activeStartDate, date, view }) => {
+                    let available = allAvailableDates.includes(
+                      date.toISOString()
+                    );
+                    return available ? "available-day" : null;
+                  }}
+                />
+                <h5>Dates with openings are light blue!</h5>
               </div>
             </div>
 
-            <WalkerCard user={user}></WalkerCard>
+            <WalkerCard user={user} userParam={userParam}></WalkerCard>
           </div>
 
           {userParam ? (

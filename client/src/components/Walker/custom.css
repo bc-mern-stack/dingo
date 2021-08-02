@@ -2,6 +2,10 @@
   display: none !important;
 }
 
+.available-day {
+  background: #8ad6f759 !important;
+}
+
 /* ---------------------begin profile info styling--------------------- */
 
 .walker-profile-card-container {

@@ -34,7 +34,10 @@ an app for people who have dogs, but not enough time to walk them.
 
 ## Contributing
 
-nothing to shout out.
+these packages were used to build this app:
+
+- [react-calendar](https://projects.wojtekmaj.pl/react-calendar/)
+- [react-date-picker](https://projects.wojtekmaj.pl/react-date-picker/)
 
 ## Tests
 
