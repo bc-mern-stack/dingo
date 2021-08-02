@@ -440,6 +440,9 @@ height: 150px;
     border: 10px rgb(255, 255, 255) solid;
     margin-bottom: 20px;
   }
+  .hoverReveal{
+    color: black;
+  }
    .dogWalkersLeft li{
      margin-bottom: 10px;
      color: rgb(0, 0, 0);
@@ -648,6 +651,7 @@ height: 150px;
     position: absolute;
     overflow:hidden; 
     overflow-y:scroll;
+    font-family: 'Poppins', sans-serif;
   }
   .instructions {
     width:500px;
@@ -683,6 +687,17 @@ height: 150px;
     width: 80px;
     margin-top: 10px;
   }
+   .removeDog{
+    border-radius: 20px;
+    background-color: red;
+    outline: none;
+    border: none;
+    padding: 7px;
+    color: white;
+    height: 30px;
+    width: 100px;
+    margin-top: 8px;
+  }
   .alignButtons{
     display: flex;
     flex-direction: column;
@@ -692,17 +707,32 @@ height: 150px;
   .add{
      height: 30px;
      width: auto;
-     margin-top: auto;
+     margin-top: 15px;
      margin-bottom: auto;
      margin-right: 15px;
 
+  }
+  .delete{
+     height: 30px;
+     width: auto;
+     margin-top: 15px;
+     margin-bottom: auto;
+     margin-right: 25px;
+
+  }
+  .sub{
+     height: auto;
+     width: 30px;
+     margin-top: 0;
+     margin-bottom: 10px;
+     margin-right: 15px;
   }
   .completeTitle{
     display: flex;
     justify-content: space-between;
     background-color: #000000;
     border-radius: 10px;
-    margin-top: 75px;
+    margin-top: 25px;
     padding-left: 10px;
   }
   .dogTitle{
@@ -743,6 +773,7 @@ height: 150px;
   }
   .successPhoto{
     padding: 20px;
+    margin-bottom: -20px;
   }
   .successPhoto .cameraDiv{
     margin-top: -80px;
@@ -1403,7 +1434,7 @@ position: relative;}
     }
     .rightSideUser{
       width: 100%;
-      margin-top: 25px;
+      margin-top: 0px;
     }
     .arrow-down-blue {
       
@@ -1418,12 +1449,16 @@ position: relative;}
     .leftSideUser{
       width: 100%;
     }
+     
 }
   
-
+ 
 
   @media only screen and (max-width: 1000px) {
-    
+    .react-calendar abbr{
+ 
+ line-height: 2em;
+}
     .line{
       border-left: none;
     }

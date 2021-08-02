@@ -166,9 +166,12 @@ export const REMOVE_DOGGO = gql`
         _id
         name
         size
+        age
+        breed
         behavior
         temperament
         picture
+        instructions
       }
     }
   }

@@ -1,25 +1,32 @@
 import { React,useState } from 'react';
-import { Route, Link,useParams} from 'react-router-dom';
-import Calendar from 'react-calendar'
-import dogHouse from '../../assets/dogHouse.png'
+import { Route, Link,useParams, Redirect} from 'react-router-dom';
+import Calendar from 'react-calendar';
+import dogHouse from '../../assets/dogHouse.png';
+import subtract from '../../assets/subtract.png';
+import deleteDog from '../../assets/deleteWhite.png'
 import { useQuery, gql, useMutation } from '@apollo/client';
 import { QUERY_USERS, QUERY_ME, QUERY_USER } from '../../utils/queries';
-import { ADD_DOGGO } from '../../utils/mutations';
+import { ADD_DOGGO, REMOVE_DOGGO } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 import camera from '../../assets/camera.png'
 
 function User() {
 
     /***************************************************************************************/
-      const { username: userParam } = useParams();
+    const { username: userParam } = useParams();
 
-  const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
-    variables: { username: userParam }
-  });
+    const { loading, data, error } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
+        variables: { username: userParam }
+    });
 
-  const user = data?.me || data?.user || {};
-       // console.log(userData)
+    const user = data?.me || data?.user || {};
+    // console.log(userData)
     const { data: userData } = useQuery(QUERY_USERS);
+
+    const logout = (event) => {
+        event.preventDefault();
+        Auth.logout();
+    };
     /*****************************************************************************************/
     const [value, onChange] = useState(new Date());
 
@@ -28,19 +35,33 @@ function User() {
 
     function newDog() {
         createNewDog(true);
-        }
+    }
+    function cancelNewDog() {
+        createNewDog(false);
+    }
+    function removeDog() {
+        if (dogRemoval) { oneLessDog(false) }
+        else (oneLessDog(true));
+    }
+   
+    
 
-        function toggle() {
-            setIsOpened(true);
-          }
-          function toggleOff() {
-            setIsOpened(false);
-          }
+    function toggle() {
+        setIsOpened(true);
+    }
+    function toggleOff() {
+        setIsOpened(false);
+    }
       
     
 
    
     /************************add new dog*********************************/
+    const [dogRemoval, oneLessDog] = useState(false)
+    const [dogToRemove, removeDogState] = useState({
+        id: ""
+    });
+
     const [addNewDog, createNewDog] = useState(false);
     const [dogFormState, setDogState] = useState({
         name: "",
@@ -51,14 +72,14 @@ function User() {
         temperament: "",
         picture: "",
         instructions: ""
-      });
+    });
     
     /*************************location search*********************************/
     const [newEntry, setNewentry] = useState(false);
     
-      const [addressSearch, newAddressSearch] = useState({
-            city:""
-      });
+    const [addressSearch, newAddressSearch] = useState({
+        city: ""
+    });
     const [totalSearch, setTotalSearch] = useState(
         []
     );
@@ -70,7 +91,7 @@ function User() {
             ...addressSearch,
             [name]: value
         });
-        }
+    }
     const handleNewSearchForWalkers = async event => {
         event.preventDefault();
         userData.users.forEach(element => {
@@ -83,7 +104,7 @@ function User() {
                 && element.username != data.me.username && element.availability.length > 0) {
                 totalSearch.push(element.username);
                 setNewentry(true);
-           }
+            }
 
             
         });
@@ -109,14 +130,14 @@ function User() {
                 method: 'POST',
                 body: formData
             }).then(res => res.json())
-                .then(res => 
+                .then(res =>
                     //console.log(res.secure_url)
                     setDogState({
-                      ...dogFormState, 
+                        ...dogFormState,
                         picture: res.secure_url.toString(),
                 
-            })
-            );
+                    })
+                );
             
         } else {
             setDogState({
@@ -125,7 +146,7 @@ function User() {
             });
         }
         console.log(dogFormState);
-  };
+    };
 
     const [addDoggo, { addDogError }] = useMutation(ADD_DOGGO, {
         update(cache, { data: { addDoggo } }) {
@@ -141,30 +162,81 @@ function User() {
 
         }
     });
-    
-                const handleFormSubmit = async event => {
-                event.preventDefault();
-                        dogData.size = parseInt(dogData.size);
-                        dogData.age = parseInt(dogData.age);
-                        console.log(dogData)
-            // use try/catch instead of promises to handle errors
-            try {
-                // execute addUser mutation and pass in variable data from form
-                await addDoggo({
-                    variables: {
-                        ...dogData
-                            }
-                
-                });
-                if (data) {
-                    
-                    console.log(data)
-                }
-                } catch (e) {
-                console.error(e);
-                }
+    const [removeDoggo, { removeDogError }] = useMutation(REMOVE_DOGGO, {
+        
+        update(cache, { data: { removeDoggo } }) {
+            // read what's currently in the cache
+            const { dogData } = cache.readQuery({ query: QUERY_ME });
+
+            // prepend the newest thought to the front of the array
+            cache.writeQuery({
+                query: QUERY_ME,
+                data: { doggos: removeDoggo }
+            });
             
-                };
+            window.location.reload();
+
+        }
+    });
+    const handleFormSubmit = async event => {
+        event.preventDefault();
+        dogData.size = parseInt(dogData.size);
+        dogData.age = parseInt(dogData.age);
+        console.log(dogData)
+        // use try/catch instead of promises to handle errors
+        try {
+            // execute addUser mutation and pass in variable data from form
+            await addDoggo({
+                variables: {
+                    ...dogData
+                }
+                
+            });
+            if (data) {
+                    
+                console.log(data)
+            }
+        } catch (e) {
+            console.error(e);
+        }
+            
+    };
+
+    const removeDogComplete = async (doggo) => {
+        
+         removeDogState({
+                dogToRemove:
+                 doggo.doggos._id,
+            });
+            //oneLessDog(false);
+        console.log(doggo.doggos._id.toString())
+            //console.log(dogToRemove.id);
+                  const dogId = doggo.doggos._id      
+        // use try/catch instead of promises to handle errors
+       try {
+            // execute addUser mutation and pass in variable data from form
+            await removeDoggo({
+                variables:
+                    { doggoId:dogId }
+                     
+                
+                
+            });
+            if (data) {
+                    
+                console.log(data)
+            }
+        } catch (e) {
+            console.error(e);
+        
+        }
+            
+    };
+
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
      return(
          
@@ -207,8 +279,7 @@ function User() {
                         
                      <img  onClick = {toggle} className = "arrow-down-blue" src="https://img.icons8.com/ios-filled/50/000000/year-of-dog.png"/>
                            
-                               { loading ? (<div>...Loading</div>
-                         ) : (
+                              
                                  <div className="text contact">
                                          <h2>Address</h2>
                                          
@@ -221,7 +292,7 @@ function User() {
                                          <h4>{user.email}</h4>
                                          <h4>{user.address.phone_number}</h4>
                                      </div>
-                                 </div> )}
+                                 </div> 
                              
                                 {data ?
                              <div className="list">
@@ -250,7 +321,7 @@ function User() {
                      <div className = "text">
                              <div>
                                  <h2>Find Dog Walkers in Your Area</h2>
-                                 <h3>Milwaukee Wisconsin</h3>
+                                     <h3>{ user.address.city } { user.address.state }</h3>
                                 
                              </div> 
                              
@@ -278,7 +349,7 @@ function User() {
                      
                         <div className = "userCalender">
                           
-                                <h4 className = "text">Appointments for OTHERS walking your dog(s).</h4>
+                                <h4 className = "text">Your dog's appointments.</h4>
                                 <Calendar  className = "cal"
                                 onChange={onChange}
                                 value={value}
@@ -294,8 +365,18 @@ function User() {
                           {data &&
                          <h4 className="dogTitle" >Your Dogs: { user.doggos.length}</h4>
                          }
-                         <img onClick = {newDog} className = "add" src={dogHouse} alt="add buton"></img>
+                         <div>
+                            
+                            <img onClick={removeDog} className="delete" src={deleteDog} alt="delete button"></img>
+
+                         {!addNewDog ?
+                             <img onClick={newDog} className="add" src={dogHouse} alt="add button"></img>
+                             :
+                             <img onClick={cancelNewDog} className="sub" src={subtract} alt="subtract button"></img>}
+                         
+                         </div>
                      </div>
+
                      <div className="yourDogs">
                          {addNewDog ?
                      <div className="dogBlock">
@@ -305,7 +386,7 @@ function User() {
                                  <label htmlFor="doggo">Name: <input
                                      type="text"
                                      name="name"
-                                     autoComplete=""
+                                     autoComplete="off"
                                      value={dogFormState.name}
                                      onChange={handleChange}
                                  /></label>
@@ -314,7 +395,7 @@ function User() {
                                  <label htmlFor="doggo">Size: <input
                                      type="text"
                                      name="size"
-                                     autoComplete=""
+                                     autoComplete="off"
                                      value={dogFormState.size}
                                      onChange={handleChange}
                                  /></label>
@@ -322,7 +403,7 @@ function User() {
                                  <label htmlFor="doggo">Age: <input
                                      type="text"
                                      name="age"
-                                     autoComplete=""
+                                     autoComplete="off"
                                      value={dogFormState.age}
                                      onChange={handleChange}
                                  /></label>
@@ -330,7 +411,7 @@ function User() {
                                  <label htmlFor="doggo">Breed: <input
                                      type="text"
                                      name="breed"
-                                     autoComplete=""
+                                     autoComplete="off"
                                      value={dogFormState.breed}
                                      onChange={handleChange}
                                  /></label>
@@ -338,7 +419,7 @@ function User() {
                                  <label htmlFor="doggo">Behavior: <input
                                      type="text"
                                      name="behavior"
-                                     autoComplete=""
+                                     autoComplete="off"
                                      value={dogFormState.behavior}
                                      onChange={handleChange}
                                  /></label>
@@ -346,16 +427,16 @@ function User() {
                                  <label htmlFor="doggo">Temperament:<input
                                      type="text"
                                      name="temperament"
-                                     autoComplete=""
+                                     autoComplete="off"
                                      value={dogFormState.temperament}
                                      onChange={handleChange}
                                              /></label>
                                              
-                                             <label htmlFor="doggo">Special Instructions: </label>
-                                             <textarea
+                                 <label htmlFor="doggo">Special Instructions: </label>
+                                    <textarea className = "scroll"
                                      type="textarea"
                                      name="instructions"
-                                     autoComplete=""
+                                     autoComplete="off"
                                      value={dogFormState.instructions}
                                      onChange={handleChange}
                                  />
@@ -369,7 +450,7 @@ function User() {
                                                 className="file"
                                                 type="file"
                                                 name="picture"
-                                                autoComplete=""
+                                                autoComplete="off"
                                                 
                                                 onChange={handleChange}
                                                  />
@@ -425,8 +506,12 @@ function User() {
 
                                          <div className="dogPic">
 
-                                             <img src={doggos.picture} alt={"picture of " + `${doggos.name}`}/>
-                                           </div>
+                                             <img src={doggos.picture} alt={"picture of " + `${doggos.name}`} />
+                                             {dogRemoval ?
+                                                 <button onClick={() => removeDogComplete({ doggos })} className="removeDog" type = "click">
+                                                     Remove Dog
+                                                 </button>: <div></div>}
+                                         </div>
                                      </div>
                                  </div>)))}
                 

@@ -92,7 +92,7 @@ export const QUERY_USER = gql`
         }
       }
       doggos {
-        _id
+       _id
         name
         size
         age
@@ -100,6 +100,7 @@ export const QUERY_USER = gql`
         behavior
         temperament
         picture
+        instructions
       }
       appointments {
         _id

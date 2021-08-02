@@ -42,11 +42,12 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
+      
       <div className="App">
         <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/User/:username?" component={User} />
-        
+        <Route exact path="/User" component={User} />
         <Route exact path="/DogWalker/:username?" component={DogWalker} />
         <Route exact path="/Login" component={Login} />
         <Route exact path="/SignUp" component={SignUp} />
