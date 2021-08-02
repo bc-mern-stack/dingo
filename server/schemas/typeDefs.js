@@ -4,6 +4,7 @@ const { gql } = require("apollo-server-express");
 // create our typeDefs
 const typeDefs = gql`
   scalar Date
+  scalar JSON
 
   type User {
     _id: ID
@@ -44,6 +45,8 @@ const typeDefs = gql`
     date_end: Date
     rate: Int
     hours_available: [Hourly]
+    hours_by_date: JSON
+    dates_available: [Date]
   }
 
   type Hourly {
