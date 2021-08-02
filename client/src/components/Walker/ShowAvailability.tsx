@@ -5,7 +5,7 @@ import { hConvert } from "../../utils/helpers";
 import { useMutation } from "@apollo/client";
 import { REMOVE_AVAILABILITY } from "../../utils/mutations";
 
-export default function ShowAvailability({ user }: any) {
+export default function ShowAvailability({ user, userParam }: any) {
   const { availability } = user;
 
   interface HourlyOptions {
@@ -62,7 +62,7 @@ export default function ShowAvailability({ user }: any) {
     return weekdays.map((day, i) => {
       if (day === "h") {
         return (
-          <tr key={day} className="show-hourly-column-hours ">
+          <tr key={day} className="show-hourly-row-hours ">
             <td key={day + i} className="show-hourly-day">
               {day}
             </td>
@@ -71,7 +71,7 @@ export default function ShowAvailability({ user }: any) {
         );
       } else {
         return (
-          <tr key={day} className="show-hourly-column">
+          <tr key={day} className="show-hourly-row">
             <td key={day + i} className="show-hourly-day">
               {day}
             </td>
@@ -137,15 +137,21 @@ export default function ShowAvailability({ user }: any) {
               </tbody>
             </table>
           </div>
-          <button
-            className="delete-avail-btn"
-            type="submit"
-            onClick={(e) => {
-              handleAvailDelete(e, _id);
-            }}
-          >
-            delete
-          </button>
+          {userParam ? (
+            ""
+          ) : (
+            <button
+              className="delete-avail-btn"
+              type="submit"
+              onClick={(e) => {
+                handleAvailDelete(e, _id);
+              }}
+            >
+              delete
+            </button>
+          )}
+
+          {error && <p className="error">{error}</p>}
         </article>
       );
     }
@@ -158,7 +164,7 @@ export default function ShowAvailability({ user }: any) {
           availabilityCards
         ) : (
           <div className="no-availability">
-            No availability, add some with the button below!
+            No availability, add some with the plus button below!
           </div>
         )}
       </div>

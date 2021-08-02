@@ -5,7 +5,7 @@ import DogWalker from "./pages/DogWalker";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import Footer from "./components/Footer";
-import NotFound from "./components/NotFound"
+import NotFound from "./components/NotFound";
 import { Route, Switch } from "react-router-dom";
 
 // add apollo client to the App
