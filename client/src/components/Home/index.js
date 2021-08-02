@@ -73,19 +73,15 @@ function Home() {
         <div className="navigation">
           <div className="element left">Location</div>
           <section className="line"></section>
-          <div>
+          <div className="element">
             <Link to="/User">
-              <div className="element" type="button">
-                Owner appointments
-              </div>
+              <span className="element">Owner appointments</span>
             </Link>
           </div>
           <section className="line"></section>
-          <div>
+          <div className="element">
             <Link to="/DogWalker">
-              <div className="element" type="button">
-                Walking for others
-              </div>
+              <span className="element">Walking for others</span>
             </Link>
           </div>
           <section className="line"></section>
