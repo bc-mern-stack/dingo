@@ -26,4 +26,9 @@ const availabilitySchema = new Schema(
 
 const Availability = model("Availability", availabilitySchema);
 
+availabilitySchema.post("save", async function (next) {
+  console.log(this);
+  const {} = this;
+});
+
 module.exports = Availability;
