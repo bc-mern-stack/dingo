@@ -7,6 +7,8 @@ import deleteDog from '../../assets/deleteWhite.png'
 import { useQuery, gql, useMutation } from '@apollo/client';
 import { QUERY_USERS, QUERY_ME, QUERY_USER } from '../../utils/queries';
 import { ADD_DOGGO, REMOVE_DOGGO } from '../../utils/mutations';
+import StateList from "../SignUp/StateList";
+
 import Auth from '../../utils/auth';
 import camera from '../../assets/camera.png'
 
@@ -80,34 +82,55 @@ function User() {
     const [addressSearch, newAddressSearch] = useState({
         city: ""
     });
+     const [addressFormState, setAddressFormState] = useState({
+
+    state: ""
+   
+  });
+     const handleChangeAddress = (event) => {
+    const { name, value } = event.target;
+
+    setAddressFormState({
+      ...addressFormState,
+      [name]: value,
+    });
+        //console.log(addressFormState);
+
+  };
     const [totalSearch, setTotalSearch] = useState(
         []
     );
     
     const handleSearchAddress = (event) => {
+
         const { name, value } = event.target;
+        setNewentry( false )
         //console.log(name, value)
         newAddressSearch({
+            
             ...addressSearch,
             [name]: value
         });
+        event.target.value = '';
     }
     const handleNewSearchForWalkers = async event => {
         event.preventDefault();
+        
+        if(totalSearch.length > 0){totalSearch.length = 0}
         userData.users.forEach(element => {
            
-            if (newEntry === true) {
-                setNewentry(false);
-            }
+           
            
             if (element.address.city.toLowerCase() === addressSearch.city.toLowerCase().trim()
-                && element.username != data.me.username && element.availability.length > 0) {
+                && element.username != data.me.username && addressFormState.state
+                === element.address.state && element.availability.length > 0) {
                 totalSearch.push(element.username);
                 setNewentry(true);
+                 
             }
-
-            
+           
         });
+           
     }
     /***********************************************************/
     const [photoStatus, uploadPhoto] = useState(false);
@@ -320,9 +343,11 @@ function User() {
                      <img  onClick = {toggleOff} className = "arrow-down-orange" src="https://img.icons8.com/ios-filled/50/000000/year-of-dog.png"/>
                      <div className = "text">
                              <div>
-                                 <h2>Find Dog Walkers in Your Area</h2>
-                                     <h3>{ user.address.city } { user.address.state }</h3>
-                                
+                                     <h2>Find Dog Walkers in Your Area</h2>
+                                     {!newEntry ?
+                                          
+                                         <h3>Enter a city</h3>:<h3>{addressSearch.city}</h3>
+                                     }
                              </div> 
                              
                      </div>
@@ -339,10 +364,15 @@ function User() {
                                          }
                                      
                                  </ul>
-                     <form onSubmit = {handleNewSearchForWalkers}>
-                         <input name="city" autoComplete="" value={addressSearch.name} onChange= {handleSearchAddress} className = "newLocationSearchInput" placeholder = "New Search" type="text" />
-                         <button className = "newLocationSearchButton" type="submit"></button>
-                        
+                     <form className = "buttomSearch" onSubmit = {handleNewSearchForWalkers}>
+                        <input name="city" autoComplete="" value={addressSearch.name} onBlur= {handleSearchAddress} className = "newLocationSearchInput" placeholder = "New City Search" type="text" />
+                         <div className = "secondRow">
+                        <label name="state"></label>
+                            <StateList className = "stateSelect"
+                            addressFormState={addressFormState}
+                            handleChangeAddress={handleChangeAddress}/>
+                            <button className = "newLocationSearchButton" type="submit"></button>
+                        </div>
                      </form>
                      </div>
                          </div>}
