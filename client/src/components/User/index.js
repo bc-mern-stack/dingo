@@ -29,6 +29,7 @@ function User() {
 
 
     /******************************************************************************************/
+    
     const [theAppointments, setTotalSearchAppoint] = useState(
         []
     );
@@ -36,18 +37,17 @@ function User() {
     const [dateCheck, setDateCheck] = useState(true);
     const [dateCheckMatch, setDateCheckMatch] = useState(false);
 
+
     const onChange = date => {
         setDate(date)
-        setContent()
+        setContent(date)
     }
-    const setContent = () => {
+    const setContent = (date) => {
         const newDate = dateFormat(date, "dddd, mmmm dd, yyyy")
         
         
-            
-        
             //console.log(user.appointments)
-           
+           const hourSet = [];
         for (var i = 0; i < user.appointments.length; i++) {
                
             //console.log(user.appointments.date)
@@ -59,27 +59,41 @@ function User() {
             })
 
             //console.log(newdate)
-                
+            const favorites = []
             //dateArray.push(user.appointments[i].date);
             let newHour = 0;
             /*console.log(parseUser)*/
             console.log(newDate)
+            
+            console.log(hourSet)
             if (newDate === newdate) {
+                
                 if (user.appointments[i].hour === 12) {
-                    newHour = 12 + " pm"
+                    newHour = 12 + "pm"
                 }
                 else if (user.appointments[i].hour > 12) {
                     newHour = user.appointments[i].hour;
                     newHour = newHour -= 12;
-                    newHour = newHour + " pm"
+                    newHour = newHour + "pm"
                 }
                 else if (user.appointments[i].hour < 12) {
-                    newHour = user.appointments[i].hour + " am"
+                    newHour = user.appointments[i].hour + "am"
                 }
                 else if (user.appointments[i].hour === 0)
                     { newHour = 12 + " am"
             }
-                 
+                
+                /*if (!favorites.includes(user.appointments[i].walker.username)) {
+                    favorites.push(user.appointments[i].walker.username)
+
+                }*/
+                if (!hourSet.length) {
+                    hourSet.push(newHour)
+                }
+                else {
+                     hourSet.push("-" + newHour)
+                }
+                console.log(hourSet)
                 console.log("match")
                 setDateCheckMatch(true)
                 console.log(user.appointments[i])
@@ -88,8 +102,10 @@ function User() {
                     date: newDate,
                     walker: user.appointments[i].walker.username,
                     doggos: user.appointments[i].doggos,
-                    hour: newHour,
-                    pic:user.appointments[i].doggos.picture
+                    hour: hourSet,
+                    /*hour: newHour,*/
+                    pic: user.appointments[i].doggos.picture,
+                   /* favorites: favorites*/
                 })
             }
             
@@ -100,60 +116,53 @@ function User() {
 
     const setClass = (date, view) => {
         const falsedateArray = [ { date:  "Friday, September 10, 2021", colorName: "highlight" }, { date: "2021-06-16T09:47:17.456000Z", colorName: "blue" }]
-        //console.log(new Date(parseInt("2021-08-03T07:44:14+00:00")))
-        //console.log(falsedateArray)
-        //console.log(user.appointments)
-        
-
+      
         if (user.appointments && dateCheck) {
             const dateArray = []
             
         
             //console.log(user.appointments)
            
-            for (var i = 0; i < user.appointments.length; i++){
-                const obj = {
-                date: "",
-                colorName: "highlight"
-            }
-            //console.log(user.appointments.date)
-                let newdate = new Date(parseInt(user.appointments[i].date)).toLocaleDateString("en-en", {
-                year: "numeric",
-                month: "long",
-                day: "2-digit",
-                weekday: "long"
-            })
-                obj.date = newdate
+            for (var i = 0; i < user.appointments.length; i++) {
+                if (user.appointments[i].walker.username != user.username) {
+                    //console.log("no name match")
+                    
+                    const obj = {
+                        date: "",
+                        colorName: "highlight"
+                    }
+                
+                    //console.log(user.appointments.date)
+                    let newdate = new Date(parseInt(user.appointments[i].date)).toLocaleDateString("en-en", {
+                        year: "numeric",
+                        month: "long",
+                        day: "2-digit",
+                        weekday: "long"
+                    })
+                    obj.date = newdate
 
-                 //console.log(newdate)
-                
-                //dateArray.push(user.appointments[i].date);
-                dateArray.push(obj)
-                
-                
-            }
             
-        
-            const dateobj =
-            dateArray.find((x) => {
-            return (
-            date.getDay() === new Date(x.date).getDay() &&
-            date.getMonth() === new Date(x.date).getMonth() &&
-            date.getDate() === new Date(x.date).getDate()
+                    dateArray.push(obj)
+                
+                
+                }
+            }
+            if (dateArray.length) {
+                const dateobj =
+                    dateArray.find((x) => {
+                        return (
+                            date.getDay() === new Date(x.date).getDay() &&
+                            date.getMonth() === new Date(x.date).getMonth() &&
+                            date.getDate() === new Date(x.date).getDate()
                
-            );
-            });
+                        );
+                    });
             
             
            
-            return dateobj ? dateobj.colorName : "";
-        }
-       if (view === 'month' && date.getDay() === 0) {
-               
-
-                return <p>'My content'</p>;
-                
+                return dateobj ? dateobj.colorName : "";
             }
+        }
 
         }
     
@@ -189,8 +198,25 @@ function User() {
     function goBackToCal() {
         setDateCheckMatch(false)
     }
+    
 
-   
+    const checkFav = () => {
+        const favorites = []
+        for (var i = 0; i < user.appointments.length; i++)
+        {
+            if (user.appointments[i].walker.username != user.username) {
+                if (!favorites.includes(user.appointments[i].walker.username)) {
+                    favorites.push(user.appointments[i].walker.username)
+                }
+            }
+        }
+        //console.log(favorites);
+       
+        
+        return favorites;
+  };
+        
+    
     /************************add new dog*********************************/
     const [errorValue, setErrorValue] = useState(
         false
@@ -417,7 +443,7 @@ function User() {
         }
             
     };
-
+  
 
    if (loading) {
     return <div>Loading...</div>;
@@ -498,10 +524,12 @@ function User() {
                                  <ul className="dogWalkersLeft scroll">
                                      {loading ? (<li>...Loading</li>
                                  ) : (
-                                           
-                                     user.favorites.map(favorites => (
-                                        
-                                             <li key={favorites._id}>{ favorites.username}</li>
+                                          
+                                     checkFav().map(walker => (
+                                        <Link to={`/DogWalker/${walker}`} key={walker}>
+                                              <li key = {walker}>{walker}</li> 
+                                     </Link>
+                                             
                                              
                                         
                                      )))}
