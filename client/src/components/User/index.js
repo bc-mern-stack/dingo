@@ -77,7 +77,7 @@ function User() {
                     newHour = user.appointments[i].hour + " am"
                 }
                 else if (user.appointments[i].hour === 0)
-                    { newHour = user.appointments[i].hour + " am"
+                    { newHour = 12 + " am"
             }
                  
                 console.log("match")

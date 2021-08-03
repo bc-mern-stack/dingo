@@ -334,7 +334,7 @@ height: 150px;
   border-radius: 10px;
   background-color: var(--brightOrange);
   color: white;
-  width: 50%;
+  width: 49%;
   display: flex;
   flex-wrap: wrap;
   align-content: space-between;
@@ -363,7 +363,8 @@ height: 150px;
 }
 .highlight {
   background-color: var(--brightOrange) !important;
-  border-radius: 7px;
+  
+  
 }
 .hoverOverCal {
  color: white;
@@ -617,7 +618,7 @@ height: 150px;
   .arrow-down-orange{
    
     position: absolute;
-    right: 51%;
+    right: 52%;
     z-index: 0;
     margin-top: 15px;
   }
