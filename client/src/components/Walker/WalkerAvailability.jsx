@@ -25,7 +25,7 @@ export default function WalkerAvailabilty({ user, userParam }) {
 
   const addAvailabilitySection = (
     <>
-      <h1 className="blackBar add-avail-bar">
+      <h1 className="walker-blackBar add-avail-bar">
         <span className="add-avail-bar-text">Add Availability</span>
         <article>
           <img
@@ -51,7 +51,7 @@ export default function WalkerAvailabilty({ user, userParam }) {
   return (
     <div className="avail-container">
       <section className="show-avail-section">
-        <h1 className="blackBar show-avail-bar">
+        <h1 className="walker-blackBar show-avail-bar">
           <span className="show-avail-bar-text">Availability</span>
           <article>
             <img

@@ -50,39 +50,37 @@ function DogWalker() {
   };
 
   return (
-    <div>
-      <div className="allUserElements">
-        <div className="userNav">
-          <h1>Your Dog Walking Availability</h1>
-          <div className="logoutAndHome">
+    <div className="flex-column">
+      <div className="walker-profile">
+        <div className="walker-userNav">
+          <h1>Dog Walking Availability</h1>
+          <nav className="walker-userNav-links">
             <Link to="/">
               <h2 className="logout" type="button" onClick={logout}>
                 Logout /
               </h2>
             </Link>
-
             <Link to="/">
               <h2>Home</h2>
             </Link>
-          </div>
+          </nav>
         </div>
-        <h1 className="blackBar">{user.username}</h1>
+
         <div className="walker-profile-card-container">
+          <h1 className="walker-blackBar">{user.username}</h1>
           <div className="walker-profile-top">
             <div className="walker-calendar-card">
-              <div className="text">
-                <h4>Walker Calendar:</h4>
-                <Calendar
-                  onChange={onCalendarChange}
-                  value={calendarValue}
-                  tileDisabled={({ activeStartDate, date, view }) => {
-                    let available = allAvailableDates.includes(
-                      date.toDateString()
-                    );
-                    return !available;
-                  }}
-                />
-              </div>
+              <h4>Walker Calendar:</h4>
+              <Calendar
+                onChange={onCalendarChange}
+                value={calendarValue}
+                tileDisabled={({ activeStartDate, date, view }) => {
+                  let available = allAvailableDates.includes(
+                    date.toDateString()
+                  );
+                  return !available;
+                }}
+              />
             </div>
 
             <WalkerCard user={user} userParam={userParam}></WalkerCard>
