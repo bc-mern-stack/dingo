@@ -1,11 +1,11 @@
 import close from "../../assets/close.png";
 
-export default function SearchModal({ modalIsOpen, setIsOpen }) {
+export default function SearchModal({ searchModalOpen, setSearchModal }) {
   return (
     <div className="bothDropDowns">
       <div className="dropDownlocation">
         <img
-          onClick={() => setIsOpen(false)}
+          onClick={() => setSearchModal(false)}
           className="close"
           src={close}
           alt="close"
@@ -31,7 +31,7 @@ export default function SearchModal({ modalIsOpen, setIsOpen }) {
 
       <div className="dropDown">
         <img
-          onClick={() => setIsOpen(false)}
+          onClick={() => setSearchModal(false)}
           className="closeRight"
           src={close}
           alt="close"

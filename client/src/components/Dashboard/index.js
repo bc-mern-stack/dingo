@@ -12,7 +12,8 @@ import dog2 from "../../assets/dog2.png";
 import dog3 from "../../assets/dog3.png";
 
 function Dashboard() {
-  const [modalIsOpen, setIsOpen] = useState(false);
+  const [searchModalOpen, setSearchModal] = useState(false);
+
 
   const logout = (event) => {
     event.preventDefault();
@@ -44,17 +45,16 @@ function Dashboard() {
           </div>
           <section className="line"></section>
 
-          <div onClick={() => setIsOpen(true)} className="endNav element right">
+          <div onClick={() => setSearchModal(true)} className="endNav element right">
             Find new dog walkers
           </div>
 
           <section className="seacrhCircle"></section>
         </div>
 
-        {modalIsOpen ? (
+        {searchModalOpen ? (
           <SearchModal
-            modalIsOpen={modalIsOpen}
-            setIsOpen={setIsOpen}
+          searchModalOpen={searchModalOpen} setSearchModal={ setSearchModal}
           ></SearchModal>
         ) : (
           ""
