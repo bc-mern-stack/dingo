@@ -180,11 +180,13 @@ export const QUERY_ME = gql`
           username
         }
         walker {
+          _id
           username
         }
         hour
         doggos {
           name
+          picture
         }
       }
     }

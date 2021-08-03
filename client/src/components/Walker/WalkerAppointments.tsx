@@ -7,9 +7,12 @@ export default function WalkerAppointments({
   calendarValue,
 }: any) {
   const { appointments } = user;
-  const myWalkerAppointments = appointments.filter(
-    (a: any) => a.walker._id === user._id
-  );
+
+  const myWalkerAppointments = appointments?.filter((a: any) => {
+    console.log(a.walker);
+    return a.walker._id === user._id;
+  });
+  console.log(myWalkerAppointments);
 
   const appointmentCards = myWalkerAppointments.map(
     (appointment: any, index: number) => {

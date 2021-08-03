@@ -31,7 +31,8 @@ function DogWalker() {
 
   try {
     for (let avail of availability) {
-      const availableDates = avail.dates_available || [];
+      let dates = avail.dates_available || [];
+      let availableDates = dates.map((date) => new Date(date).toDateString());
       allAvailableDates = allAvailableDates.concat(availableDates);
     }
   } catch (e) {}
@@ -76,7 +77,7 @@ function DogWalker() {
                   value={calendarValue}
                   tileDisabled={({ activeStartDate, date, view }) => {
                     let available = allAvailableDates.includes(
-                      date.toISOString()
+                      date.toDateString()
                     );
                     return !available;
                   }}
