@@ -28,11 +28,16 @@ npm run develop
 
 an app for people who have dogs, but not enough time to walk them.
 
-![preview of app](preview1.png)
+![preview of app](./images/preview1.png)
+![preview of walker viewing appointments](./images/preview2.png)
+![preview of owner scheduling appointments](./images/preview3.png)
 
 ## Contributing
 
-nothing to shout out.
+these packages were used to build this app:
+
+- [react-calendar](https://projects.wojtekmaj.pl/react-calendar/)
+- [react-date-picker](https://projects.wojtekmaj.pl/react-date-picker/)
 
 ## Tests
 

@@ -1,5 +1,6 @@
 import "./App.css";
 import Home from "./components/Home";
+import Dashboard from "./components/Dashboard";
 import User from "./components/User";
 import DogWalker from "./pages/DogWalker";
 import Login from "./components/Login";
@@ -7,6 +8,8 @@ import SignUp from "./components/SignUp";
 import Footer from "./components/Footer";
 import NotFound from "./components/NotFound";
 import { Route, Switch } from "react-router-dom";
+
+import Auth from "./utils/auth";
 
 // add apollo client to the App
 import { setContext } from "@apollo/client/link/context";
@@ -45,12 +48,16 @@ function App() {
       
       <div className="App">
         <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/User/:username?" component={User} />
-        <Route exact path="/User" component={User} />
-        <Route exact path="/DogWalker/:username?" component={DogWalker} />
-        <Route exact path="/Login" component={Login} />
-        <Route exact path="/SignUp" component={SignUp} />
+          <Route
+            exact
+            path="/"
+            component={Auth.loggedIn() ? Dashboard : Home}
+          />
+          <Route exact path="/User" component={User} />
+          <Route exact path="/User/:username?" component={User} />
+          <Route exact path="/DogWalker/:username?" component={DogWalker} />
+          <Route exact path="/Login" component={Login} />
+          <Route exact path="/SignUp" component={SignUp} />
 
           <Route component={NotFound} />
         </Switch>

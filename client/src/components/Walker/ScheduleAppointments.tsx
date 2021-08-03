@@ -29,7 +29,21 @@ export default function ScheduleAppointments({
     data: meData,
     error: meError,
   } = useQuery(QUERY_ME);
-  const me = meData?.me;
+
+  const me = meData?.me || {};
+
+  const avails = walker.availability;
+
+  let selectedDayHours: any = [];
+  for (let a of avails) {
+    let { hours_by_date: dates } = a;
+    for (let [date, hours] of Object.entries(dates)) {
+      date = new Date(date).toDateString();
+      if (date === calendarValue.toDateString()) {
+        selectedDayHours = hours;
+      }
+    }
+  }
 
   const appointmentObject = {
     owner: me?._id,
@@ -54,7 +68,7 @@ export default function ScheduleAppointments({
 
   const handleDoggoSelect = (event: any) => {
     setSelectedDoggos(event.target.value);
-    const { name, value, checked } = event.target;
+    const { value, checked } = event.target;
 
     if (checked === true) {
       // if the target is checked, add it
@@ -67,7 +81,7 @@ export default function ScheduleAppointments({
     }
   };
 
-  const doggoCards = me?.doggos.map((doggo: any) => {
+  const doggoCards = me.doggos?.map((doggo: any) => {
     const { _id: doggoId, name, picture } = doggo;
     return (
       <article className="schedule-doggo-card" key={doggoId}>
@@ -127,6 +141,7 @@ export default function ScheduleAppointments({
           <HourList
             selectedHour={selectedHour}
             setSelectedHour={setSelectedHour}
+            selectedDayHours={selectedDayHours}
           />
         </span>
       </div>
@@ -142,6 +157,7 @@ export default function ScheduleAppointments({
         >
           schedule
         </button>
+        {error && <div className="error">{error.message}</div>}
       </div>
     </form>
   );

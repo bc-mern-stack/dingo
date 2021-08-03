@@ -35,6 +35,8 @@ export const QUERY_USERS = gql`
           sa
           su
         }
+        hours_by_date
+        dates_available
       }
       doggos {
         _id
@@ -90,6 +92,8 @@ export const QUERY_USER = gql`
           sa
           su
         }
+        hours_by_date
+        dates_available
       }
       doggos {
        _id
@@ -157,6 +161,8 @@ export const QUERY_ME = gql`
           sa
           su
         }
+        hours_by_date
+        dates_available
       }
       doggos {
         _id
@@ -176,11 +182,13 @@ export const QUERY_ME = gql`
           username
         }
         walker {
+          _id
           username
         }
         hour
         doggos {
           name
+          picture
         }
       }
     }

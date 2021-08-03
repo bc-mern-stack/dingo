@@ -1559,9 +1559,7 @@ position: relative;}
     /*border-radius: 0px 35px 35px 0px;*/
     padding-right: 40px;
     padding-left: 40px;
-    width: auto;
-    
-
+    width: 100%;
   }
   .right:hover{
     color: #ffffff;

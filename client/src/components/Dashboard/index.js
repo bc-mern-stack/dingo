@@ -1,54 +1,56 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
+import Auth from "../../utils/auth";
+
+import SearchModal from "./SearchModal";
+
 import logo from "../../assets/dingoLogo.png";
 import illustration from "../../assets/illustration.png";
 import dog1 from "../../assets/dog1.png";
 import dog2 from "../../assets/dog2.png";
 import dog3 from "../../assets/dog3.png";
 
-import SearchModal from "../Dashboard/SearchModal";
-
-function Home() {
-
+function Dashboard() {
   const [searchModalOpen, setSearchModal] = useState(false);
+
+
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+  };
 
   return (
     <div className="allHomeElements">
-      
-
       <div className="bluePat">
         <div className="logoAndLogin">
           <img className="logo" src={logo} alt="logo" />
-
-          <div className="" type="button"></div>
+          <div className="signUpBox" onClick={logout}>
+            Log out
+          </div>
         </div>
-        <nav className="navigation">
-          <div className="element left">
-            <Link to="/Login">
-              <div className="element">Log in</div>
+        <div className="navigation">
+          <div className="element left">Location</div>
+          <section className="line"></section>
+          <div className="element">
+            <Link to="/User">
+              <span className="element">Owner appointments</span>
             </Link>
           </div>
           <section className="line"></section>
           <div className="element">
-            <Link to="/SignUp">
-              <span className="element">Sign up</span>
-            </Link>
-          </div>
-          <section className="line"></section>
-          <div className="element">
-            <Link to="/About">
-              <span className="element">About</span>
+            <Link to="/DogWalker">
+              <span className="element">Walking for others</span>
             </Link>
           </div>
           <section className="line"></section>
 
-          <div onClick={() =>setSearchModal(true)} className="endNav element right">
-            Find a dog walker
+          <div onClick={() => setSearchModal(true)} className="endNav element right">
+            Find new dog walkers
           </div>
 
           <section className="seacrhCircle"></section>
-        </nav>
+        </div>
 
         {searchModalOpen ? (
           <SearchModal
@@ -72,4 +74,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Dashboard;
