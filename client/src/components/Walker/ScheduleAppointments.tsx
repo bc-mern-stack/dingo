@@ -32,6 +32,19 @@ export default function ScheduleAppointments({
 
   const me = meData?.me || {};
 
+  const avails = walker.availability;
+
+  let selectedDayHours: any = [];
+  for (let a of avails) {
+    let { hours_by_date: dates } = a;
+    for (let [date, hours] of Object.entries(dates)) {
+      date = new Date(date).toDateString();
+      if (date === calendarValue.toDateString()) {
+        selectedDayHours = hours;
+      }
+    }
+  }
+
   const appointmentObject = {
     owner: me?._id,
     walker: walker._id,
@@ -68,7 +81,7 @@ export default function ScheduleAppointments({
     }
   };
 
-  const doggoCards = me?.doggos.map((doggo: any) => {
+  const doggoCards = me.doggos?.map((doggo: any) => {
     const { _id: doggoId, name, picture } = doggo;
     return (
       <article className="schedule-doggo-card" key={doggoId}>
@@ -128,6 +141,7 @@ export default function ScheduleAppointments({
           <HourList
             selectedHour={selectedHour}
             setSelectedHour={setSelectedHour}
+            selectedDayHours={selectedDayHours}
           />
         </span>
       </div>
