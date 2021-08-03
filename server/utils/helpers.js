@@ -5,4 +5,21 @@ function randomDate(start, end, startHour, endHour) {
   return date;
 }
 
-module.exports = { randomDate };
+Date.prototype.addDays = function (days) {
+  var dat = new Date(this.valueOf());
+  dat.setDate(dat.getDate() + days);
+  return dat;
+};
+
+function getDateArray(startDate, stopDate) {
+  var dateArray = new Array();
+  var currentDate = startDate;
+
+  while (currentDate <= stopDate) {
+    dateArray.push(currentDate);
+    currentDate = currentDate.addDays(1);
+  }
+  return dateArray;
+}
+
+module.exports = { randomDate, getDateArray };

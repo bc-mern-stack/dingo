@@ -1,0 +1,579 @@
+.hidden {
+  display: none !important;
+}
+
+/* ---------------------begin profile info styling--------------------- */
+
+.walker-profile-card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.walker-profile-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.walker-calendar-card {
+  background-color: var(--lightGrey);
+  width: 47%;
+  border-radius: 10px;
+}
+
+.walker-info-card {
+  border-radius: 10px;
+  background-color: var(--brightOrange);
+  color: white;
+  width: 47%;
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+}
+
+/* ---------------------end profile info styling--------------------- */
+
+/* ---------------------begin appointment card styling--------------------- */
+
+.appointments {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.appointments-label {
+  font-size: 1.2em;
+  margin: 1rem 0 0 0;
+}
+
+.appointment-card-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.appointment-card {
+  background-color: #dadada;
+  min-width: fit-content;
+  width: 30%;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 1rem 0 0.5rem 0;
+}
+
+.appointment-date,
+.appointment-hour,
+.appointment-walker,
+.appointment-owner,
+.appointment-doggos {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5rem;
+}
+
+.appointment-doggos {
+  flex-direction: column;
+}
+
+.appointment-doggos-container {
+  margin: 0.5rem 0 0 0;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  align-items: center;
+  justify-content: center;
+}
+
+.little-doggo-card {
+  justify-self: center;
+  margin: 0.25rem;
+  position: relative;
+  display: flex;
+  max-width: max-content;
+}
+
+.little-doggo-card-picture {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 10%;
+  object-fit: cover;
+}
+
+.little-doggo-card-name {
+  position: absolute;
+  background-color: var(--brightOrange);
+  padding: 0.15rem 0.3rem 0.15rem 0.3rem;
+  border-radius: 0.35rem;
+  color: aliceblue;
+  text-align: center;
+  bottom: 0.35rem;
+  right: 0.35rem;
+}
+
+.schedule-appointment-form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+  background-color: blanchedalmond;
+  margin: 2rem;
+  padding: 2rem;
+  width: 60%;
+  border-radius: 10px;
+}
+
+.schedule-form-hide-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: #00000000;
+  border: none;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.schedule-form-hide-btn :first-child {
+  width: 2rem;
+  height: 2rem;
+}
+
+.schedule-form-hide-btn :first-child:hover {
+  transition: 0.25s;
+  transform: rotate(90deg);
+}
+
+.schedule-form-label {
+  font-size: 1.25rem;
+  justify-self: center;
+  align-self: center;
+  margin: 0 0 1.5rem 0;
+}
+
+.schedule-form-label :first-child {
+  font-weight: bold;
+}
+
+.schedule-date,
+.schedule-hour {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 1rem 0;
+  width: 90%;
+}
+
+.schedule-date :first-child,
+.schedule-hour :first-child {
+  flex-grow: 1;
+}
+
+.schedule-doggos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.schedule-doggos-card-container {
+  margin: 0.5rem 0 0 0;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  align-items: center;
+  justify-content: center;
+}
+
+.schedule-doggo-card {
+  justify-self: center;
+  margin: 0.25rem;
+  position: relative;
+  display: flex;
+  max-width: max-content;
+}
+
+.schedule-doggo-card-picture {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.schedule-doggo-card-name {
+  position: absolute;
+  background-color: var(--brightOrange);
+  padding: 0.15rem 0.3rem 0.15rem 0.3rem;
+  border-radius: 0.35rem;
+  color: aliceblue;
+  text-align: center;
+  bottom: 0.35rem;
+  right: 0.35rem;
+}
+
+.schedule-doggo-card-checkbox {
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  top: 0.35rem;
+  left: 0.35rem;
+}
+
+.schedule-form-show-btn {
+  height: 2rem;
+  width: 15rem;
+  text-align: center;
+  background-color: #4caf50;
+  border-radius: 10px;
+  color: white;
+  font-size: 19px;
+  border: none;
+  margin: 1.5rem 0 0 0;
+  z-index: 1;
+  cursor: pointer;
+  align-self: center;
+}
+
+.schedule-submit-btn {
+  height: 2rem;
+  width: 6rem;
+  text-align: center;
+  background-color: #4caf50;
+  border-radius: 10px;
+  color: white;
+  font-size: 19px;
+  border: none;
+  margin: 1.5rem 0 0 0;
+  z-index: 1;
+  cursor: pointer;
+  align-self: center;
+}
+
+/* ---------------------end appointment card styling--------------------- */
+
+/* ---------------------begin add availability styling--------------------- */
+
+.add-avail-bar {
+  display: flex;
+}
+
+.add-avail-bar-text {
+  flex-grow: 1;
+}
+
+.add-avail-plus {
+  height: 1.5rem;
+  width: 1.5rem;
+  margin-right: 1.6rem;
+  align-self: center;
+  cursor: pointer;
+}
+
+.add-avail-modal-bg {
+  position: fixed;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.425);
+}
+
+.add-availability-form {
+  display: flex;
+  flex-direction: column;
+  max-width: min-content;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 30px;
+  z-index: 3;
+  background-color: #f1f2f2;
+}
+
+.add-hourly-table {
+  width: 100%;
+}
+
+tbody.add-hourly-availability {
+  display: grid;
+  width: content;
+  grid-template-rows: repeat(8, 25px);
+  justify-content: center;
+  border: 1px solid #ababab99;
+  border-radius: 4px;
+}
+
+.add-hourly-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+}
+
+.add-hourly-cell,
+.add-hourly-hour,
+.add-hourly-h,
+.add-hourly-day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0px;
+  padding: 0px;
+  height: 25px;
+  width: 25px;
+  flex-grow: 1;
+  font-size: small;
+  color: rgba(0, 0, 0, 0.425);
+}
+
+.add-hourly-day {
+  flex-grow: 1;
+  align-items: center;
+  justify-self: center;
+  text-align: center;
+}
+
+.add-hourly-checkbox {
+  margin: 0px;
+  padding: 0px;
+  height: 25px;
+  width: 25px;
+}
+
+.add-avail-start-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+}
+
+.add-avail-start-date-text {
+  padding: 5px;
+  font-weight: bold;
+}
+
+.add-avail-end-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+}
+
+.add-avail-end-date-text {
+  padding: 5px;
+  font-weight: bold;
+}
+
+.add-avail-rate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+}
+
+.add-avail-rate-text {
+  padding: 5px;
+  font-weight: bold;
+}
+
+.add-avail-rate-input {
+  padding: 5px;
+  margin: 10px;
+  margin-bottom: 0;
+  width: 3rem;
+}
+
+.add-avail-hourly {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+}
+
+.add-avail-hourly-text {
+  padding: 5px;
+  font-weight: bold;
+}
+
+/* ---------------------end add availability styling--------------------- */
+
+/* ---------------------begin show availability styling--------------------- */
+
+.no-availability {
+  margin-left: 1.5rem;
+}
+
+.show-avail-eye {
+  height: 1.5rem;
+  width: 2.7rem;
+  margin-right: 1rem;
+  align-self: center;
+  cursor: pointer;
+}
+
+.show-avail-bar {
+  display: flex;
+}
+
+.show-avail-bar-text {
+  flex-grow: 1;
+}
+
+.show-avail-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  overflow-x: scroll;
+  max-width: 100%;
+}
+
+.show-avail-card {
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  max-width: min-content;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #f1f2f2;
+}
+
+.show-avail-hourly-table {
+  width: 100%;
+  display: flex;
+}
+
+tbody.show-hourly-availability {
+  display: grid;
+  grid-template-rows: repeat(8, auto);
+  border: 1px solid #ababab99;
+  border-radius: 4px;
+  justify-content: center;
+}
+
+tr.show-hourly-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+tr.show-hourly-row-hours {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+td.show-hourly-cell-available {
+  background-color: #4caf50;
+}
+
+td.show-hourly-cell {
+  background-color: #eaebc350;
+}
+
+td.show-hourly-hour {
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.425);
+}
+
+td.show-hourly-day {
+  font-size: small;
+  color: rgba(0, 0, 0, 0.425);
+}
+
+td.show-hourly-cell,
+td.show-hourly-cell-available,
+td.show-hourly-hour,
+td.show-hourly-day {
+  padding: 1px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.show-avail-start {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+}
+
+.show-avail-start-text {
+  padding: 5px;
+  font-weight: bold;
+}
+
+.show-avail-end {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+}
+
+.show-avail-end-text {
+  padding: 5px;
+  font-weight: bold;
+}
+
+.show-avail-rate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+}
+
+.show-avail-rate-text {
+  padding: 5px;
+  font-weight: bold;
+}
+
+.show-avail-hourly {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+}
+
+.show-avail-hourly-text {
+  padding: 5px;
+  font-weight: bold;
+}
+
+/* ---------------------end show availability styling--------------------- */
+
+/* ---------------------begin button styling--------------------- */
+.submit-btn {
+  height: 2rem;
+  width: 5rem;
+  text-align: center;
+  background-color: #4caf50;
+  border-radius: 10px;
+  color: white;
+  font-size: 19px;
+  border: none;
+  margin: 10px;
+  z-index: 1;
+  cursor: pointer;
+  align-self: center;
+}
+
+.delete-avail-btn {
+  height: 2rem;
+  width: 5rem;
+  text-align: center;
+  background-color: #da3c3c;
+  border-radius: 10px;
+  color: white;
+  font-size: 19px;
+  border: none;
+  margin: 10px;
+  z-index: 1;
+  cursor: pointer;
+  align-self: center;
+}
+/* ---------------------end button styling--------------------- */

@@ -1,10 +1,10 @@
 import React from "react";
 
-export default function WalkerCard({ user }) {
+export default function WalkerCard({ user }: any) {
   const { username, about, email, address } = user;
   const { city, state } = address;
   return (
-    <div className="rightSideUser">
+    <div className="walker-info-card">
       <div className="text alignRightSide">
         <h3>
           {city}, {state}

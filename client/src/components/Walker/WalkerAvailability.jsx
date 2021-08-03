@@ -24,7 +24,7 @@ export default function WalkerAvailabilty({ user, userParam }) {
   };
 
   const addAvailabilitySection = (
-    <section className="add-avail-section">
+    <>
       <h1 className="blackBar add-avail-bar">
         <span className="add-avail-bar-text">Add Availability</span>
         <article>
@@ -45,18 +45,20 @@ export default function WalkerAvailabilty({ user, userParam }) {
       >
         <AddAvailability user={user} />
       </div>
-    </section>
+    </>
   );
 
   return (
-    <div>
-      <section>
+    <div className="avail-container">
+      <section className="show-avail-section">
         <h1 className="blackBar show-avail-bar">
           <span className="show-avail-bar-text">Availability</span>
           <article>
             <img
               className="show-avail-eye"
-              alt="show availability plus sign"
+              alt={
+                showAvailModal ? "show avail eye open" : "show avail eye closed"
+              }
               src={showAvailModal ? eyeOpen : eyeClosed}
               onClick={() => {
                 setShowAvailModal(toggleBoolean(showAvailModal));
@@ -70,10 +72,12 @@ export default function WalkerAvailabilty({ user, userParam }) {
             showAvailModal ? "show-avail-component-container" : "hidden"
           }
         >
-          <ShowAvailability user={user} />
+          <ShowAvailability user={user} userParam={userParam} />
         </div>
       </section>
-      {userParam ? "" : addAvailabilitySection}
+      <section className="add-avail-section">
+        {userParam ? "" : addAvailabilitySection}
+      </section>
     </div>
   );
 }

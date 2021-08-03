@@ -1,16 +1,13 @@
 import React, { useState } from "react";
-import { Route, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import StateList from "./StateList";
 
 import { ADD_USER } from "../../utils/mutations";
 import { useMutation } from "@apollo/client";
 
-
 import Auth from "../../utils/auth";
 
 function SignUp() {
-  const history = useHistory();
-
   const [formState, setFormState] = useState({
     email: "",
     username: "",
@@ -37,8 +34,6 @@ function SignUp() {
       ...addressFormState,
       [name]: value,
     });
-        //console.log(addressFormState);
-
   };
 
   const handleChange = (event) => {
@@ -47,7 +42,6 @@ function SignUp() {
       ...formState,
       [name]: value,
     });
-    
   };
 
   // submit form
@@ -78,18 +72,9 @@ function SignUp() {
 
       <div className="rightLayout">
         <div className="alignForm">
-          <Route
-            render={() => (
-              <h1
-                type="button"
-                onClick={() => {
-                  history.push("/Login");
-                }}
-              >
-                Login Instead
-              </h1>
-            )}
-          />
+          <Link to="/Login">
+            <h1>Login Instead</h1>
+          </Link>
 
           <form>
             <label htmlFor="email">Email:</label>
