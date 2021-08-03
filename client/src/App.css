@@ -281,7 +281,7 @@ height: 150px;
 }
 .leftSideUserProfile{
   background-color: #20c5ee;
-  width: 50%;
+  width: 49%;
   z-index: 99;
   border-radius: 10px;
   color: white;
@@ -352,7 +352,7 @@ height: 150px;
 }
 .userCalender{
   background-color: var(--lightGrey);
-  width: 50%;
+  width: 49%;
   display: flex;
   flex-wrap: wrap;
   align-content: space-between;
@@ -360,6 +360,18 @@ height: 150px;
   
 
   /*border: yellowgreen 2px solid;*/
+}
+.highlight {
+  background-color: var(--brightOrange) !important;
+  border-radius: 7px;
+}
+.hoverOverCal {
+ color: white;
+ background-color: orange;
+}
+.hoverOverCal h3{
+ color: white;
+
 }
 .userCalender .cal{
     background-color: var(--lightGrey);
@@ -595,27 +607,24 @@ height: 150px;
     margin-left: 190px;
   }
   .arrow-down-blue {
-    /*width: 0; 
-    height: 0; 
-    border-left: 50px solid transparent;
-    border-right: 50px solid transparent;
-    transform: rotate(45deg);*/
-    /*border-bottom: 50px solid var(--brightOrange);*/
+    
     position: absolute;
-    right: 51%;
+    right: 52%;
     z-index: 0;
     margin-top: 15px;
   }
 
   .arrow-down-orange{
-    /*width: 0; 
-    height: 0; 
-    border-left: 50px solid transparent;
-    border-right: 50px solid transparent;
-    transform: rotate(45deg);*/
-    /*border-bottom: 50px solid var(--darkOrange);*/
+   
     position: absolute;
     right: 51%;
+    z-index: 0;
+    margin-top: 15px;
+  }
+  .schedule{
+    
+    position: absolute;
+    right: 7%;
     z-index: 0;
     margin-top: 15px;
   }
@@ -630,6 +639,21 @@ height: 150px;
     
   }.buttomSearch{
     margin-left: 30px;
+  }
+  .yourDogsAppoint{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+   
+  }
+  .doggosAppoint{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 25px;
+  }
+  .doggosAppoint h4{
+    margin-top: -10px;
   }
   .yourDogs{
     margin-top: 20px;
@@ -1618,7 +1642,19 @@ position: relative;}
  
  
   }
+   
+  @media only screen and (min-width: 1300px) {
+    
+    .schedule{
+    
+    position: absolute;
+    right: 17%;
+    z-index: 0;
+    margin-top: 15px;
+  }}
   @media only screen and (max-width: 1300px) {
+    
+    
   .rightSideUser h2{
     width: 70%;
   }

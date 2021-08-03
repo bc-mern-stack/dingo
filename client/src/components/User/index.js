@@ -12,7 +12,8 @@ import StateList from "../SignUp/StateList";
 import Auth from '../../utils/auth';
 import camera from '../../assets/camera.png'
 import { element, object } from 'prop-types';
-
+import { differenceInCalendarDays } from 'date-fns';
+import dateFormat from 'dateformat';
 function User() {
 
     /***************************************************************************************/
@@ -21,18 +22,147 @@ function User() {
     const { loading, data, error } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
         variables: { username: userParam }
     });
-
+    
     const user = data?.me || data?.user || {};
     // console.log(userData)
     const { data: userData } = useQuery(QUERY_USERS);
 
-    const logout = (event) => {
-        event.preventDefault();
-        Auth.logout();
-    };
-    /*****************************************************************************************/
-    const [value, onChange] = useState(new Date());
 
+    /******************************************************************************************/
+    const [theAppointments, setTotalSearchAppoint] = useState(
+        []
+    );
+    const [date, setDate] = useState(new Date());
+    const [dateCheck, setDateCheck] = useState(true);
+    const [dateCheckMatch, setDateCheckMatch] = useState(false);
+
+    const onChange = date => {
+        setDate(date)
+        setContent()
+    }
+    const setContent = () => {
+        const newDate = dateFormat(date, "dddd, mmmm dd, yyyy")
+        
+        
+            
+        
+            //console.log(user.appointments)
+           
+        for (var i = 0; i < user.appointments.length; i++) {
+               
+            //console.log(user.appointments.date)
+            let newdate = new Date(parseInt(user.appointments[i].date)).toLocaleDateString("en-en", {
+                year: "numeric",
+                month: "long",
+                day: "2-digit",
+                weekday: "long"
+            })
+
+            //console.log(newdate)
+                
+            //dateArray.push(user.appointments[i].date);
+            let newHour = 0;
+            /*console.log(parseUser)*/
+            console.log(newDate)
+            if (newDate === newdate) {
+                if (user.appointments[i].hour === 12) {
+                    newHour = 12 + " pm"
+                }
+                else if (user.appointments[i].hour > 12) {
+                    newHour = user.appointments[i].hour;
+                    newHour = newHour -= 12;
+                    newHour = newHour + " pm"
+                }
+                else if (user.appointments[i].hour < 12) {
+                    newHour = user.appointments[i].hour + " am"
+                }
+                else if (user.appointments[i].hour === 0)
+                    { newHour = user.appointments[i].hour + " am"
+            }
+                 
+                console.log("match")
+                setDateCheckMatch(true)
+                console.log(user.appointments[i])
+                setTotalSearchAppoint({
+                    ...theAppointments,
+                    date: newDate,
+                    walker: user.appointments[i].walker.username,
+                    doggos: user.appointments[i].doggos,
+                    hour: newHour,
+                    pic:user.appointments[i].doggos.picture
+                })
+            }
+            
+       
+        }
+    }
+   
+
+    const setClass = (date, view) => {
+        const falsedateArray = [ { date:  "Friday, September 10, 2021", colorName: "highlight" }, { date: "2021-06-16T09:47:17.456000Z", colorName: "blue" }]
+        //console.log(new Date(parseInt("2021-08-03T07:44:14+00:00")))
+        //console.log(falsedateArray)
+        //console.log(user.appointments)
+        
+
+        if (user.appointments && dateCheck) {
+            const dateArray = []
+            
+        
+            //console.log(user.appointments)
+           
+            for (var i = 0; i < user.appointments.length; i++){
+                const obj = {
+                date: "",
+                colorName: "highlight"
+            }
+            //console.log(user.appointments.date)
+                let newdate = new Date(parseInt(user.appointments[i].date)).toLocaleDateString("en-en", {
+                year: "numeric",
+                month: "long",
+                day: "2-digit",
+                weekday: "long"
+            })
+                obj.date = newdate
+
+                 //console.log(newdate)
+                
+                //dateArray.push(user.appointments[i].date);
+                dateArray.push(obj)
+                
+                
+            }
+            
+        
+            const dateobj =
+            dateArray.find((x) => {
+            return (
+            date.getDay() === new Date(x.date).getDay() &&
+            date.getMonth() === new Date(x.date).getMonth() &&
+            date.getDate() === new Date(x.date).getDate()
+               
+            );
+            });
+            
+            
+           
+            return dateobj ? dateobj.colorName : "";
+        }
+       if (view === 'month' && date.getDay() === 0) {
+               
+
+                return <p>'My content'</p>;
+                
+            }
+
+        }
+    
+
+        const logout = (event) => {
+            event.preventDefault();
+            Auth.logout();
+        };
+    
     /************************switch between dog walkers and current*********************************/
     const [isOpened, setIsOpened] = useState(false);
 
@@ -56,7 +186,9 @@ function User() {
         setIsOpened(false);
     }
       
-    
+    function goBackToCal() {
+        setDateCheckMatch(false)
+    }
 
    
     /************************add new dog*********************************/
@@ -82,6 +214,8 @@ function User() {
         picture: "",
         instructions: ""
     });
+    /**********************************************************/
+    const [hoverOver, setNewEvent] = useState(false);
     
     /*************************location search*********************************/
     const [newEntry, setNewentry] = useState(false);
@@ -285,8 +419,11 @@ function User() {
     };
 
 
-  if (loading) {
+   if (loading) {
     return <div>Loading...</div>;
+  }
+  if (error) {
+    return <div>{error.toString()}</div>;
   }
 
      return(
@@ -299,24 +436,32 @@ function User() {
                         Owner Profile
                     </h1>
                     <div className = "logoutAndHome">
-                    <Route render={({ history}) => (
-                    <h2 className = "logout"
+                         <Link
+                        to={`/SignUp`}
+                        
+                        className="text-light"
+                        >
+                         <h2 className = "logout"
                         type='button'
-                        onClick={() => { history.push('/Login') }}
+                        
                     >
                        Logout /
                    </h2>
-                    )}/>
+                        </Link>
+                    <Link
+                        to={`/`}
                         
-                            <Route render={({ history}) => (
-                        <h2
-                            type='button'
-                            onClick={() => { history.push('/') }}
+                       
                         >
-                            Home
-                        </h2>
-                    
-                        )} />
+                         <h2 
+                        type='button'
+                        
+                    >
+                       Home
+                   </h2>
+                        </Link>
+                        
+                        
 
                     </div>
                 </div>
@@ -404,17 +549,47 @@ function User() {
                      </form>
                      </div>
                          </div>}
-                     
-                        <div className = "userCalender">
+                     {!dateCheckMatch ?
+                        <div  className = "userCalender">
                           
-                                <h4 className = "text">Your dog's appointments.</h4>
-                                <Calendar  className = "cal"
-                                onChange={onChange}
-                                value={value}
+                            <h4 className = "text">Your dog's appointments.</h4>
+                         <Calendar className="cal"
+                             onChange={onChange}
+                             value={date}
+                             tileClassName={({ date, view }) => setClass(date, view)}
+                            
+                              
                                 />
-                               
-                        </div>
-                
+                         
+                        </div>:
+                         <div className="userCalender hoverOverCal">
+                             
+                             <div className="text contact">
+                                         <h2>Your Appointment</h2>
+                                         
+                                 
+                                 <Link to={`/DogWalker/${theAppointments.walker}`} key={theAppointments.walker.toString()}>
+                                             <h3>{theAppointments.walker}</h3>   
+                                     </Link>
+
+                                     <h3>{theAppointments.date} at {theAppointments.hour}</h3>
+                                    <h4></h4>
+                                     <div className="doggosAppoint">
+                                        
+                                    
+                                     {loading ? (<div>...Loading</div>
+                                     ) : (
+                                             theAppointments.doggos.map(doggos => (
+                                            <div key={doggos.name}className = "yourDogsAppoint">
+                                             
+                                             <img  className ="dogPic" src={doggos.picture}></img>
+                                                     <h4 >{doggos.name}</h4>
+                                                 </div>
+                                         )))}
+                                     </div>
+                                 </div> 
+                             <img className = "schedule" onClick ={goBackToCal} src="https://img.icons8.com/ios-filled/50/000000/planner.png"/>
+                         </div>}
                  
              </div>
 
