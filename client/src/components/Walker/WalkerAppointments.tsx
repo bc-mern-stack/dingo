@@ -12,7 +12,6 @@ export default function WalkerAppointments({
     console.log(a.walker);
     return a.walker._id === user._id;
   });
-  console.log(myWalkerAppointments);
 
   const appointmentCards = myWalkerAppointments.map(
     (appointment: any, index: number) => {
