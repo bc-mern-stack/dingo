@@ -68,7 +68,7 @@ export default function ScheduleAppointments({
 
   const handleDoggoSelect = (event: any) => {
     setSelectedDoggos(event.target.value);
-    const { name, value, checked } = event.target;
+    const { value, checked } = event.target;
 
     if (checked === true) {
       // if the target is checked, add it
