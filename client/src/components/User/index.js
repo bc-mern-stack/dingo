@@ -628,12 +628,12 @@ function User() {
                          }
                          <div>
                             
-                            <img onClick={removeDog} className="delete" src={deleteDog} alt="delete button"></img>
-
-                         {!addNewDog ?
+                         {userParam ? "":<img onClick={removeDog} className="delete" src={deleteDog} alt="delete button"></img>}
+                        ({userParam ? "": 
+                         (!addNewDog ?
                              <img onClick={newDog} className="add" src={dogHouse} alt="add button"></img>
                              :
-                             <img onClick={cancelNewDog} className="sub" src={subtract} alt="subtract button"></img>}
+                             <img onClick={cancelNewDog} className="sub" src={subtract} alt="subtract button"></img>)}
                          
                          </div>
                      </div>
@@ -736,7 +736,8 @@ function User() {
                                                      </div>
                                                      
                                                  </div>
-                                                }
+                                             }
+                                             
                                  <button className="submitNewDog" type="submit">
                                      Add Dog
                                          </button>

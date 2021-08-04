@@ -924,6 +924,14 @@ height: 150px;
  cursor: pointer;
  
 }
+.orangeCircle{
+  background-color: var(--brightOrange);
+  height: 30px;
+  width: 30px;
+  border-radius: 40px;
+  margin-top: -6px;
+
+}
 .navigation{
   width: 90%;
   display: flex;
