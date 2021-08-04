@@ -25,5 +25,7 @@
     "concurrently": "^6.2.0",
     "prettier": "2.3.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "dateformat": "^4.5.1"
+  }
 }

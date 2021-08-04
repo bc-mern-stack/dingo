@@ -8,11 +8,25 @@ export default function WalkerAppointments({
 }: any) {
   const { appointments } = user;
 
-  const myWalkerAppointments = appointments?.filter((a: any) => {
-    console.log(a.walker);
-    return a.walker._id === user._id;
-  });
-  console.log(myWalkerAppointments);
+  const myWalkerAppointments = appointments
+    ?.filter((a: any) => {
+      let today = new Date();
+      let futureAppointment = new Date(parseInt(a.date));
+      if (today < futureAppointment) {
+        return a.walker._id === user._id;
+      }
+    })
+    .sort((firstEl: any, secondEl: any) => {
+      let key1 = new Date(parseInt(firstEl.date));
+      let key2 = new Date(parseInt(secondEl.date));
+      if (key1 < key2) {
+        return -1;
+      } else if (key1 == key2) {
+        return 0;
+      } else {
+        return 1;
+      }
+    });
 
   const appointmentCards = myWalkerAppointments.map(
     (appointment: any, index: number) => {
