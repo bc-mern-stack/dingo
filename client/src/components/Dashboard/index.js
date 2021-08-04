@@ -27,6 +27,7 @@ function Dashboard() {
           <img className="logo" src={logo} alt="logo" />
           <div className="signUpBox" onClick={logout}>
             Log out
+            <div className = "orangeCircle"></div>
           </div>
         </div>
         <div className="navigation">

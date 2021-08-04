@@ -130,6 +130,7 @@ export const ADD_DOGGO = gql`
     $behavior: String!
     $temperament: String!
     $picture: String!
+    $instructions: String!
   ) {
     addDoggo(
       name: $name
@@ -139,6 +140,7 @@ export const ADD_DOGGO = gql`
       behavior: $behavior
       temperament: $temperament
       picture: $picture
+      instructions: $instructions
     ) {
       username
       doggos {
@@ -150,6 +152,7 @@ export const ADD_DOGGO = gql`
         behavior
         temperament
         picture
+        instructions
       }
     }
   }
@@ -163,9 +166,12 @@ export const REMOVE_DOGGO = gql`
         _id
         name
         size
+        age
+        breed
         behavior
         temperament
         picture
+        instructions
       }
     }
   }

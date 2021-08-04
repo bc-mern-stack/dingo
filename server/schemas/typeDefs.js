@@ -89,6 +89,7 @@ const typeDefs = gql`
     instructions: String
     temperament: String
     picture: String
+    
   }
 
   type Auth {
@@ -100,6 +101,7 @@ const typeDefs = gql`
     me: User
     users: [User]
     user(username: String!): User
+    doggos: [Doggo]
   }
 
   type Mutation {
