@@ -494,6 +494,7 @@ height: 150px;
   }
   .logout{
     margin-right: 5px;
+    white-space: nowrap;
   }
   .newLocationSearchInput{
     background-color: black;
