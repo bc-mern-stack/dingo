@@ -525,14 +525,14 @@ input[type=text]:focus {
   }
   .userNav h1{
     border-top: 6px solid;
-    border-image: url('assets/smallPat.png') 120  round;
+    /*border-image: url('assets/smallPat.png') 120  round;*/
     margin-left: 30px;
     margin-top: 0px;
-    background-color: var(--brightOrange);
+    background-color: rgb(199, 199, 199);
     color:white;
     padding:13px 10px 30px 10px;
     border-radius: 0px 0px 10px 10px;
-    /*border-top: paleturquoise 10px solid;*/
+    border-top: paleturquoise 6px solid;
     height: 35px;
     
 
