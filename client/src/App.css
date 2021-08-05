@@ -1158,9 +1158,10 @@ color: white;
   
 height:auto;
 }
+
 .bottomBorder{
   background-image: url(./assets/bluePattern.png);
-  height: 60px;
+  height: 65px;
   border-bottom: var(--brightOrange) 200px solid;
 
   /*border-top: white 350px solid;*/
@@ -1771,8 +1772,8 @@ margin-left: 50px;
 
   @media  (max-width: 500px) {
     .dogsRow{
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 25px;
+  margin-bottom: 25px;
    } 
    .alignForm form{
      width: 70%;
@@ -2177,6 +2178,7 @@ margin-left: 50px;
   .rightSideUser h2{
     width: 70%;
   }
+ 
   .allUserElements{
     width: 90%;
   }
