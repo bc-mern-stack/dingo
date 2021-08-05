@@ -37,21 +37,17 @@ function Login() {
 
   return (
     <section className="totalLayout">
-           <div className="leftSwitchedLayout">
-        <div className="blueOutline">
-          <h1>
-            Log in to view your details and find dog walkers in your area.
-          </h1>
-        </div>
-  </div>
+           
 
-          <div className="rightSwitchedLayout">
+          <div className="rightSwitchedLayout scroll">
               <div>
                   <div className="home">
             <Link to="/SignUp">
               <h1>Sign up Instead</h1>
                               </Link>
-                <img src = {home} alt = "home button"/>
+            <Link to="/">
+              <img src={home} alt="home button" />
+              </Link>
             </div>
         <div className="alignFormAltered">
                       <form className="alignSwitchedForm">
@@ -94,7 +90,13 @@ function Login() {
               </div>
               <div className="bottomSwitchedBlue"></div>
       </div>
-
+<div className="leftSwitchedLayout">
+        <div className="blueOutline">
+          <h1>
+            Log in to view your details and find dog walkers in your area.
+          </h1>
+        </div>
+  </div>
       
     </section>
   );

@@ -6,6 +6,7 @@ import { ADD_USER } from "../../utils/mutations";
 import { useMutation } from "@apollo/client";
 
 import Auth from "../../utils/auth";
+import home from "../../assets/home.png"
 
 function SignUp() {
   const [formState, setFormState] = useState({
@@ -70,12 +71,20 @@ function SignUp() {
         </div>
       </div>
 
-      <div className="rightLayout">
+      <div className="rightLayout scroll">
+        
+        <div className="home">
+            <Link to="/Login">
+              <h1>Login Instead</h1>
+                </Link>
+            <Link to="/">
+              <img src={home} alt="home button" />
+              </Link>
+            </div>
         <div className="alignForm">
-          <Link to="/Login">
-            <h1>Login Instead</h1>
-          </Link>
 
+          
+          
           <form>
             <label htmlFor="email">Email:</label>
             <input
@@ -127,7 +136,7 @@ function SignUp() {
               onChange={handleChangeAddress}
             />
             <label htmlFor="state">State:</label>
-            <StateList
+            <StateList 
               addressFormState={addressFormState}
               handleChangeAddress={handleChangeAddress}
             />
@@ -148,9 +157,9 @@ function SignUp() {
               onChange={handleChangeAddress}
             />
             {error && <div className="error">{error.toString()}</div>}
+            
           </form>
-        </div>
-        <div className="buttonDiv">
+          <div className="buttonDiv">
           <button
             className="greenButton"
             type="submit"
@@ -158,10 +167,16 @@ function SignUp() {
           >
             Sign Up
           </button>
+            </div>
+
+         
         </div>
+       
+        
+        <div className="bottomBlue"></div>
       </div>
 
-      <div className="bottomBlue"></div>
+      
     </section>
   );
 }

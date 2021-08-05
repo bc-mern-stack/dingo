@@ -1,6 +1,6 @@
 export default function StateList({ addressFormState, handleChangeAddress }) {
   return (
-    <select name="state" value={addressFormState.state} onChange={handleChangeAddress}>
+    <select className = "scroll" name="state" value={addressFormState.state} onChange={handleChangeAddress}>
       <option value="AL">Alabama</option>
       <option value="AK">Alaska</option>
       <option value="AZ">Arizona</option>
