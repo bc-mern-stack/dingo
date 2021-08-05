@@ -5,7 +5,7 @@ import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../utils/mutations";
 
 import Auth from "../../utils/auth";
-
+import home from "../../assets/home.png"
 function Login() {
   const [formState, setFormState] = useState({ email: "", password: "" });
 
@@ -37,21 +37,25 @@ function Login() {
 
   return (
     <section className="totalLayout">
-      <div className="leftSwitchedLayout">
+           <div className="leftSwitchedLayout">
         <div className="blueOutline">
           <h1>
             Log in to view your details and find dog walkers in your area.
           </h1>
         </div>
-      </div>
+  </div>
 
-      <div className="rightSwitchedLayout">
-        <div className="alignFormAltered">
-          <form className="alignSwitchedForm">
+          <div className="rightSwitchedLayout">
+              <div>
+                  <div className="home">
             <Link to="/SignUp">
               <h1>Sign up Instead</h1>
-            </Link>
-
+                              </Link>
+                <img src = {home} alt = "home button"/>
+            </div>
+        <div className="alignFormAltered">
+                      <form className="alignSwitchedForm">
+           
             <div className="mainDiv">
               <div className="controlDiv">
                 <p>Email</p>
@@ -86,10 +90,12 @@ function Login() {
           >
             Log in
           </button>
-        </div>
+              </div>
+              </div>
+              <div className="bottomSwitchedBlue"></div>
       </div>
 
-      <div className="bottomSwitchedBlue"></div>
+      
     </section>
   );
 }

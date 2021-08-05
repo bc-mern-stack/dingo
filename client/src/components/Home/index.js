@@ -24,30 +24,31 @@ function Home() {
           <div className="" type="button"></div>
         </div>
         <nav className="navigation">
-          <div className="element left">
+          <div className="element left hoverLink">
             <Link to="/Login">
-              <div className="element">Log in</div>
+              <div>Log in</div>
             </Link>
           </div>
           <section className="line"></section>
-          <div className="element">
+          <div className="element hoverLink">
             <Link to="/SignUp">
-              <span className="element">Sign up</span>
+              <span >Sign up</span>
             </Link>
           </div>
           <section className="line"></section>
-          <div className="element">
-            <Link to="/About">
+          <div className="element hoverLink">
+            <Link to="/About"> 
               <span className="element">About</span>
             </Link>
           </div>
           <section className="line"></section>
 
-          <div onClick={() =>setSearchModal(true)} className="endNav element right">
-            Find a dog walker
+          <div  onClick={() =>setSearchModal(true)} className="endNav element right">
+           <span className = "notHidden">Find a dog walker</span> 
+           <span className = "hideFind">Find</span>
           </div>
 
-          <section className="seacrhCircle"></section>
+          <section className="seacrhCircle loggedCircle"></section>
         </nav>
 
         {searchModalOpen ? (

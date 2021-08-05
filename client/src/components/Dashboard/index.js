@@ -33,21 +33,27 @@ function Dashboard() {
         <div className="navigation">
           <div className="element left">Location</div>
           <section className="line"></section>
-          <div className="element">
-            <Link to="/User">
-              <span className="element">Owner appointments</span>
-            </Link>
+          <div className="element hoverLink">
+            <Link to="/User"> 
+              <span className="onDisplay inside">Owner appointments</span>
+              <span className="elementHidden">Owner</span>
+           </Link>
           </div>
           <section className="line"></section>
-          <div className="element">
-            <Link to="/DogWalker">
-              <span className="element">Walking for others</span>
+          <div className="element hoverLink">
+            <Link  to="/DogWalker">   
+              <span className="onDisplay inside">Walking for others</span>
+              <span className="elementHidden">Walking</span>
             </Link>
+            
           </div>
           <section className="line"></section>
 
           <div onClick={() => setSearchModal(true)} className="endNav element right">
-            Find new dog walkers
+            
+          <span className="onDisplay">Find new dog walkers</span>
+
+           <span className="elementHidden">Find</span>
           </div>
 
           <section className="seacrhCircle"></section>

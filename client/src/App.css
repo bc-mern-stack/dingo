@@ -43,9 +43,7 @@ a {
 }
 
 /*****************begin of login/signup css*****************/
-.totalLayout{
-   overflow: hidden;
-}
+
 .leftLayout{
   background-color: black;
   height: 100%;
@@ -60,14 +58,20 @@ a {
   display: flex;
   justify-content: center;
 }
+.totalLayout{
+  /* overflow: hidden;*/
+    display: flex;
+  justify-content: space-between;
+
+}
 .leftSwitchedLayout{
   background-color: black;
-  height: 100%;
+  height: 100vh;
   width: 50%;
-  position: absolute;
+  /*position: absolute;
     top: 0;
     bottom: 0;
-    right: 0;
+    right: 0;*/
   color: var(--textAndButtonYellow);
   text-align: left;
   display: flex;
@@ -110,15 +114,40 @@ overflow: hidden;
    overflow: hidden;
 }
 .rightSwitchedLayout{
+  
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
   background-color:var(--brightOrange);
-  position: absolute;
+  /*position: absolute;
    left: 0;
    top: 0;
-   bottom: 0;
-   height: 100%;
+   bottom: 0;*/
+   height: 100vh;
    width: 50%;
    overflow: hidden;
 }
+.home{
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin-left: 50px;
+}
+.home img{
+  width: auto;
+  height: 40px;
+  margin-top: 30px;
+}
+.bottomSwitchedBlue{
+  background-color: var(--brightBlue);
+  /*position: absolute;
+  left: 0;
+  bottom: 0;*/
+  width: 100%;
+  height: 150px;
+  
+  }
 .rightLayout h1{
   margin-bottom: 40px;
   margin-top: 35px;
@@ -244,15 +273,8 @@ bottom: 0;
 width: 50%;
 height: 150px;
 }
-.bottomSwitchedBlue{
-  background-color: var(--brightBlue);
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 50%;
-  height: 150px;
+
   
-  }
 /*********************end of login/signup css*******************************/
 /****************************************************/
 
@@ -485,6 +507,12 @@ height: 150px;
   }
   .userNav h1{
     margin-left: 30px;
+    margin-top: 0px;
+    background-color: #c3c0c0;
+    color:white;
+    padding:15px 10px 15px 10px;
+    border-radius: 0px 0px 10px 10px;
+
   }
   .logoutAndHome{
     display: flex;
@@ -492,8 +520,11 @@ height: 150px;
     cursor: pointer;
     margin-right: 30px;
   }
+
   .logout{
     margin-right: 5px;
+    white-space: no-wrap;
+    
   }
   .newLocationSearchInput{
     background-color: black;
@@ -599,6 +630,8 @@ height: 150px;
     position: relative;
     top: 10px;
     margin-left: 235px;
+    cursor: pointer;
+
   }
   .closeRight{
     height: 30px;
@@ -608,7 +641,7 @@ height: 150px;
     margin-left: 190px;
   }
   .arrow-down-blue {
-    
+    cursor: pointer;
     position: absolute;
     right: 52%;
     z-index: 0;
@@ -616,14 +649,14 @@ height: 150px;
   }
 
   .arrow-down-orange{
-   
+    cursor: pointer;
     position: absolute;
     right: 52%;
     z-index: 0;
     margin-top: 15px;
   }
   .schedule{
-    
+    cursor: pointer;
     position: absolute;
     right: 7%;
     z-index: 0;
@@ -669,7 +702,7 @@ height: 150px;
   .eachDogNew{
      background-color: var(--brightOrange);
     width: 100%;
-    height: 350px;
+    height: 360px;
     display: flex;
     justify-content: space-between;  
     border-radius: 10px;
@@ -701,6 +734,7 @@ height: 150px;
     overflow:hidden; 
     overflow-y:scroll;
     font-family: 'Poppins', sans-serif;
+    padding: 3px;
   }
   .instructions {
     width:500px;
@@ -709,11 +743,11 @@ height: 150px;
     outline: none;
     border-radius: 10px;
     border: white 10px solid;
-    
+    padding: 3px;
     resize: none;
     overflow:hidden; 
     overflow-y:scroll;
-    position: absolute;
+   
     
   }
 
@@ -735,6 +769,8 @@ height: 150px;
     height: 30px;
     width: 80px;
     margin-top: 10px;
+    cursor: pointer;
+
   }
    .removeDog{
     border-radius: 20px;
@@ -746,6 +782,8 @@ height: 150px;
     height: 30px;
     width: 100px;
     margin-top: 8px;
+    cursor: pointer;
+
   }
   .alignButtons{
     display: flex;
@@ -759,6 +797,7 @@ height: 150px;
      margin-top: 15px;
      margin-bottom: auto;
      margin-right: 15px;
+     cursor: pointer;
 
   }
   .delete{
@@ -767,9 +806,11 @@ height: 150px;
      margin-top: 15px;
      margin-bottom: auto;
      margin-right: 25px;
+     cursor: pointer;
 
   }
   .sub{
+    cursor: pointer;
      height: auto;
      width: 30px;
      margin-top: 0;
@@ -798,10 +839,16 @@ height: 150px;
     background-color: var(--lightGrey);
     width: 100%;
     height: 350px;
-    display: flex;
-    justify-content: space-between;  
+    padding-top: 10px;
     border-radius: 10px;
     /*border: rgb(0, 0, 0) 5px solid;*/
+  }
+  .adjust{
+    margin-top: -10px !important;
+  }
+  .topDog{
+    display: flex;
+    justify-content: space-between;
   }
   .dogPic{
     height: 100px;
@@ -831,7 +878,6 @@ height: 150px;
     background-color: var(--brightBlue);
     height: 100px;
     width: 100px;
-    
     border-radius: 20px;
     text-align: center;
   }
@@ -858,6 +904,7 @@ height: 150px;
   
  .file {
   opacity: 0;
+  cursor: pointer;
   
 
 }
@@ -877,6 +924,8 @@ height: 150px;
     /*border-left: .05rem solid black;*/
     padding: 15px;
     width: 100%;
+    padding-top: 0px;
+    padding-bottom: 0px;
   }
   .alignRightSide{
     display: flex;
@@ -932,6 +981,9 @@ height: 150px;
   margin-top: -6px;
 
 }
+.elementHidden{
+  display: none;
+}
 .navigation{
   width: 90%;
   display: flex;
@@ -954,18 +1006,28 @@ height: 150px;
   padding-left:20px;
 
 }
+.hoverLink:hover div{
+
+color: white;
+}
+.hoverLink:hover span{
+
+color: white;
+}
+
 .navigation:after {
   content: " ";
   position: absolute;
   z-index: -1;
   padding-top: 30px;
-  top: -17px;
+  top: -16px;
   left: -17px;
   right: -17px;
-  bottom: -17px;
+  bottom: -16px;
   border: 7px solid #000000;
   border-radius: 50px;
 }
+
 .logoAndLogin{
   display: flex;
   justify-content: space-between;
@@ -1023,8 +1085,12 @@ height: 150px;
   justify-content: center;
 }
 .illustration{
-  height: 400px;
+  height: 500px;
   width: auto;
+    max-height: 500px;
+    
+  
+height:auto;
 }
 .bottomBorder{
   background-image: url(./assets/bluePattern.png);
@@ -1052,8 +1118,10 @@ height: 150px;
   
 }
 .dogsRow img{
-  height: 250px; 
-  width: auto; 
+  margin: 3px;
+  max-width: 300px;
+  width:33%;
+height:auto;
   
 }
 .user{
@@ -1420,24 +1488,196 @@ position: relative;}
 /*************************************************************/
 /****************************footer*********************************/
 .footer{
-  
+  font-size: 12px;
   height: 0px;
   text-align: center;
-  position: relative;
-  bottom: 50px;
-  color: white;
+  margin-top: -20px;
+  color: rgb(189, 189, 189);
+  position: absolute;
+  left: 35px;
 }
 
 .error {
   color: red;
 }
-
+.hideFind{
+  display: none;
+}
 
 
 
 
 /*************************************************************/
-  @media only screen and (max-height: 575px) {
+  @media (max-width: 320px) {  
+  
+   
+.logoutAndHome{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: right;
+  }
+  
+  .userNav h2{
+    margin: 0px;
+   
+  }
+  .reveal{
+    display: none;
+  }
+}
+ @media (max-width: 350px) { 
+.alignFormAltered{
+  margin-left: 20px;
+  color: white;
+ 
+ 
+ }
+}
+
+  @media (max-width: 420px) { 
+   .illustration{
+ 
+  height: 150px;
+  width: auto;
+}
+.orangeBox{
+  height: 100px;
+  width: auto;
+
+}
+
+  .dogWalkersLeft  {
+    width: 200px !important;
+  
+  }
+  .hoverOverCal div{
+    
+    width: 60%;
+  }
+ .dogWalkersRight{
+      width: 200px  !important;
+      
+    }
+    .newLocationSearchInput{
+      width: 75%;
+    }
+  .adjust{
+    margin-top: 5px;
+  }
+  .insideForm{
+    padding-right: 0px;
+  }
+  .eachDogNew{
+    height: 370px;
+  }
+  .eachDogNew label{
+        font-size:13px !important;
+
+  }
+ 
+  .eachDogNew textarea{
+    width: 200px !important;
+    
+  }
+  .camera{
+    
+    width: 25px;
+    height:auto;
+    margin-bottom: -20px;
+  }
+  .cameraDiv{
+     margin-top: -90px;
+  }
+  .cameraDiv p{
+    font-size: 13px !important;
+    margin-top: 22px;
+  }
+  
+  .dogPic {
+    height: 75px;
+    width: 75px;
+  }
+  .dogPic img{
+    height: 75px;
+    width: 75px;
+  }
+  
+  .instructions{
+ width:225px !important;
+}
+.dogPicSuccess{
+  height: 75px;
+  margin-top: px;
+    width: 75px;
+}
+.successPhoto .camera{
+ margin-top: 25px;
+}
+.removeDog {
+  position: relative;
+  right: 13px;
+  top: 0px;
+}
+.eachDog{
+  height: 370px;
+  /*flex-direction: column-reverse;
+  justify-content: flex-end;*/
+}
+  .leftSideUserProfile h2{
+  }
+  .userNav{
+    margin-bottom: 10px;
+  }
+  .dogInfo{
+    padding-right: 0px;
+  }
+   
+  }
+  
+
+  @media  (max-width: 499px) {
+ .onDisplay{
+    display: none;
+  }
+  .elementHidden{
+    display: block;
+  }
+ 
+    .bluePat{
+    height: 200px !important;
+  }
+ 
+
+.logoAndLogin .logo{
+  height:50px
+}
+
+
+
+}
+
+
+  @media  (max-width: 500px) {
+    .dogsRow{
+  margin-top: 20px;
+  margin-bottom: 20px;
+   } 
+   
+  
+    .navigation .element   {
+    font-size: 12px !important;
+    
+  }
+ .notHidden{
+   display: none;
+ }
+.hideFind{
+  display: inline-block;
+}
+
+  }
+@media only screen and (max-height: 575px) {
     .rightSwitchedLayout{
       z-index: 99;
     }
@@ -1445,33 +1685,184 @@ position: relative;}
   
    z-index: 99;
     }
+  
+    
   }
-  @media only screen and (max-height: 650px) {
+  @media (max-width: 550px) {
+.logoutAndHome{
+      font-size: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      margin-right: 10px;
+      margin-top: 7px;
+  }
+  .userNav h1{
+    font-size: 18px;
+    margin-left: 10px;
+    margin-top: 0px;
+    background-color: #c3c0c0;
+    color:white;
+    padding:15px 10px 15px 10px;
+  }
+ 
+}
+  @media (max-width: 599px) {
+
+
+.orangeBox{
+  height: 160px;
+  width: auto;
+
+}
+  }
+   @media (max-width: 600px) {
+      .signUpBox{
+ background-color: var(--midToneGrey);
+ color: var(--darkOrange);
+ padding: 10px;
+ padding-top: 12px;
+ width: 100px;
+ height: 20px;
+ margin: 15px 15px 0px 0;
+ display: flex;
+ justify-content: space-between;
+ cursor: pointer;
+ 
+}
+  .seacrhCircle{
+      position: absolute;
+      right: 3px !important;
+      top: 7px !important;
+      height: 25px !important;
+      width: 25px !important;
+      background-color: var(--darkOrange) ;
+      border-radius: 20px;
+      border: white 5px solid;
+      margin-bottom: -30px;
+      
+      
+    }
+    .loggedCircle{
+    margin-top: -7px;
+    margin-right: -2px;
+  }
+    .seacrhCircle:after {
+      content: " ";
+      position: absolute;
+      z-index: 1;
+      top: -13px;
+      left: -13px;
+      right: -13px;
+      bottom: -13px;
+      border: 10px solid var(--darkOrange);
+      border-radius: 50px;
+    }
+    
+  .navigation .element{
+   text-align: center;
+  }
+  .bluePat{
+    height: 230px;
+  }
+  .navigation{
+    width:80%
+  }
+
+
+    
+}
+ 
+  
+  @media only screen and (min-width: 600px) {
+ 
    
+
+
+.orangeBox{
+  height: 250px;
+  width: auto;
+    background-color: var(--darkOrange);
+
+}
+  }
+   @media  (max-width: 650px) {
+     .navigation div{
+       padding-left:0px;
+     }
+ 
+  
+
+    }
+  @media only screen and (max-height: 650px) {
+  
     .greenButton{
       margin-top: 35px;
     }
     .greenSwitchedButton{
       margin-top: 35px;
+      margin-bottom: 35px;
     }
-    .leftLayout h1{
-  width:65%;
-  margin-left: 50px;
-  margin-right: 50px;
-  margin-bottom: 20px; 
-  font-size: 37px
+      .leftLayout h1{
+    width:65%;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 20px; 
+    font-size: 37px
 }
 
-.leftSwitchedLayout h1{
-  width:65%;
-  margin-left: 50px;
-  margin-right: 50px;
-  margin-bottom: 20px; 
-  font-size: 37px
+
 }
+@media(max-width: 715px) {
+
+ 
+}
+
+@media(min-width: 700px) {
+ 
+
+.orangeBox{
+  height: 300px;
+  width: auto;
+    background-color: var(--darkOrange);
+
+}
+}
+  @media  (max-width: 700px) {
+     
+     .leftSwitchedLayout{
+ display: none;
+}
+    .seacrhCircle {
+      
+      display: none;
+      
+    }
+    .seacrhCircle:after {
+      display: none;
+    }
+.element{
   
+   text-align: center;
+   
+ }
+   .element.endNav{
+  display: inline;
+   }
+  .element.endNav{
   }
-  @media only screen and (max-width: 800px) {
+  .element.endNav.element.left{
+    padding-left: 0px;
+  }
+  .element.endNav.element.right{
+   padding-right: 0px;
+ }
+  
+}
+
+  @media  (max-width: 800px) {
+  
+    
+   
     .leftSideUserProfile{
       width: 100%;
     }
@@ -1481,6 +1872,7 @@ position: relative;}
       justify-content: space-between;
       
     }
+   
     .userCalender{
       width: 100%;
       margin-top: 25px;
@@ -1508,10 +1900,29 @@ position: relative;}
     }
      
 }
-  
+ @media (max-width: 900px) {
+ 
+  .element.endNav{
+   padding-right: 40px;
+ }
+ 
+ 
+}
+
+ @media (min-width: 900px) {
+    
  
 
+.orangeBox{
+  height: 400px;
+  width: auto;
+    background-color: var(--darkOrange);
+}
+}
+
   @media only screen and (max-width: 1000px) {
+    
+ 
     .react-calendar abbr{
  
  line-height: 2em;
@@ -1546,73 +1957,7 @@ position: relative;}
     font-size: 12px ;
     
   }
-  .navigation div{
-    /*border: salmon solid 2px;*/
-    width: auto;
-  }
-  .right{
-    margin-right: 50px;
-  }
-  .element:hover{
-    cursor: pointer;
-    color: #ffffff;
-    background-color: #000000;
-    /*background-color: #08b92f;*/
-    /*margin-right: -19px;*/
-    padding-top: 20px;
-    padding-bottom: 20px;
-    margin-bottom: -20px;
-    margin-top: -20px;
-    box-shadow: 0px 5px 15px rgb(0, 0, 0);
-    /*border-radius: 0px 35px 35px 0px;*/
-    padding-right: 40px;
-    padding-left: 40px;
-    width: 100%;
-  }
-  .right:hover{
-    color: #ffffff;
-    background-color: #000000;
-    /*background-color: #08b92f;*/
-    margin-right: -20px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    margin-bottom: -20px;
-    margin-top: -20px;
-    /*box-shadow: 0px 5px 0px rgb(0, 0, 0);*/
-    border-radius: 0px 35px 35px 0px;
-    padding-right: 80px;
-  }
-  .left:hover{
-    color: #ffffff;
-    background-color: #000000;
-    /*background-color: #08b92f;*/
-    margin-left: -20px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    margin-bottom: -20px;
-    margin-top: -20px;
-    /*box-shadow: 0px 5px 0px rgb(0, 0, 0);*/
-    border-radius: 35px 0px 0px 35px ;
-    padding-left: 39px;
-    padding-right: 37px;
-    
-  }
-  .dogsRow{
-
-    margin-top: 60px;
-    margin-bottom: 60px;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    justify-content: space-around;
-    width: 90%;
-    
-  }
-  .dogsRow img{
-    height: 200px; 
-    width: auto; 
-    
-  }
+ 
   .leftSideUserProfile{
     height: 60%;
   }
@@ -1741,37 +2086,23 @@ position: relative;}
   .modalViewRight{
     height: 350px;
   }
+  
 }
+
 @media only screen and (min-width: 1600px) {
 
-.dogsRow{
 
-  margin-top: 60px;
-  margin-bottom: 60px;
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  justify-content: space-around;
-  width: 80%;
-  
-}
-.dogsRow img{
-  height: 300px; 
-  width: auto; 
-  
-}
 .orangeBox{
   height: 500px;
   width:100%;
-  background-color: var(--darkOrange);
+    
+
+    background-color: var(--darkOrange);
   border-bottom: 30px solid var(--lightGrey);
   display: flex;
   justify-content: center;
 }
-.illustration{
-  height: 500px;
-  width: auto;
-}
+
   .modalViewLeft h1{
     font-size: 35px;
     width: 75%;

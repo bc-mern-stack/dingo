@@ -471,7 +471,7 @@ function User() {
                         type='button'
                         
                     >
-                       Logout /
+                       Logout <span className = "reveal">/</span>
                    </h2>
                         </Link>
                     <Link
@@ -579,8 +579,9 @@ function User() {
                          </div>}
                      {!dateCheckMatch ?
                         <div  className = "userCalender">
-                          
-                            <h4 className = "text">Your dog's appointments.</h4>
+                             {userParam ?
+                                 <h4 className="text">{user.username} dog's appointments.</h4>
+                                : <h4 className="text">Your dog's appointments.</h4>}
                          <Calendar className="cal"
                              onChange={onChange}
                              value={date}
@@ -623,8 +624,10 @@ function User() {
 
                  <div>
                      <div className="completeTitle">
-                          {data &&
-                         <h4 className="dogTitle" >Your Dogs: { user.doggos.length}</h4>
+                         {userParam ? <h4 className="dogTitle" >{user.username}'s dogs: {user.doggos.length}</h4> :
+                         
+                          
+                             <h4 className="dogTitle" >Your Dogs: {user.doggos.length}</h4>
                          }
                          <div>
                             
@@ -685,6 +688,8 @@ function User() {
                                      onChange={handleChange}
                                  /></label>
                               
+
+                                             
                                  <label htmlFor="doggo">Temperament:<input
                                      type="text"
                                      name="temperament"
@@ -757,19 +762,14 @@ function User() {
                                  <div key={doggos._id} className="dogBlock">
                                      
                                      <div className="eachDog">
-                        
+                                    <div className = "topDog">
                                          <div className="dogInfo">
                                              <p>Name: {doggos.name}</p>
                                              <p>Age: {doggos.age}</p>
                                              <p>Size: {doggos.size}</p>
-                                             <p>Breed: {doggos.breed}</p>
-                                             <p>Behavior: {doggos.behavior}</p>
-                                             <p>Temperament: {doggos.temperament}</p>
-                                             <div className = "fixer">Special Instructions:</div>
-                                             <p className = "instructions scroll">{doggos.instructions}</p>
-                                         </div>
-
-                                         <div className="dogPic">
+                                             <p >Breed: {doggos.breed}</p>
+                                            </div>
+                                    <div className="dogPic">
 
                                              <img src={doggos.picture} alt={"picture of " + `${doggos.name}`} />
                                              {dogRemoval ?
@@ -777,7 +777,16 @@ function User() {
                                                      Remove Dog
                                                  </button>: <div></div>}
                                          </div>
-                                     </div>
+                                           </div>
+                                        <div className="dogInfo adjust">
+                                             <p>Behavior: {doggos.behavior}</p>
+                                             <p>Temperament: {doggos.temperament}</p>
+                                             <div className = "fixer">Special Instructions:</div>
+                                             <p className = "instructions scroll">{doggos.instructions}</p>
+                                         </div>
+                                    </div> 
+                                       
+                                     
                                  </div>)))}
                 
                             </div>
