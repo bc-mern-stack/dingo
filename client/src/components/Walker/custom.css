@@ -874,6 +874,10 @@
 
 /* 'xs': '480px' */
 @media (max-width: 480px) {
+    .aboutHolder{
+    width:80%;
+    
+  }
    .walker-userNav-links {
       display: flex;
       flex-wrap: wrap;
