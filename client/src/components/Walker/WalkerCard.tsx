@@ -16,7 +16,7 @@ export default function WalkerCard({ user }: any) {
         </div>
       </div>
       <div className="contactDogWalker text">
-        <h3>Contact {username}</h3>
+        <h3>Contact</h3>
         <span>{email}</span>
       </div>
     </div>

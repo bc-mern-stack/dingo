@@ -53,7 +53,7 @@ function DogWalker() {
     <div className="flex-column">
       <div className="walker-profile">
         <div className="walker-userNav">
-          <h1>Dog Walking Availability</h1>
+          <h1>Walking Availability</h1>
           <nav className="walker-userNav-links">
             <Link to="/">
               <h2 className="logout" type="button" onClick={logout}>
