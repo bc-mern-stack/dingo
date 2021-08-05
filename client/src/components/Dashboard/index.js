@@ -10,11 +10,12 @@ import illustration from "../../assets/illustration.png";
 import dog1 from "../../assets/dog1.png";
 import dog2 from "../../assets/dog2.png";
 import dog3 from "../../assets/dog3.png";
+import AboutModal from "../AboutModal";
 
 function Dashboard() {
   const [searchModalOpen, setSearchModal] = useState(false);
 
-
+  const [aboutModalOpen, setAboutModal] = useState(false);
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
@@ -32,9 +33,15 @@ function Dashboard() {
         </div>
         <div className="navigation">
           <div className="element left hoverLink">
-            <Link to="/About">
-              <span>About Dingo</span>
-            </Link>
+              <span
+              className="element"
+              onClick={(e) => {
+                console.log("true");
+                return setAboutModal(!aboutModalOpen);
+              }}
+            >
+              About Dingo{" "}
+            </span>
           </div>
           <section className="line"></section>
           <div className="element hoverLink">
@@ -81,6 +88,14 @@ function Dashboard() {
         <img src={dog3} alt="dog3" />
       </div>
       <div className="bottomBorder"></div>
+       {aboutModalOpen ? (
+        <AboutModal
+          aboutModalOpen={aboutModalOpen}
+          setAboutModal={setAboutModal}
+        ></AboutModal>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

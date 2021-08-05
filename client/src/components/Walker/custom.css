@@ -8,7 +8,24 @@
 }
 
 /* ---------------------begin profile info styling--------------------- */
-
+.walker-userNav h1{
+  
+    margin-top: 0px;
+    background-color: rgb(187, 184, 184);
+    color:white;
+    padding:13px 10px 43px 10px;
+    
+    border-top: 6px solid;
+    border-image: url('../../assets/smallPat.png') 120  round;
+    margin-left: 10px;
+    margin-top: 0px;
+    background-color: var(--brightOrange);
+    color:white;
+    padding:13px 10px 30px 10px;
+    border-radius: 0px 0px 10px 10px;
+    /*border-top: paleturquoise 10px solid;*/
+    height: 35px;
+  }
 .walker-profile {
   width: 100vw;
   min-width: 70%;
@@ -27,13 +44,17 @@
   max-width: 90vw;
   min-width: 70%;
   white-space: nowrap;
-  margin-bottom: 3.5rem;
+  margin-bottom: 3rem;
   background-color: rgb(235, 232, 232);
   padding: 0 1rem 0 1rem;
+  
 }
 
 .walker-userNav-links {
+  margin-top: 2px;
   display: flex;
+  flex-wrap: wrap;
+  
 }
 
 .walker-blackBar {
@@ -82,10 +103,10 @@
 
 .walker-info-card {
   border-radius: 10px;
-  background-color: var(--brightOrange);
+  background-color:  var(--brightBlue);
+
   color: white;
   width: 47%;
-  min-width: fit-content;
   display: flex;
   flex-direction: column;
   align-content: space-between;
@@ -651,16 +672,25 @@
   .schedule-doggos-card-container {
     grid-template-columns: repeat(2, auto);
   }
+  .aboutHolder{
+    width:90%;
+    
+  }
 }
 
 /* 'lg': '1024px', */
 @media (max-width: 1024px) {
+  .aboutHolder{
+    width:85%;
+    
+  }
   .walker-userNav {
     /* display: flex;
     justify-content: space-between; */
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     white-space: nowrap;
     align-self: center;
+    
   }
   .avail-container {
     width: 80%;
@@ -694,6 +724,7 @@
   .walker-info-card {
     width: 90%;
     align-self: center;
+    margin-top: 15px;
   }
   .schedule-doggos-card-container {
     grid-template-columns: repeat(3, 1fr);
@@ -751,9 +782,13 @@
   .walker-userNav {
     /* display: flex;
     justify-content: space-between; */
-    font-size: 0.6rem;
+    
     white-space: nowrap;
     align-self: center;
+  }
+  .walker-userNav-links {
+      font-size: 11px;
+      margin-left: 10px;
   }
   .walker-profile {
     justify-self: center;
@@ -772,7 +807,7 @@
     align-self: center;
     font-size: 25px;
     border-radius: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
   }
   .walker-profile-top {
     flex-direction: column;
@@ -786,6 +821,8 @@
   /* show availability styling start */
   .avail-container {
     width: 90%;
+    margin-left: auto;
+    margin-right: 16px;
   }
   .show-hourly-availability {
     display: grid;
@@ -836,6 +873,31 @@
 
 /* 'xs': '480px' */
 @media (max-width: 480px) {
+   .walker-userNav-links {
+      display: flex;
+      flex-wrap: wrap;
+     
+      flex-direction: column;
+      align-items: flex-end;
+      margin-top: -7px;
+      
+  }
+  .walker-userNav {
+     height: 75px;
+   
+  }
+  .walker-userNav h1{
+    height: 4px;
+    padding-top: 20px;
+    margin-left: -5px;
+  }
+  
+  .logout{
+    margin-bottom: -10px;
+  }
+   .revealWalker{
+    display: none;
+  }
   /* show availability styling start */
   .avail-container {
     width: 90%;
@@ -886,6 +948,10 @@
     height: 13px;
     width: 13px;
   }
+  
+ 
+ 
+   
 
   /* add availability styling end */
 }

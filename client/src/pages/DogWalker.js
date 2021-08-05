@@ -57,7 +57,7 @@ function DogWalker() {
           <nav className="walker-userNav-links">
             <Link to="/">
               <h2 className="logout" type="button" onClick={logout}>
-                Logout /
+               Logout <span className = "revealWalker">/</span>
               </h2>
             </Link>
             <Link to="/">

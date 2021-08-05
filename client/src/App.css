@@ -132,8 +132,9 @@ overflow: hidden;
 .home{
   display: flex;
   justify-content: space-between;
-  width: 80%;
+  width: 90%;
   margin-left: 50px;
+  margin-right: 10px;
 }
 .home img{
   width: auto;
@@ -360,6 +361,7 @@ input[type=text]:focus {
     border-radius: 10px;
     border: 10px white solid;
 }
+
 .rightSideUser{
   border-radius: 10px;
   background-color: var(--brightOrange);
@@ -508,18 +510,25 @@ input[type=text]:focus {
   }
   
   .userNav{
+    
     display: flex;
     justify-content: space-between;
     margin-bottom: 60px;
     background-color: rgb(235, 232, 232);
+    
   }
   .userNav h1{
+    border-top: 6px solid;
+    border-image: url('assets/smallPat.png') 120  round;
     margin-left: 30px;
     margin-top: 0px;
-    background-color: #c3c0c0;
+    background-color: var(--brightOrange);
     color:white;
-    padding:15px 10px 15px 10px;
+    padding:13px 10px 30px 10px;
     border-radius: 0px 0px 10px 10px;
+    /*border-top: paleturquoise 10px solid;*/
+    height: 35px;
+    
 
   }
   .logoutAndHome{
@@ -1803,9 +1812,10 @@ margin-left: 50px;
     font-size: 18px;
     margin-left: 10px;
     margin-top: 0px;
-    background-color: #c3c0c0;
+    /*background-color: #c3c0c0;*/
     color:white;
-    padding:15px 10px 15px 10px;
+    padding:15px 10px 0px 10px;
+    height: 30px;
   }
  
 }
@@ -1889,6 +1899,9 @@ margin-left: 50px;
 }
   }
    @media  (max-width: 650px) {
+     .newLocationSearchInput{
+       width: 200px;
+     }
      .navigation div{
        padding-left:0px;
      }
@@ -2163,7 +2176,7 @@ margin-left: 50px;
 }
 }
   @media only screen and (min-width: 1300px) {
-    
+   
     .schedule{
     
     position: absolute;
@@ -2172,7 +2185,9 @@ margin-left: 50px;
     margin-top: 15px;
   }}
   @media only screen and (max-width: 1300px) {
-    
+     .home{
+      width:85%
+    }
     
   .rightSideUser h2{
     width: 70%;
