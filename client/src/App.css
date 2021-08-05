@@ -1391,17 +1391,21 @@ height:auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: var(--midToneGrey);
+  background-color: rgb(42, 42, 42);
   height: 100vh;
 }
 .badlink img{
-  height: 300px;
+  height: 400px;
   
   margin-top: 70px;
 
 }
-.badlink h2{
-position: relative;}
+.badlink h1{
+  
+  position: relative;
+  margin-top: 50px;
+  color:#20c5ee;
+}
 /********************animation************************/
 
 /*.shape:hover {
@@ -1643,7 +1647,14 @@ margin-left: 50px;
 }
 
   @media (max-width: 420px) { 
-   .illustration{
+   .badlink img{
+  height: 250px;
+  margin-left: 20px;
+  margin-top: 70px;
+
+}
+   
+    .illustration{
  
   height: 150px;
   width: auto;
@@ -1733,8 +1744,7 @@ margin-left: 50px;
   /*flex-direction: column-reverse;
   justify-content: flex-end;*/
 }
-  .leftSideUserProfile h2{
-  }
+ 
   .userNav{
     margin-bottom: 10px;
   }

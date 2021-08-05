@@ -5,7 +5,7 @@ function NotFound() {
         <div className="badlink">
             <div><img src={badDog} alt="not found img" /></div>
             
-            <h1>Page Not Found</h1>
+            <h1>Page Not Found!</h1>
         </div>
     )
 }
