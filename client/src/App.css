@@ -357,14 +357,13 @@ input[type=text]:focus {
     
 }
 .aboutHolder {
-    overflow: scroll;
     height: 170px;
     word-break: break-all;
     
     background-color: rgb(236, 236, 236);
     border-radius: 10px;
     border: 10px white solid; 
-
+    
      overflow-y:scroll;
 }
 
