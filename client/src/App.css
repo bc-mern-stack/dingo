@@ -351,15 +351,21 @@ input[type=text]:focus {
     height: auto;
     padding: 10px;
     color: black;
-  
+    display: flex;
+    flex-wrap: wrap;
+    line-height: 20px;
+    
 }
 .aboutHolder {
-    max-height: 150px;
-    overflow:hidden; 
-    overflow-y:scroll;
+    overflow: scroll;
+    height: 170px;
+    word-break: break-all;
+    
     background-color: rgb(236, 236, 236);
     border-radius: 10px;
-    border: 10px white solid;
+    border: 10px white solid; 
+
+     overflow-y:scroll;
 }
 
 .rightSideUser{
