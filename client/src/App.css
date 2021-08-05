@@ -531,8 +531,7 @@ input[type=text]:focus {
 
   .logout{
     margin-right: 5px;
-    white-space: no-wrap;
-    
+    white-space: nowrap;
   }
   .newLocationSearchInput{
     background-color: black;

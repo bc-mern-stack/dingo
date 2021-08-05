@@ -22,11 +22,10 @@
 
 .walker-userNav {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
   max-width: 90vw;
   min-width: 70%;
-  font-size: 1.3em;
   white-space: nowrap;
   margin-bottom: 3.5rem;
   background-color: rgb(235, 232, 232);
@@ -656,6 +655,13 @@
 
 /* 'lg': '1024px', */
 @media (max-width: 1024px) {
+  .walker-userNav {
+    /* display: flex;
+    justify-content: space-between; */
+    font-size: 0.6rem;
+    white-space: nowrap;
+    align-self: center;
+  }
   .avail-container {
     width: 80%;
   }
@@ -747,7 +753,6 @@
     justify-content: space-between; */
     font-size: 0.6rem;
     white-space: nowrap;
-    margin: 0 0 1rem 0;
     align-self: center;
   }
   .walker-profile {
