@@ -79,6 +79,14 @@ function Home() {
       <div className="orangeBox">
         <img className="illustration" src={illustration} alt="illustration" />
       </div>
+      <div className = "helloMessage">
+        <h1  className = "rightH1">
+          Add or remove as many dogs to your profile as you need.
+        </h1>
+        <h1 className = "rightH2">
+          Add availability and charge your own rate as a walker.
+        </h1>
+      </div>
       <div className="dogsRow">
         <img src={dog1} alt="dog1" />
         <img src={dog2} alt="dog2" />
