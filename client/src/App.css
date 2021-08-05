@@ -319,6 +319,13 @@ input[type=text]:focus {
   align-content: flex-start;
   
 }
+.dropDownlocation form{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: flex-start;
+  
+}
 .contact{
   margin-top: 20px;
  
@@ -613,6 +620,55 @@ input[type=text]:focus {
     justify-content: flex-start;
     
   }
+   .dropDownlocation select{
+  background-color: rgb(255, 255, 255);
+  border: none;
+  padding: 0 1em 0 0;
+  margin: 0;
+  width: 90%;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+  color:rgb(0, 0, 0);
+  border-radius: 10px;
+  padding: 8px;
+  height: 37px;
+  font-weight: 500;
+  
+  }
+   .dropDownlocation .newLocationSearchInput{
+    background-color: rgb(255, 255, 255);
+    border: none;
+    height: 15px;
+    border-radius: 25px;
+    padding: 10px;
+    padding-top: 12px;
+    padding-left: 15px;
+    border-radius: 10px;
+    color: rgb(0, 0, 0);
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    
+  }
+  
+  .dropDownlocation .newLocationSearchInput::placeholder {
+    color: rgb(0, 0, 0);
+    font-size: 1em;
+  }
+  .dropDownlocation .newLocationSearchButton{
+    height: 35px;
+    width: 35px;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 25px;
+    border: none;
+    margin-left: 13px;
+    margin-bottom: 30px;
+    cursor: pointer;
+    margin-top: 0px;
+
+  }
   .closeModal{
     height: 30px;
     width: auto;
@@ -630,16 +686,25 @@ input[type=text]:focus {
     width: auto;
     position: relative;
     top: 10px;
-    margin-left: 235px;
+    margin-left: 260px;
     cursor: pointer;
 
+  }
+  .close:hover{
+      transform: rotate(180deg);
+      transition: transform 150ms ease,
   }
   .closeRight{
     height: 30px;
     width: auto;
     position: relative;
     top: 10px;
-    margin-left: 190px;
+    margin-left: 210px;
+    cursor: pointer;
+  }
+  .closeRight:hover{
+      transform: rotate(180deg);
+      transition: transform 150ms ease,
   }
   .arrow-down-blue {
     cursor: pointer;
@@ -1174,7 +1239,7 @@ height:auto;
   justify-content: space-between;
   width: 90%;
   margin: auto;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 .dropDown{
   z-index: 99;
@@ -1183,15 +1248,34 @@ height:auto;
   box-shadow: 0 5px 10px rgb(0, 0, 0);
 
 }
+
+.homeSearch{
+  border-radius: 10px;
+  background-color: var(--brightOrange);
+  color: white;
+  width: 250px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  /*border: yellowgreen 2px solid;*/
+   z-index: 99;
+  border-radius: 10px;
+  background-color: var(--brightOrange);
+  box-shadow: 0 5px 10px rgb(0, 0, 0);
+}
 .dropDownlocation{
   z-index: 99;
-  height: 160px;
-  width: 280px;
+  height: 200px;
+  width: 300px;
   background-color: var(--brightOrange);
   border-radius: 10px;
   box-shadow: 0 5px 10px rgb(0, 0, 0);
 
 }
+.dropDownlocation form{
+  margin-left: 15px;
+}
+
 .contentHome p{
   color: white;
   margin-left: 25px;
@@ -1541,6 +1625,11 @@ font-size: 20px;
 margin-left: 50px;
 
 }
+.greenSwitchedButton{
+ 
+  margin-left: 100px;
+}
+
 
 }
 
@@ -1803,8 +1892,26 @@ margin-left: 50px;
      .navigation div{
        padding-left:0px;
      }
- 
+ .bothDropDowns{
   
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+
+  margin-top: 15px;
+}
+.dropDownlocation{
+  margin-top: 15px;
+  width: 250px;
+}
+.dropDownlocation form{
+  margin-left: 10px;
+}
+    .close{
+  
+    margin-left: 210px;
+    
+  }
 
     }
   @media only screen and (max-height: 650px) {
@@ -1996,10 +2103,65 @@ margin-left: 50px;
     
     
   }
- 
+
  
   }
-   
+   @media only screen and (min-width: 1100px) {
+    
+    .homeSearch .dogWalkers {
+  
+    height:100px; 
+    width:250px;
+    overflow:hidden; 
+    overflow-y:scroll;
+    background-color: rgb(236, 236, 236);
+    list-style: none;
+    padding: 10px;
+    border-radius: 10px;
+    border: 10px white solid;
+    margin-right: 20px;
+   }
+  .closeRight{
+    height: 30px;
+    width: auto;
+    position: relative;
+    top: 10px;
+    margin-left: 360px;
+    cursor: pointer;
+  }
+  .close{
+    height: 30px;
+    width: auto;
+    position: relative;
+    top: 10px;
+    margin-left: 310px;
+    cursor: pointer;
+  }
+  
+   .dropDownlocation{
+  z-index: 99;
+  height: 200px;
+  width: 350px;
+  background-color: var(--brightOrange);
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgb(0, 0, 0);
+
+}
+.homeSearch{
+  border-radius: 10px;
+  background-color: var(--brightOrange);
+  color: white;
+  width: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  /*border: yellowgreen 2px solid;*/
+   z-index: 99;
+  border-radius: 10px;
+  background-color: var(--brightOrange);
+  box-shadow: 0 5px 10px rgb(0, 0, 0);
+}
+}
   @media only screen and (min-width: 1300px) {
     
     .schedule{

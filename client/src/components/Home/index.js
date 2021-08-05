@@ -45,7 +45,7 @@ function Home() {
 
           <div  onClick={() =>setSearchModal(true)} className="endNav element right">
            <span className = "notHidden">Find a dog walker</span> 
-           <span className = "hideFind">Find</span>
+           <span className = "hideFind">Search</span>
           </div>
 
           <section className="seacrhCircle loggedCircle"></section>

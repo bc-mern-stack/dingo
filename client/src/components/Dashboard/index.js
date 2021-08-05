@@ -31,7 +31,11 @@ function Dashboard() {
           </div>
         </div>
         <div className="navigation">
-          <div className="element left">Location</div>
+          <div className="element left hoverLink">
+            <Link to="/About">
+              <span>About Dingo</span>
+            </Link>
+          </div>
           <section className="line"></section>
           <div className="element hoverLink">
             <Link to="/User"> 
