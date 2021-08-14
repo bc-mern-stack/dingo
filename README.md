@@ -28,9 +28,13 @@ npm run develop
 
 an app for people who have dogs, but not enough time to walk them.
 
-![preview of app](./images/preview1.png)
-![preview of walker viewing appointments](./images/preview2.png)
-![preview of owner scheduling appointments](./images/preview3.png)
+![preview of app](./images/0.png)
+![preview of walker viewing appointments](./images/1.png)
+![preview of owner scheduling appointments](./images/2.png)
+![preview of owner scheduling appointments](./images/3.png)
+![preview of owner scheduling appointments](./images/4.png)
+![preview of owner scheduling appointments](./images/5.png)
+![preview of owner scheduling appointments](./images/6.png)
 
 ## Contributing
 
